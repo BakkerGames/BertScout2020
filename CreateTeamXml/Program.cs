@@ -54,6 +54,7 @@ namespace CreateTeamXml
                 {
                     teamUuid = Guid.NewGuid().ToString();
                 }
+                // do need to change & to &amp;
                 string teamName = tokens[1];
                 teamName = teamName.Replace("&","&amp;");
                 xmlOut.AppendLine("  <Team>");
