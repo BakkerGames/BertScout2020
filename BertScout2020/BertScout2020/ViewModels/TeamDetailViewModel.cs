@@ -97,18 +97,18 @@ namespace BertScout2020.ViewModels
         private int CalculateCargoCount(EventTeamMatch match)
         {
             int result = 0;
-            result += match.SandstormCargo;
-            result += match.CargoShipCargo;
-            result += match.RocketCargo;
+            result += match.AutoHighCell;
+            result += match.TeleLowCell;
+            result += match.TeleInnerCell;
             return result;
         }
 
         private int CalculateHatchCount(EventTeamMatch match)
         {
             int result = 0;
-            result += match.SandstormHatches;
-            result += match.CargoShipHatches;
-            result += match.RocketHatches;
+            result += match.AutoLowCell;
+            result += match.AutoInnerCell;
+            result += match.TeleHighCell;
             return result;
         }
 
@@ -116,8 +116,8 @@ namespace BertScout2020.ViewModels
         {
             int rp = 0;
             rp += match.AllianceResult;
-            rp += match.RocketRankingPoint;
-            rp += match.HabRankingPoint;
+            rp += match.StageRankingPoint;
+            rp += match.ClimbRankingPoint;
             return rp;
         }
 
@@ -125,21 +125,21 @@ namespace BertScout2020.ViewModels
         {
             int score = 0;
             //not scoring movement type
-            //score += match.SandstormMoveType;
-            score += match.SandstormOffPlatform * 3;
-            score += match.SandstormHatches * 2;
-            score += match.SandstormCargo * 3;
+            //score += match.AutoStartPos;
+            score += match.AutoLeaveInitLine * 3;
+            score += match.AutoLowCell * 2;
+            score += match.AutoHighCell * 3;
 
-            score += match.CargoShipHatches * 2;
-            score += match.CargoShipCargo * 3;
-            score += match.RocketHatches * 2;
-            score += match.RocketCargo * 3;
+            score += match.AutoInnerCell * 2;
+            score += match.TeleLowCell * 3;
+            score += match.TeleHighCell * 2;
+            score += match.TeleInnerCell * 3;
             //not scoring highest platform
-            //score += match.RocketHighestHatch;
-            //score += match.RocketHighestCargo;
+            //score += match.RotationControl;
+            //score += match.PositionControl;
 
-            //score += match.EndgamePlatform;
-            switch (match.EndgamePlatform)
+            //score += match.ClimbStatus;
+            switch (match.ClimbStatus)
             {
                 case 1:
                     score += 3;
@@ -152,12 +152,11 @@ namespace BertScout2020.ViewModels
                     break;
             }
             //not scoring buddy climb
-            //score += match.EndgameBuddyClimb;
+            //score += match.LevelSwitch;
 
             //score += match.Defense;
             //score += match.Cooperation;
             score -= match.Fouls * 3;
-            score -= match.TechFouls * 10;
             //score -= match.Broken*20;
 
             return score;

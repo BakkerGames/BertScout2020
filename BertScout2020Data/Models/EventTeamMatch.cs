@@ -17,26 +17,23 @@ namespace BertScout2020Data.Models
         public int TeamNumber { get; set; }
         [Indexed]
         public int MatchNumber { get; set; }
-        public int SandstormMoveType { get; set; }
-        public int SandstormOffPlatform { get; set; }
-        public int SandstormHatches { get; set; }
-        public int SandstormCargo { get; set; }
-        public int CargoShipHatches { get; set; }
-        public int CargoShipCargo { get; set; }
-        public int RocketHatches { get; set; }
-        public int RocketCargo { get; set; }
-        public int RocketHighestHatch { get; set; }
-        public int RocketHighestCargo { get; set; }
-        public int EndgamePlatform { get; set; }
-        public int EndgameBuddyClimb { get; set; }
-        public int Defense { get; set; }
-        public int Cooperation { get; set; }
+        public int AutoStartPos { get; set; }
+        public int AutoLeaveInitLine { get; set; }
+        public int AutoLowCell { get; set; }
+        public int AutoHighCell { get; set; }
+        public int AutoInnerCell { get; set; }
+        public int TeleLowCell { get; set; }
+        public int TeleHighCell { get; set; }
+        public int TeleInnerCell { get; set; }
+        public int RotationControl { get; set; }
+        public int PositionControl { get; set; }
+        public int ClimbStatus { get; set; }
+        public int LevelSwitch { get; set; }
         public int Fouls { get; set; }
-        public int TechFouls { get; set; }
         public int Broken { get; set; }
         public int AllianceResult { get; set; }
-        public int RocketRankingPoint { get; set; }
-        public int HabRankingPoint { get; set; }
+        public int StageRankingPoint { get; set; }
+        public int ClimbRankingPoint { get; set; }
         public string ScouterName { get; set; }
         public string Comments { get; set; }
 

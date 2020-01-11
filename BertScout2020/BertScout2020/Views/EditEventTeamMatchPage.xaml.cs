@@ -31,39 +31,36 @@ namespace BertScout2020.Views
 
         private void SetButtons()
         {
-            SandstormMoveType = viewModel.item.SandstormMoveType;
-            SandstormOffPlatform = viewModel.item.SandstormOffPlatform;
-            SandstormHatches = viewModel.item.SandstormHatches;
-            SandstormCargo = viewModel.item.SandstormCargo;
+            AutoStartPos = viewModel.item.AutoStartPos;
+            AutoLeaveInitLine = viewModel.item.AutoLeaveInitLine;
+            AutoLowCell = viewModel.item.AutoLowCell;
+            AutoHighCell = viewModel.item.AutoHighCell;
 
-            CargoShipHatches = viewModel.item.CargoShipHatches;
-            CargoShipCargo = viewModel.item.CargoShipCargo;
-            RocketHatches = viewModel.item.RocketHatches;
-            RocketCargo = viewModel.item.RocketCargo;
-            RocketHighestHatch = viewModel.item.RocketHighestHatch;
-            RocketHighestCargo = viewModel.item.RocketHighestCargo;
+            AutoInnerCell = viewModel.item.AutoInnerCell;
+            TeleLowCell = viewModel.item.TeleLowCell;
+            TeleHighCell = viewModel.item.TeleHighCell;
+            TeleInnerCell = viewModel.item.TeleInnerCell;
+            RotationControl = viewModel.item.RotationControl;
+            PositionControl = viewModel.item.PositionControl;
 
-            EndgamePlatform = viewModel.item.EndgamePlatform;
-            EndgameBuddyClimb = viewModel.item.EndgameBuddyClimb;
+            ClimbStatus = viewModel.item.ClimbStatus;
+            LevelSwitch = viewModel.item.LevelSwitch;
 
-            Defense = viewModel.item.Defense;
-            Cooperation = viewModel.item.Cooperation;
             Fouls = viewModel.item.Fouls;
-            TechFouls = viewModel.item.TechFouls;
             Broken = viewModel.item.Broken;
 
             AllianceResult = viewModel.item.AllianceResult;
-            RocketRankingPoint = viewModel.item.RocketRankingPoint;
-            HabRankingPoint = viewModel.item.HabRankingPoint;
+            StageRankingPoint = viewModel.item.StageRankingPoint;
+            ClimbRankingPoint = viewModel.item.ClimbRankingPoint;
         }
 
-        #region SandstormMoveType
+        #region AutoStartPos
 
-        public int SandstormMoveType
+        public int AutoStartPos
         {
             get
             {
-                return viewModel.item.SandstormMoveType;
+                return viewModel.item.AutoStartPos;
             }
             set
             {
@@ -72,55 +69,55 @@ namespace BertScout2020.Views
                 {
                     case 1:
                         newValue = 1;
-                        Button_SandstormMoveType_None.BackgroundColor = App.UnselectedButtonColor;
-                        Button_SandstormMoveType_Auto.BackgroundColor = App.SelectedButtonColor;
-                        Button_SandstormMoveType_Tele.BackgroundColor = App.UnselectedButtonColor;
+                        Button_AutoStartPos_None.BackgroundColor = App.UnselectedButtonColor;
+                        Button_AutoStartPos_Auto.BackgroundColor = App.SelectedButtonColor;
+                        Button_AutoStartPos_Tele.BackgroundColor = App.UnselectedButtonColor;
                         break;
                     case 2:
                         newValue = 2;
-                        Button_SandstormMoveType_None.BackgroundColor = App.UnselectedButtonColor;
-                        Button_SandstormMoveType_Auto.BackgroundColor = App.UnselectedButtonColor;
-                        Button_SandstormMoveType_Tele.BackgroundColor = App.SelectedButtonColor;
+                        Button_AutoStartPos_None.BackgroundColor = App.UnselectedButtonColor;
+                        Button_AutoStartPos_Auto.BackgroundColor = App.UnselectedButtonColor;
+                        Button_AutoStartPos_Tele.BackgroundColor = App.SelectedButtonColor;
                         break;
                     default:
                         newValue = 0;
-                        Button_SandstormMoveType_None.BackgroundColor = App.SelectedButtonColor;
-                        Button_SandstormMoveType_Auto.BackgroundColor = App.UnselectedButtonColor;
-                        Button_SandstormMoveType_Tele.BackgroundColor = App.UnselectedButtonColor;
+                        Button_AutoStartPos_None.BackgroundColor = App.SelectedButtonColor;
+                        Button_AutoStartPos_Auto.BackgroundColor = App.UnselectedButtonColor;
+                        Button_AutoStartPos_Tele.BackgroundColor = App.UnselectedButtonColor;
                         break;
                 }
-                if (viewModel.item.SandstormMoveType != newValue)
+                if (viewModel.item.AutoStartPos != newValue)
                 {
-                    viewModel.item.SandstormMoveType = newValue;
+                    viewModel.item.AutoStartPos = newValue;
                     App.database.SaveEventTeamMatchAsync(viewModel.item);
                 }
             }
         }
 
-        private void Button_SandstormMoveType_None_Clicked(object sender, System.EventArgs e)
+        private void Button_AutoStartPos_None_Clicked(object sender, System.EventArgs e)
         {
-            SandstormMoveType = 0;
+            AutoStartPos = 0;
         }
 
-        private void Button_SandstormMoveType_Auto_Clicked(object sender, System.EventArgs e)
+        private void Button_AutoStartPos_Auto_Clicked(object sender, System.EventArgs e)
         {
-            SandstormMoveType = 1;
+            AutoStartPos = 1;
         }
 
-        private void Button_SandstormMoveType_Tele_Clicked(object sender, System.EventArgs e)
+        private void Button_AutoStartPos_Tele_Clicked(object sender, System.EventArgs e)
         {
-            SandstormMoveType = 2;
+            AutoStartPos = 2;
         }
 
         #endregion
 
-        #region SandstormOffPlatform
+        #region AutoLeaveInitLine
 
-        public int SandstormOffPlatform
+        public int AutoLeaveInitLine
         {
             get
             {
-                return viewModel.item.SandstormOffPlatform;
+                return viewModel.item.AutoLeaveInitLine;
             }
             set
             {
@@ -129,351 +126,351 @@ namespace BertScout2020.Views
                 {
                     case 1:
                         newValue = 1;
-                        Button_SandstormOffPlatform_None.BackgroundColor = App.UnselectedButtonColor;
-                        Button_SandstormOffPlatform_1.BackgroundColor = App.SelectedButtonColor;
-                        Button_SandstormOffPlatform_2.BackgroundColor = App.UnselectedButtonColor;
+                        Button_AutoLeaveInitLine_None.BackgroundColor = App.UnselectedButtonColor;
+                        Button_AutoLeaveInitLine_1.BackgroundColor = App.SelectedButtonColor;
+                        Button_AutoLeaveInitLine_2.BackgroundColor = App.UnselectedButtonColor;
                         break;
                     case 2:
                         newValue = 2;
-                        Button_SandstormOffPlatform_None.BackgroundColor = App.UnselectedButtonColor;
-                        Button_SandstormOffPlatform_1.BackgroundColor = App.UnselectedButtonColor;
-                        Button_SandstormOffPlatform_2.BackgroundColor = App.SelectedButtonColor;
+                        Button_AutoLeaveInitLine_None.BackgroundColor = App.UnselectedButtonColor;
+                        Button_AutoLeaveInitLine_1.BackgroundColor = App.UnselectedButtonColor;
+                        Button_AutoLeaveInitLine_2.BackgroundColor = App.SelectedButtonColor;
                         break;
                     default:
                         newValue = 0;
-                        Button_SandstormOffPlatform_None.BackgroundColor = App.SelectedButtonColor;
-                        Button_SandstormOffPlatform_1.BackgroundColor = App.UnselectedButtonColor;
-                        Button_SandstormOffPlatform_2.BackgroundColor = App.UnselectedButtonColor;
+                        Button_AutoLeaveInitLine_None.BackgroundColor = App.SelectedButtonColor;
+                        Button_AutoLeaveInitLine_1.BackgroundColor = App.UnselectedButtonColor;
+                        Button_AutoLeaveInitLine_2.BackgroundColor = App.UnselectedButtonColor;
                         break;
                 }
-                if (viewModel.item.SandstormOffPlatform != newValue)
+                if (viewModel.item.AutoLeaveInitLine != newValue)
                 {
-                    viewModel.item.SandstormOffPlatform = newValue;
+                    viewModel.item.AutoLeaveInitLine = newValue;
                     App.database.SaveEventTeamMatchAsync(viewModel.item);
                 }
             }
         }
 
-        private void Button_SandstormOffPlatform_None_Clicked(object sender, System.EventArgs e)
+        private void Button_AutoLeaveInitLine_None_Clicked(object sender, System.EventArgs e)
         {
-            SandstormOffPlatform = 0;
+            AutoLeaveInitLine = 0;
         }
 
-        private void Button_SandstormOffPlatform_1_Clicked(object sender, System.EventArgs e)
+        private void Button_AutoLeaveInitLine_1_Clicked(object sender, System.EventArgs e)
         {
-            SandstormOffPlatform = 1;
+            AutoLeaveInitLine = 1;
         }
 
-        private void Button_SandstormOffPlatform_2_Clicked(object sender, System.EventArgs e)
+        private void Button_AutoLeaveInitLine_2_Clicked(object sender, System.EventArgs e)
         {
-            SandstormOffPlatform = 2;
+            AutoLeaveInitLine = 2;
         }
 
         #endregion
 
-        #region SandstormHatches
+        #region AutoLowCell
 
-        public int SandstormHatches
+        public int AutoLowCell
         {
             get
             {
-                return viewModel.item.SandstormHatches;
+                return viewModel.item.AutoLowCell;
             }
             set
             {
-                Label_SandstormHatches_Value.Text = value.ToString();
-                if (viewModel.item.SandstormHatches != value)
+                Label_AutoLowCell_Value.Text = value.ToString();
+                if (viewModel.item.AutoLowCell != value)
                 {
-                    viewModel.item.SandstormHatches = value;
+                    viewModel.item.AutoLowCell = value;
                     App.database.SaveEventTeamMatchAsync(viewModel.item);
                 }
             }
         }
 
-        private void Button_SandstormHatches_Minus_Clicked(object sender, System.EventArgs e)
+        private void Button_AutoLowCell_Minus_Clicked(object sender, System.EventArgs e)
         {
-            if (SandstormHatches > 0)
+            if (AutoLowCell > 0)
             {
-                SandstormHatches--;
+                AutoLowCell--;
             }
         }
 
-        private void Button_SandstormHatches_Plus_Clicked(object sender, System.EventArgs e)
+        private void Button_AutoLowCell_Plus_Clicked(object sender, System.EventArgs e)
         {
-            if (SandstormHatches < 99)
+            if (AutoLowCell < 99)
             {
-                SandstormHatches++;
+                AutoLowCell++;
             }
         }
 
         #endregion
 
-        #region SandstormCargo
+        #region AutoHighCell
 
-        public int SandstormCargo
+        public int AutoHighCell
         {
             get
             {
-                return viewModel.item.SandstormCargo;
+                return viewModel.item.AutoHighCell;
             }
             set
             {
-                Label_SandstormCargo_Value.Text = value.ToString();
-                if (viewModel.item.SandstormCargo != value)
+                Label_AutoHighCell_Value.Text = value.ToString();
+                if (viewModel.item.AutoHighCell != value)
                 {
-                    viewModel.item.SandstormCargo = value;
+                    viewModel.item.AutoHighCell = value;
                     App.database.SaveEventTeamMatchAsync(viewModel.item);
                 }
             }
         }
 
-        private void Button_SandstormCargo_Minus_Clicked(object sender, System.EventArgs e)
+        private void Button_AutoHighCell_Minus_Clicked(object sender, System.EventArgs e)
         {
-            if (SandstormCargo > 0)
+            if (AutoHighCell > 0)
             {
-                SandstormCargo--;
+                AutoHighCell--;
             }
         }
 
-        private void Button_SandstormCargo_Plus_Clicked(object sender, System.EventArgs e)
+        private void Button_AutoHighCell_Plus_Clicked(object sender, System.EventArgs e)
         {
-            if (SandstormCargo < 99)
+            if (AutoHighCell < 99)
             {
-                SandstormCargo++;
+                AutoHighCell++;
             }
         }
 
         #endregion
 
-        #region CargoShipHatches
+        #region AutoInnerCell
 
-        public int CargoShipHatches
+        public int AutoInnerCell
         {
             get
             {
-                return viewModel.item.CargoShipHatches;
+                return viewModel.item.AutoInnerCell;
             }
             set
             {
-                Label_CargoShipHatches_Value.Text = value.ToString();
-                if (viewModel.item.CargoShipHatches != value)
+                Label_AutoInnerCell_Value.Text = value.ToString();
+                if (viewModel.item.AutoInnerCell != value)
                 {
-                    viewModel.item.CargoShipHatches = value;
+                    viewModel.item.AutoInnerCell = value;
                     App.database.SaveEventTeamMatchAsync(viewModel.item);
                 }
             }
         }
 
-        private void Button_CargoShipHatches_Minus_Clicked(object sender, System.EventArgs e)
+        private void Button_AutoInnerCell_Minus_Clicked(object sender, System.EventArgs e)
         {
-            if (CargoShipHatches > 0)
+            if (AutoInnerCell > 0)
             {
-                CargoShipHatches--;
+                AutoInnerCell--;
             }
         }
 
-        private void Button_CargoShipHatches_Plus_Clicked(object sender, System.EventArgs e)
+        private void Button_AutoInnerCell_Plus_Clicked(object sender, System.EventArgs e)
         {
-            if (CargoShipHatches < 99)
+            if (AutoInnerCell < 99)
             {
-                CargoShipHatches++;
+                AutoInnerCell++;
             }
         }
 
         #endregion
 
-        #region CargoShipCargo
+        #region TeleLowCell
 
-        public int CargoShipCargo
+        public int TeleLowCell
         {
             get
             {
-                return viewModel.item.CargoShipCargo;
+                return viewModel.item.TeleLowCell;
             }
             set
             {
-                Label_CargoShipCargo_Value.Text = value.ToString();
-                if (viewModel.item.CargoShipCargo != value)
+                Label_TeleLowCell_Value.Text = value.ToString();
+                if (viewModel.item.TeleLowCell != value)
                 {
-                    viewModel.item.CargoShipCargo = value;
+                    viewModel.item.TeleLowCell = value;
                     App.database.SaveEventTeamMatchAsync(viewModel.item);
                 }
             }
         }
 
-        private void Button_CargoShipCargo_Minus_Clicked(object sender, System.EventArgs e)
+        private void Button_TeleLowCell_Minus_Clicked(object sender, System.EventArgs e)
         {
-            if (CargoShipCargo > 0)
+            if (TeleLowCell > 0)
             {
-                CargoShipCargo--;
+                TeleLowCell--;
             }
         }
 
-        private void Button_CargoShipCargo_Plus_Clicked(object sender, System.EventArgs e)
+        private void Button_TeleLowCell_Plus_Clicked(object sender, System.EventArgs e)
         {
-            if (CargoShipCargo < 99)
+            if (TeleLowCell < 99)
             {
-                CargoShipCargo++;
+                TeleLowCell++;
             }
         }
 
         #endregion
 
-        #region RocketHatches
+        #region TeleHighCell
 
-        public int RocketHatches
+        public int TeleHighCell
         {
             get
             {
-                return viewModel.item.RocketHatches;
+                return viewModel.item.TeleHighCell;
             }
             set
             {
-                Label_RocketHatches_Value.Text = value.ToString();
-                if (viewModel.item.RocketHatches != value)
+                Label_TeleHighCell_Value.Text = value.ToString();
+                if (viewModel.item.TeleHighCell != value)
                 {
-                    viewModel.item.RocketHatches = value;
+                    viewModel.item.TeleHighCell = value;
                     App.database.SaveEventTeamMatchAsync(viewModel.item);
                 }
             }
         }
 
-        private void Button_RocketHatches_Minus_Clicked(object sender, System.EventArgs e)
+        private void Button_TeleHighCell_Minus_Clicked(object sender, System.EventArgs e)
         {
-            if (RocketHatches > 0)
+            if (TeleHighCell > 0)
             {
-                RocketHatches--;
+                TeleHighCell--;
             }
         }
 
-        private void Button_RocketHatches_Plus_Clicked(object sender, System.EventArgs e)
+        private void Button_TeleHighCell_Plus_Clicked(object sender, System.EventArgs e)
         {
-            if (RocketHatches < 99)
+            if (TeleHighCell < 99)
             {
-                RocketHatches++;
+                TeleHighCell++;
             }
         }
 
         #endregion
 
-        #region RocketCargo
+        #region TeleInnerCell
 
-        public int RocketCargo
+        public int TeleInnerCell
         {
             get
             {
-                return viewModel.item.RocketCargo;
+                return viewModel.item.TeleInnerCell;
             }
             set
             {
-                Label_RocketCargo_Value.Text = value.ToString();
-                if (viewModel.item.RocketCargo != value)
+                Label_TeleInnerCell_Value.Text = value.ToString();
+                if (viewModel.item.TeleInnerCell != value)
                 {
-                    viewModel.item.RocketCargo = value;
+                    viewModel.item.TeleInnerCell = value;
                     App.database.SaveEventTeamMatchAsync(viewModel.item);
                 }
             }
         }
 
-        private void Button_RocketCargo_Minus_Clicked(object sender, System.EventArgs e)
+        private void Button_TeleInnerCell_Minus_Clicked(object sender, System.EventArgs e)
         {
-            if (RocketCargo > 0)
+            if (TeleInnerCell > 0)
             {
-                RocketCargo--;
+                TeleInnerCell--;
             }
         }
 
-        private void Button_RocketCargo_Plus_Clicked(object sender, System.EventArgs e)
+        private void Button_TeleInnerCell_Plus_Clicked(object sender, System.EventArgs e)
         {
-            if (RocketCargo < 99)
+            if (TeleInnerCell < 99)
             {
-                RocketCargo++;
+                TeleInnerCell++;
             }
         }
 
         #endregion
 
-        #region RocketHighestHatch
+        #region RotationControl
 
-        public int RocketHighestHatch
+        public int RotationControl
         {
             get
             {
-                return viewModel.item.RocketHighestHatch;
+                return viewModel.item.RotationControl;
             }
             set
             {
-                Label_RocketHighestHatch_Value.Text = value.ToString();
-                if (viewModel.item.RocketHighestHatch != value)
+                Label_RotationControl_Value.Text = value.ToString();
+                if (viewModel.item.RotationControl != value)
                 {
-                    viewModel.item.RocketHighestHatch = value;
+                    viewModel.item.RotationControl = value;
                     App.database.SaveEventTeamMatchAsync(viewModel.item);
                 }
             }
         }
 
-        private void Button_RocketHighestHatch_Minus_Clicked(object sender, System.EventArgs e)
+        private void Button_RotationControl_Minus_Clicked(object sender, System.EventArgs e)
         {
-            if (RocketHighestHatch > 0)
+            if (RotationControl > 0)
             {
-                RocketHighestHatch--;
+                RotationControl--;
             }
         }
 
-        private void Button_RocketHighestHatch_Plus_Clicked(object sender, System.EventArgs e)
+        private void Button_RotationControl_Plus_Clicked(object sender, System.EventArgs e)
         {
-            if (RocketHighestHatch < 3)
+            if (RotationControl < 3)
             {
-                RocketHighestHatch++;
+                RotationControl++;
             }
         }
 
         #endregion
 
-        #region RocketHighestCargo
+        #region PositionControl
 
-        public int RocketHighestCargo
+        public int PositionControl
         {
             get
             {
-                return viewModel.item.RocketHighestCargo;
+                return viewModel.item.PositionControl;
             }
             set
             {
-                Label_RocketHighestCargo_Value.Text = value.ToString();
-                if (viewModel.item.RocketHighestCargo != value)
+                Label_PositionControl_Value.Text = value.ToString();
+                if (viewModel.item.PositionControl != value)
                 {
-                    viewModel.item.RocketHighestCargo = value;
+                    viewModel.item.PositionControl = value;
                     App.database.SaveEventTeamMatchAsync(viewModel.item);
                 }
             }
         }
 
-        private void Button_RocketHighestCargo_Minus_Clicked(object sender, System.EventArgs e)
+        private void Button_PositionControl_Minus_Clicked(object sender, System.EventArgs e)
         {
-            if (RocketHighestCargo > 0)
+            if (PositionControl > 0)
             {
-                RocketHighestCargo--;
+                PositionControl--;
             }
         }
 
-        private void Button_RocketHighestCargo_Plus_Clicked(object sender, System.EventArgs e)
+        private void Button_PositionControl_Plus_Clicked(object sender, System.EventArgs e)
         {
-            if (RocketHighestCargo < 3)
+            if (PositionControl < 3)
             {
-                RocketHighestCargo++;
+                PositionControl++;
             }
         }
 
         #endregion
 
-        #region EndgamePlatform
+        #region ClimbStatus
 
-        public int EndgamePlatform
+        public int ClimbStatus
         {
             get
             {
-                return viewModel.item.EndgamePlatform;
+                return viewModel.item.ClimbStatus;
             }
             set
             {
@@ -482,70 +479,70 @@ namespace BertScout2020.Views
                 {
                     case 1:
                         newValue = 1;
-                        Button_EndgamePlatform_None.BackgroundColor = App.UnselectedButtonColor;
-                        Button_EndgamePlatform_1.BackgroundColor = App.SelectedButtonColor;
-                        Button_EndgamePlatform_2.BackgroundColor = App.UnselectedButtonColor;
-                        Button_EndgamePlatform_3.BackgroundColor = App.UnselectedButtonColor;
+                        Button_ClimbStatus_None.BackgroundColor = App.UnselectedButtonColor;
+                        Button_ClimbStatus_1.BackgroundColor = App.SelectedButtonColor;
+                        Button_ClimbStatus_2.BackgroundColor = App.UnselectedButtonColor;
+                        Button_ClimbStatus_3.BackgroundColor = App.UnselectedButtonColor;
                         break;
                     case 2:
                         newValue = 2;
-                        Button_EndgamePlatform_None.BackgroundColor = App.UnselectedButtonColor;
-                        Button_EndgamePlatform_1.BackgroundColor = App.UnselectedButtonColor;
-                        Button_EndgamePlatform_2.BackgroundColor = App.SelectedButtonColor;
-                        Button_EndgamePlatform_3.BackgroundColor = App.UnselectedButtonColor;
+                        Button_ClimbStatus_None.BackgroundColor = App.UnselectedButtonColor;
+                        Button_ClimbStatus_1.BackgroundColor = App.UnselectedButtonColor;
+                        Button_ClimbStatus_2.BackgroundColor = App.SelectedButtonColor;
+                        Button_ClimbStatus_3.BackgroundColor = App.UnselectedButtonColor;
                         break;
                     case 3:
                         newValue = 3;
-                        Button_EndgamePlatform_None.BackgroundColor = App.UnselectedButtonColor;
-                        Button_EndgamePlatform_1.BackgroundColor = App.UnselectedButtonColor;
-                        Button_EndgamePlatform_2.BackgroundColor = App.UnselectedButtonColor;
-                        Button_EndgamePlatform_3.BackgroundColor = App.SelectedButtonColor;
+                        Button_ClimbStatus_None.BackgroundColor = App.UnselectedButtonColor;
+                        Button_ClimbStatus_1.BackgroundColor = App.UnselectedButtonColor;
+                        Button_ClimbStatus_2.BackgroundColor = App.UnselectedButtonColor;
+                        Button_ClimbStatus_3.BackgroundColor = App.SelectedButtonColor;
                         break;
                     default:
                         newValue = 0;
-                        Button_EndgamePlatform_None.BackgroundColor = App.SelectedButtonColor;
-                        Button_EndgamePlatform_1.BackgroundColor = App.UnselectedButtonColor;
-                        Button_EndgamePlatform_2.BackgroundColor = App.UnselectedButtonColor;
-                        Button_EndgamePlatform_3.BackgroundColor = App.UnselectedButtonColor;
+                        Button_ClimbStatus_None.BackgroundColor = App.SelectedButtonColor;
+                        Button_ClimbStatus_1.BackgroundColor = App.UnselectedButtonColor;
+                        Button_ClimbStatus_2.BackgroundColor = App.UnselectedButtonColor;
+                        Button_ClimbStatus_3.BackgroundColor = App.UnselectedButtonColor;
                         break;
                 }
-                if (viewModel.item.EndgamePlatform != newValue)
+                if (viewModel.item.ClimbStatus != newValue)
                 {
-                    viewModel.item.EndgamePlatform = newValue;
+                    viewModel.item.ClimbStatus = newValue;
                     App.database.SaveEventTeamMatchAsync(viewModel.item);
                 }
             }
         }
 
-        private void Button_EndgamePlatform_None_Clicked(object sender, System.EventArgs e)
+        private void Button_ClimbStatus_None_Clicked(object sender, System.EventArgs e)
         {
-            EndgamePlatform = 0;
+            ClimbStatus = 0;
         }
 
-        private void Button_EndgamePlatform_1_Clicked(object sender, System.EventArgs e)
+        private void Button_ClimbStatus_1_Clicked(object sender, System.EventArgs e)
         {
-            EndgamePlatform = 1;
+            ClimbStatus = 1;
         }
 
-        private void Button_EndgamePlatform_2_Clicked(object sender, System.EventArgs e)
+        private void Button_ClimbStatus_2_Clicked(object sender, System.EventArgs e)
         {
-            EndgamePlatform = 2;
+            ClimbStatus = 2;
         }
 
-        private void Button_EndgamePlatform_3_Clicked(object sender, System.EventArgs e)
+        private void Button_ClimbStatus_3_Clicked(object sender, System.EventArgs e)
         {
-            EndgamePlatform = 3;
+            ClimbStatus = 3;
         }
 
         #endregion
 
-        #region EndgameBuddyClimb
+        #region LevelSwitch
 
-        public int EndgameBuddyClimb
+        public int LevelSwitch
         {
             get
             {
-                return viewModel.item.EndgameBuddyClimb;
+                return viewModel.item.LevelSwitch;
             }
             set
             {
@@ -554,49 +551,50 @@ namespace BertScout2020.Views
                 {
                     case 1:
                         newValue = 1;
-                        Button_EndgameBuddyClimb_None.BackgroundColor = App.UnselectedButtonColor;
-                        Button_EndgameBuddyClimb_On.BackgroundColor = App.SelectedButtonColor;
-                        Button_EndgameBuddyClimb_Lift.BackgroundColor = App.UnselectedButtonColor;
+                        Button_LevelSwitch_None.BackgroundColor = App.UnselectedButtonColor;
+                        Button_LevelSwitch_On.BackgroundColor = App.SelectedButtonColor;
+                        Button_LevelSwitch_Lift.BackgroundColor = App.UnselectedButtonColor;
                         break;
                     case 2:
                         newValue = 2;
-                        Button_EndgameBuddyClimb_None.BackgroundColor = App.UnselectedButtonColor;
-                        Button_EndgameBuddyClimb_On.BackgroundColor = App.UnselectedButtonColor;
-                        Button_EndgameBuddyClimb_Lift.BackgroundColor = App.SelectedButtonColor;
+                        Button_LevelSwitch_None.BackgroundColor = App.UnselectedButtonColor;
+                        Button_LevelSwitch_On.BackgroundColor = App.UnselectedButtonColor;
+                        Button_LevelSwitch_Lift.BackgroundColor = App.SelectedButtonColor;
                         break;
                     default:
                         newValue = 0;
-                        Button_EndgameBuddyClimb_None.BackgroundColor = App.SelectedButtonColor;
-                        Button_EndgameBuddyClimb_On.BackgroundColor = App.UnselectedButtonColor;
-                        Button_EndgameBuddyClimb_Lift.BackgroundColor = App.UnselectedButtonColor;
+                        Button_LevelSwitch_None.BackgroundColor = App.SelectedButtonColor;
+                        Button_LevelSwitch_On.BackgroundColor = App.UnselectedButtonColor;
+                        Button_LevelSwitch_Lift.BackgroundColor = App.UnselectedButtonColor;
                         break;
                 }
-                if (viewModel.item.EndgameBuddyClimb != newValue)
+                if (viewModel.item.LevelSwitch != newValue)
                 {
-                    viewModel.item.EndgameBuddyClimb = newValue;
+                    viewModel.item.LevelSwitch = newValue;
                     App.database.SaveEventTeamMatchAsync(viewModel.item);
                 }
             }
         }
 
-        private void Button_EndgameBuddyClimb_None_Clicked(object sender, System.EventArgs e)
+        private void Button_LevelSwitch_None_Clicked(object sender, System.EventArgs e)
         {
-            EndgameBuddyClimb = 0;
+            LevelSwitch = 0;
         }
 
-        private void Button_EndgameBuddyClimb_On_Clicked(object sender, System.EventArgs e)
+        private void Button_LevelSwitch_On_Clicked(object sender, System.EventArgs e)
         {
-            EndgameBuddyClimb = 1;
+            LevelSwitch = 1;
         }
 
-        private void Button_EndgameBuddyClimb_Lift_Clicked(object sender, System.EventArgs e)
+        private void Button_LevelSwitch_Lift_Clicked(object sender, System.EventArgs e)
         {
-            EndgameBuddyClimb = 2;
+            LevelSwitch = 2;
         }
 
 
         #endregion
-
+        
+        /*
         #region Defense
 
         public int Defense
@@ -655,7 +653,7 @@ namespace BertScout2020.Views
         #endregion
 
         #region Cooperation
-
+        
         public int Cooperation
         {
             get
@@ -693,6 +691,7 @@ namespace BertScout2020.Views
                 }
             }
         }
+        
 
         private void Button_Cooperation_None_Clicked(object sender, System.EventArgs e)
         {
@@ -710,6 +709,7 @@ namespace BertScout2020.Views
         }
 
         #endregion
+        */
 
         #region Fouls
 
@@ -748,6 +748,7 @@ namespace BertScout2020.Views
 
         #endregion
 
+        /*
         #region TechFouls
 
         public int TechFouls
@@ -784,6 +785,7 @@ namespace BertScout2020.Views
         }
 
         #endregion
+        */
 
         #region Broken
 
@@ -899,13 +901,13 @@ namespace BertScout2020.Views
 
         #endregion
 
-        #region RocketRankingPoint
+        #region StageRankingPoint
 
-        public int RocketRankingPoint
+        public int StageRankingPoint
         {
             get
             {
-                return viewModel.item.RocketRankingPoint;
+                return viewModel.item.StageRankingPoint;
             }
             set
             {
@@ -914,42 +916,42 @@ namespace BertScout2020.Views
                 {
                     case 1:
                         newValue = 1;
-                        Button_RocketRankingPoint_No.BackgroundColor = App.UnselectedButtonColor;
-                        Button_RocketRankingPoint_Yes.BackgroundColor = App.SelectedButtonColor;
+                        Button_StageRankingPoint_No.BackgroundColor = App.UnselectedButtonColor;
+                        Button_StageRankingPoint_Yes.BackgroundColor = App.SelectedButtonColor;
                         break;
                     default:
                         newValue = 0;
-                        Button_RocketRankingPoint_No.BackgroundColor = App.SelectedButtonColor;
-                        Button_RocketRankingPoint_Yes.BackgroundColor = App.UnselectedButtonColor;
+                        Button_StageRankingPoint_No.BackgroundColor = App.SelectedButtonColor;
+                        Button_StageRankingPoint_Yes.BackgroundColor = App.UnselectedButtonColor;
                         break;
                 }
-                if (viewModel.item.RocketRankingPoint != newValue)
+                if (viewModel.item.StageRankingPoint != newValue)
                 {
-                    viewModel.item.RocketRankingPoint = newValue;
+                    viewModel.item.StageRankingPoint = newValue;
                     App.database.SaveEventTeamMatchAsync(viewModel.item);
                 }
             }
         }
 
-        private void Button_RocketRankingPoint_No_Clicked(object sender, System.EventArgs e)
+        private void Button_StageRankingPoint_No_Clicked(object sender, System.EventArgs e)
         {
-            RocketRankingPoint = 0;
+            StageRankingPoint = 0;
         }
 
-        private void Button_RocketRankingPoint_Yes_Clicked(object sender, System.EventArgs e)
+        private void Button_StageRankingPoint_Yes_Clicked(object sender, System.EventArgs e)
         {
-            RocketRankingPoint = 1;
+            StageRankingPoint = 1;
         }
 
         #endregion
 
-        #region HabRankingPoint
+        #region ClimbRankingPoint
 
-        public int HabRankingPoint
+        public int ClimbRankingPoint
         {
             get
             {
-                return viewModel.item.HabRankingPoint;
+                return viewModel.item.ClimbRankingPoint;
             }
             set
             {
@@ -958,31 +960,31 @@ namespace BertScout2020.Views
                 {
                     case 1:
                         newValue = 1;
-                        Button_HabRankingPoint_No.BackgroundColor = App.UnselectedButtonColor;
-                        Button_HabRankingPoint_Yes.BackgroundColor = App.SelectedButtonColor;
+                        Button_ClimbRankingPoint_No.BackgroundColor = App.UnselectedButtonColor;
+                        Button_ClimbRankingPoint_Yes.BackgroundColor = App.SelectedButtonColor;
                         break;
                     default:
                         newValue = 0;
-                        Button_HabRankingPoint_No.BackgroundColor = App.SelectedButtonColor;
-                        Button_HabRankingPoint_Yes.BackgroundColor = App.UnselectedButtonColor;
+                        Button_ClimbRankingPoint_No.BackgroundColor = App.SelectedButtonColor;
+                        Button_ClimbRankingPoint_Yes.BackgroundColor = App.UnselectedButtonColor;
                         break;
                 }
-                if (viewModel.item.HabRankingPoint != newValue)
+                if (viewModel.item.ClimbRankingPoint != newValue)
                 {
-                    viewModel.item.HabRankingPoint = newValue;
+                    viewModel.item.ClimbRankingPoint = newValue;
                     App.database.SaveEventTeamMatchAsync(viewModel.item);
                 }
             }
         }
 
-        private void Button_HabRankingPoint_No_Clicked(object sender, System.EventArgs e)
+        private void Button_ClimbRankingPoint_No_Clicked(object sender, System.EventArgs e)
         {
-            HabRankingPoint = 0;
+            ClimbRankingPoint = 0;
         }
 
-        private void Button_HabRankingPoint_Yes_Clicked(object sender, System.EventArgs e)
+        private void Button_ClimbRankingPoint_Yes_Clicked(object sender, System.EventArgs e)
         {
-            HabRankingPoint = 1;
+            ClimbRankingPoint = 1;
         }
 
         #endregion

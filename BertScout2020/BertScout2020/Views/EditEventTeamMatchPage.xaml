@@ -31,7 +31,7 @@
                     HorizontalOptions="Fill"
                     BackgroundColor="#22BE1C">
                     <Label
-                        Text="Sandstorm"
+                        Text="Auto"
                         HorizontalOptions="Center"
                         BackgroundColor="#22BE1C"
                         FontSize="Large"
@@ -45,28 +45,28 @@
                         WidthRequest="293"
                         />
                     <Button
-                        x:Name="Button_SandstormMoveType_None"
+                        x:Name="Button_AutoStartPos_None"
                         Text="None"
                         FontSize="24"
                         WidthRequest="90"
                         BackgroundColor="LightGray"
-                        Clicked="Button_SandstormMoveType_None_Clicked"
+                        Clicked="Button_AutoStartPos_None_Clicked"
                         />
                     <Button
-                        x:Name="Button_SandstormMoveType_Auto"
+                        x:Name="Button_AutoStartPos_Auto"
                         Text="Auto"
                         FontSize="24"
                         WidthRequest="90"
                         BackgroundColor="LightGray"
-                        Clicked="Button_SandstormMoveType_Auto_Clicked"
+                        Clicked="Button_AutoStartPos_Auto_Clicked"
                         />
                     <Button
-                        x:Name="Button_SandstormMoveType_Tele"
+                        x:Name="Button_AutoStartPos_Tele"
                         Text="Tele"
                         FontSize="24"
                         WidthRequest="90"
                         BackgroundColor="LightGray"
-                        Clicked="Button_SandstormMoveType_Tele_Clicked"
+                        Clicked="Button_AutoStartPos_Tele_Clicked"
                         />
                 </StackLayout>
                 <StackLayout Orientation="Horizontal">
@@ -77,28 +77,28 @@
                         WidthRequest="293"
                         />
                     <Button
-                        x:Name="Button_SandstormOffPlatform_None"
+                        x:Name="Button_AutoLeaveInitLine_None"
                         Text="None"
                         FontSize="24"
                         WidthRequest="90"
                         BackgroundColor="LightGray"
-                        Clicked="Button_SandstormOffPlatform_None_Clicked"
+                        Clicked="Button_AutoLeaveInitLine_None_Clicked"
                         />
                     <Button
-                        x:Name="Button_SandstormOffPlatform_1"
+                        x:Name="Button_AutoLeaveInitLine_1"
                         Text="1"
                         FontSize="24"
                         WidthRequest="90"
                         BackgroundColor="LightGray"
-                        Clicked="Button_SandstormOffPlatform_1_Clicked"
+                        Clicked="Button_AutoLeaveInitLine_1_Clicked"
                         />
                     <Button
-                        x:Name="Button_SandstormOffPlatform_2"
+                        x:Name="Button_AutoLeaveInitLine_2"
                         Text="2"
                         FontSize="24"
                         WidthRequest="90"
                         BackgroundColor="LightGray"
-                        Clicked="Button_SandstormOffPlatform_2_Clicked"
+                        Clicked="Button_AutoLeaveInitLine_2_Clicked"
                         />
                 </StackLayout>
                 <StackLayout Orientation="Horizontal">
@@ -109,27 +109,27 @@
                         WidthRequest="293"
                         />
                     <Label
-                        x:Name="Label_SandstormHatches_Value"
+                        x:Name="Label_AutoLowCell_Value"
                         Text="0"
                         FontSize="24"
                         WidthRequest="80"
                         Margin="10,10,0,0"
                         />
                     <Button
-                        x:Name="Button_SandstormHatches_Minus"
+                        x:Name="Button_AutoLowCell_Minus"
                         Text="-"
                         FontSize="24"
                         WidthRequest="90"
                         BackgroundColor="LightGray"
-                        Clicked="Button_SandstormHatches_Minus_Clicked"
+                        Clicked="Button_AutoLowCell_Minus_Clicked"
                         />
                     <Button
-                        x:Name="Button_SandstormHatches_Plus"
+                        x:Name="Button_AutoLowCell_Plus"
                         Text="+"
                         FontSize="24"
                         WidthRequest="90"
                         BackgroundColor="LightGray"
-                        Clicked="Button_SandstormHatches_Plus_Clicked"
+                        Clicked="Button_AutoLowCell_Plus_Clicked"
                         />
                 </StackLayout>
                 <StackLayout Orientation="Horizontal">
@@ -140,27 +140,27 @@
                         WidthRequest="293"
                         />
                     <Label
-                        x:Name="Label_SandstormCargo_Value"
+                        x:Name="Label_AutoHighCell_Value"
                         Text="0"
                         FontSize="24"
                         WidthRequest="80"
                         Margin="10,10,0,0"
                         />
                     <Button
-                        x:Name="Button_SandstormCargo_Minus"
+                        x:Name="Button_AutoHighCell_Minus"
                         Text="-"
                         FontSize="24"
                         WidthRequest="90"
                         BackgroundColor="LightGray"
-                        Clicked="Button_SandstormCargo_Minus_Clicked"
+                        Clicked="Button_AutoHighCell_Minus_Clicked"
                         />
                     <Button
-                        x:Name="Button_SandstormCargo_Plus"
+                        x:Name="Button_AutoHighCell_Plus"
                         Text="+"
                         FontSize="24"
                         WidthRequest="90"
                         BackgroundColor="LightGray"
-                        Clicked="Button_SandstormCargo_Plus_Clicked"
+                        Clicked="Button_AutoHighCell_Plus_Clicked"
                         />
                 </StackLayout>
 
@@ -184,27 +184,27 @@
                         WidthRequest="293"
                         />
                     <Label
-                        x:Name="Label_CargoShipHatches_Value"
+                        x:Name="Label_AutoInnerCell_Value"
                         Text="0"
                         FontSize="24"
                         WidthRequest="80"
                         Margin="10,10,0,0"
                         />
                     <Button
-                        x:Name="Button_CargoShipHatches_Minus"
+                        x:Name="Button_AutoInnerCell_Minus"
                         Text="-"
                         FontSize="24"
                         WidthRequest="90"
                         BackgroundColor="LightGray"
-                        Clicked="Button_CargoShipHatches_Minus_Clicked"
+                        Clicked="Button_AutoInnerCell_Minus_Clicked"
                         />
                     <Button
-                        x:Name="Button_CargoShipHatches_Plus"
+                        x:Name="Button_AutoInnerCell_Plus"
                         Text="+"
                         FontSize="24"
                         WidthRequest="90"
                         BackgroundColor="LightGray"
-                        Clicked="Button_CargoShipHatches_Plus_Clicked"
+                        Clicked="Button_AutoInnerCell_Plus_Clicked"
                         />
                 </StackLayout>
                 <StackLayout Orientation="Horizontal">
@@ -215,27 +215,27 @@
                         WidthRequest="293"
                         />
                     <Label
-                        x:Name="Label_CargoShipCargo_Value"
+                        x:Name="Label_TeleLowCell_Value"
                         Text="0"
                         FontSize="24"
                         WidthRequest="80"
                         Margin="10,10,0,0"
                         />
                     <Button
-                        x:Name="Button_CargoShipCargo_Minus"
+                        x:Name="Button_TeleLowCell_Minus"
                         Text="-"
                         FontSize="24"
                         WidthRequest="90"
                         BackgroundColor="LightGray"
-                        Clicked="Button_CargoShipCargo_Minus_Clicked"
+                        Clicked="Button_TeleLowCell_Minus_Clicked"
                         />
                     <Button
-                        x:Name="Button_CargoShipCargo_Plus"
+                        x:Name="Button_TeleLowCell_Plus"
                         Text="+"
                         FontSize="24"
                         WidthRequest="90"
                         BackgroundColor="LightGray"
-                        Clicked="Button_CargoShipCargo_Plus_Clicked"
+                        Clicked="Button_TeleLowCell_Plus_Clicked"
                         />
                 </StackLayout>
                 <StackLayout Orientation="Horizontal">
@@ -246,27 +246,27 @@
                         WidthRequest="293"
                         />
                     <Label
-                        x:Name="Label_RocketHatches_Value"
+                        x:Name="Label_TeleHighCell_Value"
                         Text="0"
                         FontSize="24"
                         WidthRequest="80"
                         Margin="10,10,0,0"
                         />
                     <Button
-                        x:Name="Button_RocketHatches_Minus"
+                        x:Name="Button_TeleHighCell_Minus"
                         Text="-"
                         FontSize="24"
                         WidthRequest="90"
                         BackgroundColor="LightGray"
-                        Clicked="Button_RocketHatches_Minus_Clicked"
+                        Clicked="Button_TeleHighCell_Minus_Clicked"
                         />
                     <Button
-                        x:Name="Button_RocketHatches_Plus"
+                        x:Name="Button_TeleHighCell_Plus"
                         Text="+"
                         FontSize="24"
                         WidthRequest="90"
                         BackgroundColor="LightGray"
-                        Clicked="Button_RocketHatches_Plus_Clicked"
+                        Clicked="Button_TeleHighCell_Plus_Clicked"
                         />
                 </StackLayout>
                 <StackLayout Orientation="Horizontal">
@@ -277,27 +277,27 @@
                         WidthRequest="293"
                         />
                     <Label
-                        x:Name="Label_RocketCargo_Value"
+                        x:Name="Label_TeleInnerCell_Value"
                         Text="0"
                         FontSize="24"
                         WidthRequest="80"
                         Margin="10,10,0,0"
                         />
                     <Button
-                        x:Name="Button_RocketCargo_Minus"
+                        x:Name="Button_TeleInnerCell_Minus"
                         Text="-"
                         FontSize="24"
                         WidthRequest="90"
                         BackgroundColor="LightGray"
-                        Clicked="Button_RocketCargo_Minus_Clicked"
+                        Clicked="Button_TeleInnerCell_Minus_Clicked"
                         />
                     <Button
-                        x:Name="Button_RocketCargo_Plus"
+                        x:Name="Button_TeleInnerCell_Plus"
                         Text="+"
                         FontSize="24"
                         WidthRequest="90"
                         BackgroundColor="LightGray"
-                        Clicked="Button_RocketCargo_Plus_Clicked"
+                        Clicked="Button_TeleInnerCell_Plus_Clicked"
                         />
                 </StackLayout>
                 <StackLayout Orientation="Horizontal">
@@ -308,27 +308,27 @@
                         WidthRequest="293"
                         />
                     <Label
-                        x:Name="Label_RocketHighestHatch_Value"
+                        x:Name="Label_RotationControl_Value"
                         Text="0"
                         FontSize="24"
                         WidthRequest="80"
                         Margin="10,10,0,0"
                         />
                     <Button
-                        x:Name="Button_RocketHighestHatch_Minus"
+                        x:Name="Button_RotationControl_Minus"
                         Text="-"
                         FontSize="24"
                         WidthRequest="90"
                         BackgroundColor="LightGray"
-                        Clicked="Button_RocketHighestHatch_Minus_Clicked"
+                        Clicked="Button_RotationControl_Minus_Clicked"
                         />
                     <Button
-                        x:Name="Button_RocketHighestHatch_Plus"
+                        x:Name="Button_RotationControl_Plus"
                         Text="+"
                         FontSize="24"
                         WidthRequest="90"
                         BackgroundColor="LightGray"
-                        Clicked="Button_RocketHighestHatch_Plus_Clicked"
+                        Clicked="Button_RotationControl_Plus_Clicked"
                         />
                 </StackLayout>
                 <StackLayout Orientation="Horizontal">
@@ -339,27 +339,27 @@
                         WidthRequest="293"
                         />
                     <Label
-                        x:Name="Label_RocketHighestCargo_Value"
+                        x:Name="Label_PositionControl_Value"
                         Text="0"
                         FontSize="24"
                         WidthRequest="80"
                         Margin="10,10,0,0"
                         />
                     <Button
-                        x:Name="Button_RocketHighestCargo_Minus"
+                        x:Name="Button_PositionControl_Minus"
                         Text="-"
                         FontSize="24"
                         WidthRequest="90"
                         BackgroundColor="LightGray"
-                        Clicked="Button_RocketHighestCargo_Minus_Clicked"
+                        Clicked="Button_PositionControl_Minus_Clicked"
                         />
                     <Button
-                        x:Name="Button_RocketHighestCargo_Plus"
+                        x:Name="Button_PositionControl_Plus"
                         Text="+"
                         FontSize="24"
                         WidthRequest="90"
                         BackgroundColor="LightGray"
-                        Clicked="Button_RocketHighestCargo_Plus_Clicked"
+                        Clicked="Button_PositionControl_Plus_Clicked"
                         />
                 </StackLayout>
 
@@ -384,36 +384,36 @@
                         WidthRequest="293"
                         />
                     <Button
-                        x:Name="Button_EndgamePlatform_None"
+                        x:Name="Button_ClimbStatus_None"
                         Text="None"
                         FontSize="24"
                         WidthRequest="90"
                         BackgroundColor="LightGray"
-                        Clicked="Button_EndgamePlatform_None_Clicked"
+                        Clicked="Button_ClimbStatus_None_Clicked"
                         />
                     <Button
-                        x:Name="Button_EndgamePlatform_1"
+                        x:Name="Button_ClimbStatus_1"
                         Text="1"
                         FontSize="24"
                         WidthRequest="58"
                         BackgroundColor="LightGray"
-                        Clicked="Button_EndgamePlatform_1_Clicked"
+                        Clicked="Button_ClimbStatus_1_Clicked"
                         />
                     <Button
-                        x:Name="Button_EndgamePlatform_2"
+                        x:Name="Button_ClimbStatus_2"
                         Text="2"
                         FontSize="24"
                         WidthRequest="58"
                         BackgroundColor="LightGray"
-                        Clicked="Button_EndgamePlatform_2_Clicked"
+                        Clicked="Button_ClimbStatus_2_Clicked"
                         />
                     <Button
-                        x:Name="Button_EndgamePlatform_3"
+                        x:Name="Button_ClimbStatus_3"
                         Text="3"
                         FontSize="24"
                         WidthRequest="58"
                         BackgroundColor="LightGray"
-                        Clicked="Button_EndgamePlatform_3_Clicked"
+                        Clicked="Button_ClimbStatus_3_Clicked"
                         />
                 </StackLayout>
                 <StackLayout Orientation="Horizontal">
@@ -424,28 +424,28 @@
                         WidthRequest="293"
                         />
                     <Button
-                        x:Name="Button_EndgameBuddyClimb_None"
+                        x:Name="Button_LevelSwitch_None"
                         Text="None"
                         FontSize="24"
                         WidthRequest="90"
                         BackgroundColor="LightGray"
-                        Clicked="Button_EndgameBuddyClimb_None_Clicked"
+                        Clicked="Button_LevelSwitch_None_Clicked"
                         />
                     <Button
-                        x:Name="Button_EndgameBuddyClimb_On"
+                        x:Name="Button_LevelSwitch_On"
                         Text="On"
                         FontSize="24"
                         WidthRequest="90"
                         BackgroundColor="LightGray"
-                        Clicked="Button_EndgameBuddyClimb_On_Clicked"
+                        Clicked="Button_LevelSwitch_On_Clicked"
                         />
                     <Button
-                        x:Name="Button_EndgameBuddyClimb_Lift"
+                        x:Name="Button_LevelSwitch_Lift"
                         Text="Lift"
                         FontSize="24"
                         WidthRequest="90"
                         BackgroundColor="LightGray"
-                        Clicked="Button_EndgameBuddyClimb_Lift_Clicked"
+                        Clicked="Button_LevelSwitch_Lift_Clicked"
                         />
                 </StackLayout>
 
@@ -462,70 +462,6 @@
                         />
                 </StackLayout>
 
-                <StackLayout Orientation="Horizontal">
-                    <Label
-                        Text="Defense:"
-                        FontSize="24"
-                        Margin="0,10,0,0"
-                        WidthRequest="293"
-                        />
-                    <Button
-                        x:Name="Button_Defense_None"
-                        Text="None"
-                        FontSize="24"
-                        WidthRequest="90"
-                        BackgroundColor="LightGray"
-                        Clicked="Button_Defense_None_Clicked"
-                        />
-                    <Button
-                        x:Name="Button_Defense_Some"
-                        Text="Some"
-                        FontSize="24"
-                        WidthRequest="90"
-                        BackgroundColor="LightGray"
-                        Clicked="Button_Defense_Some_Clicked"
-                        />
-                    <Button
-                        x:Name="Button_Defense_Lots"
-                        Text="Lots"
-                        FontSize="24"
-                        WidthRequest="90"
-                        BackgroundColor="LightGray"
-                        Clicked="Button_Defense_Lots_Clicked"
-                        />
-                </StackLayout>
-                <StackLayout Orientation="Horizontal">
-                    <Label
-                        Text="Cooperation:"
-                        FontSize="24"
-                        Margin="0,10,0,0"
-                        WidthRequest="293"
-                        />
-                    <Button
-                        x:Name="Button_Cooperation_None"
-                        Text="None"
-                        FontSize="24"
-                        WidthRequest="90"
-                        BackgroundColor="LightGray"
-                        Clicked="Button_Cooperation_None_Clicked"
-                        />
-                    <Button
-                        x:Name="Button_Cooperation_Some"
-                        Text="Some"
-                        FontSize="24"
-                        WidthRequest="90"
-                        BackgroundColor="LightGray"
-                        Clicked="Button_Cooperation_Some_Clicked"
-                        />
-                    <Button
-                        x:Name="Button_Cooperation_Lots"
-                        Text="Lots"
-                        FontSize="24"
-                        WidthRequest="90"
-                        BackgroundColor="LightGray"
-                        Clicked="Button_Cooperation_Lots_Clicked"
-                        />
-                </StackLayout>
                 <StackLayout Orientation="Horizontal">
                     <Label
                         Text="Fouls:"
@@ -555,38 +491,6 @@
                         WidthRequest="90"
                         BackgroundColor="LightGray"
                         Clicked="Button_Fouls_Plus_Clicked"
-                        />
-                </StackLayout>
-
-                <StackLayout Orientation="Horizontal">
-                    <Label
-                        Text="Tech Fouls:"
-                        FontSize="24"
-                        Margin="0,10,0,0"
-                        WidthRequest="293"
-                        />
-                    <Label
-                        x:Name="Label_TechFouls_Value"
-                        Text="0"
-                        FontSize="24"
-                        WidthRequest="80"
-                        Margin="10,10,0,0"
-                        />
-                    <Button
-                        x:Name="Button_TechFouls_Minus"
-                        Text="-"
-                        FontSize="24"
-                        WidthRequest="90"
-                        BackgroundColor="LightGray"
-                        Clicked="Button_TechFouls_Minus_Clicked"
-                        />
-                    <Button
-                        x:Name="Button_TechFouls_Plus"
-                        Text="+"
-                        FontSize="24"
-                        WidthRequest="90"
-                        BackgroundColor="LightGray"
-                        Clicked="Button_TechFouls_Plus_Clicked"
                         />
                 </StackLayout>
 
@@ -676,20 +580,20 @@
                         WidthRequest="293"
                         />
                     <Button
-                        x:Name="Button_RocketRankingPoint_No"
+                        x:Name="Button_StageRankingPoint_No"
                         Text="No"
                         FontSize="24"
                         WidthRequest="90"
                         BackgroundColor="LightGray"
-                        Clicked="Button_RocketRankingPoint_No_Clicked"
+                        Clicked="Button_StageRankingPoint_No_Clicked"
                         />
                     <Button
-                        x:Name="Button_RocketRankingPoint_Yes"
+                        x:Name="Button_StageRankingPoint_Yes"
                         Text="Yes"
                         FontSize="24"
                         WidthRequest="90"
                         BackgroundColor="LightGray"
-                        Clicked="Button_RocketRankingPoint_Yes_Clicked"
+                        Clicked="Button_StageRankingPoint_Yes_Clicked"
                         />
                 </StackLayout>
                 <StackLayout Orientation="Horizontal">
@@ -700,20 +604,20 @@
                         WidthRequest="293"
                         />
                     <Button
-                        x:Name="Button_HabRankingPoint_No"
+                        x:Name="Button_ClimbRankingPoint_No"
                         Text="No"
                         FontSize="24"
                         WidthRequest="90"
                         BackgroundColor="LightGray"
-                        Clicked="Button_HabRankingPoint_No_Clicked"
+                        Clicked="Button_ClimbRankingPoint_No_Clicked"
                         />
                     <Button
-                        x:Name="Button_HabRankingPoint_Yes"
+                        x:Name="Button_ClimbRankingPoint_Yes"
                         Text="Yes"
                         FontSize="24"
                         WidthRequest="90"
                         BackgroundColor="LightGray"
-                        Clicked="Button_HabRankingPoint_Yes_Clicked"
+                        Clicked="Button_ClimbRankingPoint_Yes_Clicked"
                         />
                 </StackLayout>
 

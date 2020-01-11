@@ -80,7 +80,8 @@ namespace BertScout2020.Services
             // key = EventKey|TeamNumber|MatchNumber
             FillList();
             string[] keys = key.Split('|');
-            return await Task.FromResult(items.FirstOrDefault(s => s.EventKey == keys[0]
+            //todo /*await*/
+            return Task.FromResult(items.FirstOrDefault(s => s.EventKey == keys[0]
                                                               && s.TeamNumber == int.Parse(keys[1])
                                                               && s.MatchNumber == int.Parse(keys[2])));
         }
