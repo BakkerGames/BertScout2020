@@ -1,0 +1,28 @@
+Pre-game
+   Starting Position L/M/R
+Auto
+   Move from Init Line Y/N
+   Power cells scored
+      Low   + -
+      High  + -
+      Inner + -
+Main game
+   Low   + -
+   High  + -
+   Inner + -
+   Rotation control Y/N
+      attempts + -
+   Position control Y/N
+      attempts + -
+Endgame
+   Climb Y/N
+      Position L/M/R
+   Level Y/N
+   Park  Y/N
+   RP    Y/N
+Gameplay
+   Short/Tall
+   Fast/Slow
+   W/L/T
+   Fouls + -
+   Broken Y/N
