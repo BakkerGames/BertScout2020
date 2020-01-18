@@ -33,15 +33,13 @@ namespace BertScout2020.Views
         {
             AutoStartPos = viewModel.item.AutoStartPos;
             AutoLeaveInitLine = viewModel.item.AutoLeaveInitLine;
-            AutoLowCell = viewModel.item.AutoLowCell;
-            AutoHighCell = viewModel.item.AutoHighCell;
+            AutoBottomCell = viewModel.item.AutoBottomCell;
+            AutoOuterCell = viewModel.item.AutoOuterCell;
 
             AutoInnerCell = viewModel.item.AutoInnerCell;
-            TeleLowCell = viewModel.item.TeleLowCell;
-            TeleHighCell = viewModel.item.TeleHighCell;
+            TeleBottomCell = viewModel.item.TeleBottomCell;
+            TeleOuterCell = viewModel.item.TeleOuterCell;
             TeleInnerCell = viewModel.item.TeleInnerCell;
-            RotationControl = viewModel.item.RotationControl;
-            PositionControl = viewModel.item.PositionControl;
 
             ClimbStatus = viewModel.item.ClimbStatus;
             LevelSwitch = viewModel.item.LevelSwitch;
@@ -128,19 +126,11 @@ namespace BertScout2020.Views
                         newValue = 1;
                         Button_AutoLeaveInitLine_None.BackgroundColor = App.UnselectedButtonColor;
                         Button_AutoLeaveInitLine_1.BackgroundColor = App.SelectedButtonColor;
-                        Button_AutoLeaveInitLine_2.BackgroundColor = App.UnselectedButtonColor;
-                        break;
-                    case 2:
-                        newValue = 2;
-                        Button_AutoLeaveInitLine_None.BackgroundColor = App.UnselectedButtonColor;
-                        Button_AutoLeaveInitLine_1.BackgroundColor = App.UnselectedButtonColor;
-                        Button_AutoLeaveInitLine_2.BackgroundColor = App.SelectedButtonColor;
                         break;
                     default:
                         newValue = 0;
                         Button_AutoLeaveInitLine_None.BackgroundColor = App.SelectedButtonColor;
                         Button_AutoLeaveInitLine_1.BackgroundColor = App.UnselectedButtonColor;
-                        Button_AutoLeaveInitLine_2.BackgroundColor = App.UnselectedButtonColor;
                         break;
                 }
                 if (viewModel.item.AutoLeaveInitLine != newValue)
@@ -168,75 +158,75 @@ namespace BertScout2020.Views
 
         #endregion
 
-        #region AutoLowCell
+        #region AutoBottomCell
 
-        public int AutoLowCell
+        public int AutoBottomCell
         {
             get
             {
-                return viewModel.item.AutoLowCell;
+                return viewModel.item.AutoBottomCell;
             }
             set
             {
-                Label_AutoLowCell_Value.Text = value.ToString();
-                if (viewModel.item.AutoLowCell != value)
+                Label_AutoBottomCell_Value.Text = value.ToString();
+                if (viewModel.item.AutoBottomCell != value)
                 {
-                    viewModel.item.AutoLowCell = value;
+                    viewModel.item.AutoBottomCell = value;
                     App.database.SaveEventTeamMatchAsync(viewModel.item);
                 }
             }
         }
 
-        private void Button_AutoLowCell_Minus_Clicked(object sender, System.EventArgs e)
+        private void Button_AutoBottomCell_Minus_Clicked(object sender, System.EventArgs e)
         {
-            if (AutoLowCell > 0)
+            if (AutoBottomCell > 0)
             {
-                AutoLowCell--;
+                AutoBottomCell--;
             }
         }
 
-        private void Button_AutoLowCell_Plus_Clicked(object sender, System.EventArgs e)
+        private void Button_AutoBottomCell_Plus_Clicked(object sender, System.EventArgs e)
         {
-            if (AutoLowCell < 99)
+            if (AutoBottomCell < 99)
             {
-                AutoLowCell++;
+                AutoBottomCell++;
             }
         }
 
         #endregion
 
-        #region AutoHighCell
+        #region AutoOuterCell
 
-        public int AutoHighCell
+        public int AutoOuterCell
         {
             get
             {
-                return viewModel.item.AutoHighCell;
+                return viewModel.item.AutoOuterCell;
             }
             set
             {
-                Label_AutoHighCell_Value.Text = value.ToString();
-                if (viewModel.item.AutoHighCell != value)
+                Label_AutoOuterCell_Value.Text = value.ToString();
+                if (viewModel.item.AutoOuterCell != value)
                 {
-                    viewModel.item.AutoHighCell = value;
+                    viewModel.item.AutoOuterCell = value;
                     App.database.SaveEventTeamMatchAsync(viewModel.item);
                 }
             }
         }
 
-        private void Button_AutoHighCell_Minus_Clicked(object sender, System.EventArgs e)
+        private void Button_AutoOuterCell_Minus_Clicked(object sender, System.EventArgs e)
         {
-            if (AutoHighCell > 0)
+            if (AutoOuterCell > 0)
             {
-                AutoHighCell--;
+                AutoOuterCell--;
             }
         }
 
-        private void Button_AutoHighCell_Plus_Clicked(object sender, System.EventArgs e)
+        private void Button_AutoOuterCell_Plus_Clicked(object sender, System.EventArgs e)
         {
-            if (AutoHighCell < 99)
+            if (AutoOuterCell < 99)
             {
-                AutoHighCell++;
+                AutoOuterCell++;
             }
         }
 
@@ -279,75 +269,75 @@ namespace BertScout2020.Views
 
         #endregion
 
-        #region TeleLowCell
+        #region TeleBottomCell
 
-        public int TeleLowCell
+        public int TeleBottomCell
         {
             get
             {
-                return viewModel.item.TeleLowCell;
+                return viewModel.item.TeleBottomCell;
             }
             set
             {
-                Label_TeleLowCell_Value.Text = value.ToString();
-                if (viewModel.item.TeleLowCell != value)
+                Label_TeleBottomCell_Value.Text = value.ToString();
+                if (viewModel.item.TeleBottomCell != value)
                 {
-                    viewModel.item.TeleLowCell = value;
+                    viewModel.item.TeleBottomCell = value;
                     App.database.SaveEventTeamMatchAsync(viewModel.item);
                 }
             }
         }
 
-        private void Button_TeleLowCell_Minus_Clicked(object sender, System.EventArgs e)
+        private void Button_TeleBottomCell_Minus_Clicked(object sender, System.EventArgs e)
         {
-            if (TeleLowCell > 0)
+            if (TeleBottomCell > 0)
             {
-                TeleLowCell--;
+                TeleBottomCell--;
             }
         }
 
-        private void Button_TeleLowCell_Plus_Clicked(object sender, System.EventArgs e)
+        private void Button_TeleBottomCell_Plus_Clicked(object sender, System.EventArgs e)
         {
-            if (TeleLowCell < 99)
+            if (TeleBottomCell < 99)
             {
-                TeleLowCell++;
+                TeleBottomCell++;
             }
         }
 
         #endregion
 
-        #region TeleHighCell
+        #region TeleOuterCell
 
-        public int TeleHighCell
+        public int TeleOuterCell
         {
             get
             {
-                return viewModel.item.TeleHighCell;
+                return viewModel.item.TeleOuterCell;
             }
             set
             {
-                Label_TeleHighCell_Value.Text = value.ToString();
-                if (viewModel.item.TeleHighCell != value)
+                Label_TeleOuterCell_Value.Text = value.ToString();
+                if (viewModel.item.TeleOuterCell != value)
                 {
-                    viewModel.item.TeleHighCell = value;
+                    viewModel.item.TeleOuterCell = value;
                     App.database.SaveEventTeamMatchAsync(viewModel.item);
                 }
             }
         }
 
-        private void Button_TeleHighCell_Minus_Clicked(object sender, System.EventArgs e)
+        private void Button_TeleOuterCell_Minus_Clicked(object sender, System.EventArgs e)
         {
-            if (TeleHighCell > 0)
+            if (TeleOuterCell > 0)
             {
-                TeleHighCell--;
+                TeleOuterCell--;
             }
         }
 
-        private void Button_TeleHighCell_Plus_Clicked(object sender, System.EventArgs e)
+        private void Button_TeleOuterCell_Plus_Clicked(object sender, System.EventArgs e)
         {
-            if (TeleHighCell < 99)
+            if (TeleOuterCell < 99)
             {
-                TeleHighCell++;
+                TeleOuterCell++;
             }
         }
 
@@ -400,7 +390,21 @@ namespace BertScout2020.Views
             }
             set
             {
-                Label_RotationControl_Value.Text = value.ToString();
+                int newValue = value;
+                switch (value)
+                {
+                    case 1:
+                        newValue = 1;
+                        Button_RotationControl_No.BackgroundColor = App.UnselectedButtonColor;
+                        Button_RotationControl_Yes.BackgroundColor = App.SelectedButtonColor;
+                        break;
+                    default:
+                        newValue = 1;
+                        Button_RotationControl_No.BackgroundColor = App.SelectedButtonColor;
+                        Button_RotationControl_Yes.BackgroundColor = App.UnselectedButtonColor;
+                        break;
+
+                }
                 if (viewModel.item.RotationControl != value)
                 {
                     viewModel.item.RotationControl = value;
@@ -408,21 +412,24 @@ namespace BertScout2020.Views
                 }
             }
         }
+        
 
-        private void Button_RotationControl_Minus_Clicked(object sender, System.EventArgs e)
+        private void Button_RotationControl_No_Clicked(object sender, System.EventArgs e)
         {
-            if (RotationControl > 0)
-            {
-                RotationControl--;
-            }
+            /* if (RotationControl > 0)
+             {
+                 RotationControl--;
+             } */
+            RotationControl = 0;
         }
 
-        private void Button_RotationControl_Plus_Clicked(object sender, System.EventArgs e)
+        private void Button_RotationControl_Yes_Clicked(object sender, System.EventArgs e)
         {
-            if (RotationControl < 3)
+            /*if (RotationControl < 3)
             {
                 RotationControl++;
-            }
+            } */
+            RotationControl = 1;
         }
 
         #endregion
@@ -437,7 +444,21 @@ namespace BertScout2020.Views
             }
             set
             {
-                Label_PositionControl_Value.Text = value.ToString();
+                int newValue = value;
+                switch (value)
+                {
+                    case 1:
+                        newValue = 1;
+                        Button_PositionControl_No.BackgroundColor = App.UnselectedButtonColor;
+                        Button_PositionControl_Yes.BackgroundColor = App.SelectedButtonColor;
+                        break;
+                    default:
+                        newValue = 1;
+                        Button_PositionControl_No.BackgroundColor = App.SelectedButtonColor;
+                        Button_PositionControl_Yes.BackgroundColor = App.UnselectedButtonColor;
+                        break;
+
+                }
                 if (viewModel.item.PositionControl != value)
                 {
                     viewModel.item.PositionControl = value;
@@ -446,20 +467,22 @@ namespace BertScout2020.Views
             }
         }
 
-        private void Button_PositionControl_Minus_Clicked(object sender, System.EventArgs e)
+        private void Button_PositionControl_No_Clicked(object sender, System.EventArgs e)
         {
-            if (PositionControl > 0)
+            /* (PositionControl > 0)
             {
                 PositionControl--;
-            }
+            } */
+            PositionControl = 0;
         }
 
-        private void Button_PositionControl_Plus_Clicked(object sender, System.EventArgs e)
+        private void Button_PositionControl_Yes_Clicked(object sender, System.EventArgs e)
         {
-            if (PositionControl < 3)
+            /*if (PositionControl < 3)
             {
                 PositionControl++;
-            }
+            } */
+            PositionControl = 1;
         }
 
         #endregion
@@ -480,30 +503,42 @@ namespace BertScout2020.Views
                     case 1:
                         newValue = 1;
                         Button_ClimbStatus_None.BackgroundColor = App.UnselectedButtonColor;
-                        Button_ClimbStatus_1.BackgroundColor = App.SelectedButtonColor;
-                        Button_ClimbStatus_2.BackgroundColor = App.UnselectedButtonColor;
-                        Button_ClimbStatus_3.BackgroundColor = App.UnselectedButtonColor;
+                        Button_ClimbStatus_Park.BackgroundColor = App.SelectedButtonColor;
+                        Button_ClimbStatus_Left.BackgroundColor = App.UnselectedButtonColor;
+                        Button_ClimbStatus_Middle.BackgroundColor = App.UnselectedButtonColor;
+                        Button_ClimbStatus_Right.BackgroundColor = App.UnselectedButtonColor;
                         break;
                     case 2:
                         newValue = 2;
                         Button_ClimbStatus_None.BackgroundColor = App.UnselectedButtonColor;
-                        Button_ClimbStatus_1.BackgroundColor = App.UnselectedButtonColor;
-                        Button_ClimbStatus_2.BackgroundColor = App.SelectedButtonColor;
-                        Button_ClimbStatus_3.BackgroundColor = App.UnselectedButtonColor;
+                        Button_ClimbStatus_Park.BackgroundColor = App.UnselectedButtonColor;
+                        Button_ClimbStatus_Left.BackgroundColor = App.SelectedButtonColor;
+                        Button_ClimbStatus_Middle.BackgroundColor = App.UnselectedButtonColor;
+                        Button_ClimbStatus_Right.BackgroundColor = App.UnselectedButtonColor;
                         break;
                     case 3:
                         newValue = 3;
                         Button_ClimbStatus_None.BackgroundColor = App.UnselectedButtonColor;
-                        Button_ClimbStatus_1.BackgroundColor = App.UnselectedButtonColor;
-                        Button_ClimbStatus_2.BackgroundColor = App.UnselectedButtonColor;
-                        Button_ClimbStatus_3.BackgroundColor = App.SelectedButtonColor;
+                        Button_ClimbStatus_Park.BackgroundColor = App.UnselectedButtonColor;
+                        Button_ClimbStatus_Left.BackgroundColor = App.UnselectedButtonColor;
+                        Button_ClimbStatus_Middle.BackgroundColor = App.SelectedButtonColor;
+                        Button_ClimbStatus_Right.BackgroundColor = App.UnselectedButtonColor;
+                        break;
+                    case 4:
+                        newValue = 4;
+                        Button_ClimbStatus_None.BackgroundColor = App.UnselectedButtonColor;
+                        Button_ClimbStatus_Park.BackgroundColor = App.UnselectedButtonColor;
+                        Button_ClimbStatus_Left.BackgroundColor = App.UnselectedButtonColor;
+                        Button_ClimbStatus_Middle.BackgroundColor = App.UnselectedButtonColor;
+                        Button_ClimbStatus_Right.BackgroundColor = App.SelectedButtonColor;
                         break;
                     default:
                         newValue = 0;
                         Button_ClimbStatus_None.BackgroundColor = App.SelectedButtonColor;
-                        Button_ClimbStatus_1.BackgroundColor = App.UnselectedButtonColor;
-                        Button_ClimbStatus_2.BackgroundColor = App.UnselectedButtonColor;
-                        Button_ClimbStatus_3.BackgroundColor = App.UnselectedButtonColor;
+                        Button_ClimbStatus_Park .BackgroundColor = App.UnselectedButtonColor;
+                        Button_ClimbStatus_Left.BackgroundColor = App.UnselectedButtonColor;
+                        Button_ClimbStatus_Middle.BackgroundColor = App.UnselectedButtonColor;
+                        Button_ClimbStatus_Right.BackgroundColor = App.UnselectedButtonColor;
                         break;
                 }
                 if (viewModel.item.ClimbStatus != newValue)
@@ -553,19 +588,16 @@ namespace BertScout2020.Views
                         newValue = 1;
                         Button_LevelSwitch_None.BackgroundColor = App.UnselectedButtonColor;
                         Button_LevelSwitch_On.BackgroundColor = App.SelectedButtonColor;
-                        Button_LevelSwitch_Lift.BackgroundColor = App.UnselectedButtonColor;
                         break;
                     case 2:
                         newValue = 2;
                         Button_LevelSwitch_None.BackgroundColor = App.UnselectedButtonColor;
                         Button_LevelSwitch_On.BackgroundColor = App.UnselectedButtonColor;
-                        Button_LevelSwitch_Lift.BackgroundColor = App.SelectedButtonColor;
                         break;
                     default:
                         newValue = 0;
                         Button_LevelSwitch_None.BackgroundColor = App.SelectedButtonColor;
                         Button_LevelSwitch_On.BackgroundColor = App.UnselectedButtonColor;
-                        Button_LevelSwitch_Lift.BackgroundColor = App.UnselectedButtonColor;
                         break;
                 }
                 if (viewModel.item.LevelSwitch != newValue)
@@ -802,21 +834,18 @@ namespace BertScout2020.Views
                 {
                     case 1:
                         newValue = 1;
-                        Button_Broken_None.BackgroundColor = App.UnselectedButtonColor;
-                        Button_Broken_Some.BackgroundColor = App.SelectedButtonColor;
-                        Button_Broken_Lots.BackgroundColor = App.UnselectedButtonColor;
+                        Button_Broken_No.BackgroundColor = App.UnselectedButtonColor;
+                        Button_Broken_Yes.BackgroundColor = App.SelectedButtonColor;
                         break;
                     case 2:
                         newValue = 2;
-                        Button_Broken_None.BackgroundColor = App.UnselectedButtonColor;
-                        Button_Broken_Some.BackgroundColor = App.UnselectedButtonColor;
-                        Button_Broken_Lots.BackgroundColor = App.SelectedButtonColor;
+                        Button_Broken_No.BackgroundColor = App.UnselectedButtonColor;
+                        Button_Broken_Yes.BackgroundColor = App.UnselectedButtonColor;
                         break;
                     default:
                         newValue = 0;
-                        Button_Broken_None.BackgroundColor = App.SelectedButtonColor;
-                        Button_Broken_Some.BackgroundColor = App.UnselectedButtonColor;
-                        Button_Broken_Lots.BackgroundColor = App.UnselectedButtonColor;
+                        Button_Broken_No.BackgroundColor = App.SelectedButtonColor;
+                        Button_Broken_Yes.BackgroundColor = App.UnselectedButtonColor;
                         break;
                 }
                 if (viewModel.item.Broken != newValue)

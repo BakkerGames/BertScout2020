@@ -97,8 +97,8 @@ namespace BertScout2020.ViewModels
         private int CalculateCargoCount(EventTeamMatch match)
         {
             int result = 0;
-            result += match.AutoHighCell;
-            result += match.TeleLowCell;
+            result += match.AutoOuterCell;
+            result += match.TeleBottomCell;
             result += match.TeleInnerCell;
             return result;
         }
@@ -106,9 +106,9 @@ namespace BertScout2020.ViewModels
         private int CalculateHatchCount(EventTeamMatch match)
         {
             int result = 0;
-            result += match.AutoLowCell;
+            result += match.AutoBottomCell;
             result += match.AutoInnerCell;
-            result += match.TeleHighCell;
+            result += match.TeleOuterCell;
             return result;
         }
 
@@ -127,12 +127,12 @@ namespace BertScout2020.ViewModels
             //not scoring movement type
             //score += match.AutoStartPos;
             score += match.AutoLeaveInitLine * 3;
-            score += match.AutoLowCell * 2;
-            score += match.AutoHighCell * 3;
+            score += match.AutoBottomCell * 2;
+            score += match.AutoOuterCell * 3;
 
             score += match.AutoInnerCell * 2;
-            score += match.TeleLowCell * 3;
-            score += match.TeleHighCell * 2;
+            score += match.TeleBottomCell * 3;
+            score += match.TeleOuterCell * 2;
             score += match.TeleInnerCell * 3;
             //not scoring highest platform
             //score += match.RotationControl;

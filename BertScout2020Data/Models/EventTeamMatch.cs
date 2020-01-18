@@ -19,11 +19,11 @@ namespace BertScout2020Data.Models
         public int MatchNumber { get; set; }
         public int AutoStartPos { get; set; }
         public int AutoLeaveInitLine { get; set; }
-        public int AutoLowCell { get; set; }
-        public int AutoHighCell { get; set; }
+        public int AutoBottomCell { get; set; }
+        public int AutoOuterCell { get; set; }
         public int AutoInnerCell { get; set; }
-        public int TeleLowCell { get; set; }
-        public int TeleHighCell { get; set; }
+        public int TeleBottomCell { get; set; }
+        public int TeleOuterCell { get; set; }
         public int TeleInnerCell { get; set; }
         public int RotationControl { get; set; }
         public int PositionControl { get; set; }

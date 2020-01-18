@@ -1,7 +1,7 @@
 SandstormMoveType = AutoStartPos
 SandstormOffPlatform = AutoLeaveInitLine
-SandstormHatches = AutoLowCell
-SandstormCargo = AutoHighCell
+SandstormHatches = AutoBottomCell
+SandstormCargo = AutoOuterCell
 CargoShipHatches = AutoInnerCell
 CargoShipCargo = TeleLowCell
 RocketHatches = TeleHighCell
