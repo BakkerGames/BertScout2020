@@ -554,19 +554,24 @@ namespace BertScout2020.Views
             ClimbStatus = 0;
         }
 
-        private void Button_ClimbStatus_1_Clicked(object sender, System.EventArgs e)
+        private void Button_ClimbStatus_Park_Clicked(object sender, System.EventArgs e)
         {
             ClimbStatus = 1;
         }
 
-        private void Button_ClimbStatus_2_Clicked(object sender, System.EventArgs e)
+        private void Button_ClimbStatus_Left_Clicked(object sender, System.EventArgs e)
         {
             ClimbStatus = 2;
         }
 
-        private void Button_ClimbStatus_3_Clicked(object sender, System.EventArgs e)
+        private void Button_ClimbStatus_Middle_Clicked(object sender, System.EventArgs e)
         {
             ClimbStatus = 3;
+        }
+
+        private void Button_ClimbStatus_Right_Clicked(object sender, System.EventArgs e)
+        {
+            ClimbStatus = 4;
         }
 
         #endregion
