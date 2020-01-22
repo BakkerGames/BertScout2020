@@ -1,0 +1,4 @@
+alias gitl='git log --graph --max-count=20 --date=format:"%Y-%m-%d %H:%M" --pretty=format:"%h %cd %cn %C(auto)%d%C(reset) %s"'
+alias gitla='gitl --all'
+alias ll='ls -l'
+alias ls='ls -F --color=auto --show-control-chars'
