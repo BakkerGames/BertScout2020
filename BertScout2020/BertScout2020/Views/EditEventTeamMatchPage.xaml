@@ -77,20 +77,20 @@
                         WidthRequest="293"
                         />
                     <Button
-                        x:Name="Button_AutoLeaveInitLine_None"
+                        x:Name="Button_AutoLeaveInitLine_No"
                         Text="No"
                         FontSize="24"
                         WidthRequest="90"
                         BackgroundColor="LightGray"
-                        Clicked="Button_AutoLeaveInitLine_None_Clicked"
+                        Clicked="Button_AutoLeaveInitLine_No_Clicked"
                         />
                     <Button
-                        x:Name="Button_AutoLeaveInitLine_1"
+                        x:Name="Button_AutoLeaveInitLine_Yes"
                         Text="Yes"
                         FontSize="24"
                         WidthRequest="90"
                         BackgroundColor="LightGray"
-                        Clicked="Button_AutoLeaveInitLine_1_Clicked"
+                        Clicked="Button_AutoLeaveInitLine_Yes_Clicked"
                         />
                 </StackLayout>
                 <StackLayout Orientation="Horizontal">

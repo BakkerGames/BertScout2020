@@ -35,11 +35,13 @@ namespace BertScout2020.Views
             AutoLeaveInitLine = viewModel.item.AutoLeaveInitLine;
             AutoBottomCell = viewModel.item.AutoBottomCell;
             AutoOuterCell = viewModel.item.AutoOuterCell;
-
             AutoInnerCell = viewModel.item.AutoInnerCell;
+
             TeleBottomCell = viewModel.item.TeleBottomCell;
             TeleOuterCell = viewModel.item.TeleOuterCell;
             TeleInnerCell = viewModel.item.TeleInnerCell;
+            RotationControl = viewModel.item.RotationControl;
+            PositionControl = viewModel.item.PositionControl;
 
             ClimbStatus = viewModel.item.ClimbStatus;
             LevelSwitch = viewModel.item.LevelSwitch;
@@ -124,13 +126,13 @@ namespace BertScout2020.Views
                 {
                     case 1:
                         newValue = 1;
-                        Button_AutoLeaveInitLine_None.BackgroundColor = App.UnselectedButtonColor;
-                        Button_AutoLeaveInitLine_1.BackgroundColor = App.SelectedButtonColor;
+                        Button_AutoLeaveInitLine_No.BackgroundColor = App.UnselectedButtonColor;
+                        Button_AutoLeaveInitLine_Yes.BackgroundColor = App.SelectedButtonColor;
                         break;
                     default:
                         newValue = 0;
-                        Button_AutoLeaveInitLine_None.BackgroundColor = App.SelectedButtonColor;
-                        Button_AutoLeaveInitLine_1.BackgroundColor = App.UnselectedButtonColor;
+                        Button_AutoLeaveInitLine_No.BackgroundColor = App.SelectedButtonColor;
+                        Button_AutoLeaveInitLine_Yes.BackgroundColor = App.UnselectedButtonColor;
                         break;
                 }
                 if (viewModel.item.AutoLeaveInitLine != newValue)
@@ -141,19 +143,14 @@ namespace BertScout2020.Views
             }
         }
 
-        private void Button_AutoLeaveInitLine_None_Clicked(object sender, System.EventArgs e)
+        private void Button_AutoLeaveInitLine_No_Clicked(object sender, System.EventArgs e)
         {
             AutoLeaveInitLine = 0;
         }
 
-        private void Button_AutoLeaveInitLine_1_Clicked(object sender, System.EventArgs e)
+        private void Button_AutoLeaveInitLine_Yes_Clicked(object sender, System.EventArgs e)
         {
             AutoLeaveInitLine = 1;
-        }
-
-        private void Button_AutoLeaveInitLine_2_Clicked(object sender, System.EventArgs e)
-        {
-            AutoLeaveInitLine = 2;
         }
 
         #endregion
@@ -399,11 +396,10 @@ namespace BertScout2020.Views
                         Button_RotationControl_Yes.BackgroundColor = App.SelectedButtonColor;
                         break;
                     default:
-                        newValue = 1;
+                        newValue = 0;
                         Button_RotationControl_No.BackgroundColor = App.SelectedButtonColor;
                         Button_RotationControl_Yes.BackgroundColor = App.UnselectedButtonColor;
                         break;
-
                 }
                 if (viewModel.item.RotationControl != value)
                 {
@@ -416,19 +412,11 @@ namespace BertScout2020.Views
 
         private void Button_RotationControl_No_Clicked(object sender, System.EventArgs e)
         {
-            /* if (RotationControl > 0)
-             {
-                 RotationControl--;
-             } */
             RotationControl = 0;
         }
 
         private void Button_RotationControl_Yes_Clicked(object sender, System.EventArgs e)
         {
-            /*if (RotationControl < 3)
-            {
-                RotationControl++;
-            } */
             RotationControl = 1;
         }
 
@@ -453,7 +441,7 @@ namespace BertScout2020.Views
                         Button_PositionControl_Yes.BackgroundColor = App.SelectedButtonColor;
                         break;
                     default:
-                        newValue = 1;
+                        newValue = 0;
                         Button_PositionControl_No.BackgroundColor = App.SelectedButtonColor;
                         Button_PositionControl_Yes.BackgroundColor = App.UnselectedButtonColor;
                         break;
@@ -469,19 +457,11 @@ namespace BertScout2020.Views
 
         private void Button_PositionControl_No_Clicked(object sender, System.EventArgs e)
         {
-            /* (PositionControl > 0)
-            {
-                PositionControl--;
-            } */
             PositionControl = 0;
         }
 
         private void Button_PositionControl_Yes_Clicked(object sender, System.EventArgs e)
         {
-            /*if (PositionControl < 3)
-            {
-                PositionControl++;
-            } */
             PositionControl = 1;
         }
 
