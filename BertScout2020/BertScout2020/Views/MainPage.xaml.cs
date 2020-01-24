@@ -16,7 +16,7 @@ namespace BertScout2020.Views
 
         protected override void OnAppearing()
         {
-            MainPage_Version_Label.Text = $"Version {App.dbVersion}";
+            MainPage_Version_Label.Text = $"Ver {App.dbVersion}";
             CurrentFRCEventLabel.Text = App.currFRCEventName;
             LabelVersionMessage.Text = "";
             LabelVersionMessage2.Text = "";
@@ -94,7 +94,7 @@ namespace BertScout2020.Views
             _syncFlag = true;
             if (string.IsNullOrEmpty(LabelVersionMessage.Text))
             {
-                LabelVersionMessage.Text = "This app was coded by:\nScott, Chloe, & Nate";
+                LabelVersionMessage.Text = "This app was coded by:\nChloe, Lucas, and Scott";
                 LabelVersionMessage2.Text = App.AppVersionDate;
             }
             else
