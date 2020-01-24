@@ -45,28 +45,28 @@
                         WidthRequest="293"
                         />
                     <Button
-                        x:Name="Button_AutoStartPos_None"
-                        Text="Left"
+                        x:Name="Button_AutoStartPos_Left"
+                        Text="L"
                         FontSize="24"
                         WidthRequest="90"
                         BackgroundColor="LightGray"
-                        Clicked="Button_AutoStartPos_None_Clicked"
+                        Clicked="Button_AutoStartPos_Left_Clicked"
                         />
                     <Button
-                        x:Name="Button_AutoStartPos_Auto"
-                        Text="Mid"
+                        x:Name="Button_AutoStartPos_Middle"
+                        Text="M"
                         FontSize="24"
                         WidthRequest="90"
                         BackgroundColor="LightGray"
-                        Clicked="Button_AutoStartPos_Auto_Clicked"
+                        Clicked="Button_AutoStartPos_Middle_Clicked"
                         />
                     <Button
-                        x:Name="Button_AutoStartPos_Tele"
-                        Text="Right"
+                        x:Name="Button_AutoStartPos_Right"
+                        Text="R"
                         FontSize="24"
                         WidthRequest="90"
                         BackgroundColor="LightGray"
-                        Clicked="Button_AutoStartPos_Tele_Clicked"
+                        Clicked="Button_AutoStartPos_Right_Clicked"
                         />
                 </StackLayout>
                 <StackLayout Orientation="Horizontal">
@@ -95,7 +95,7 @@
                 </StackLayout>
                 <StackLayout Orientation="Horizontal">
                     <Label
-                        Text="Bottom Port Cells"
+                        Text="Bottom Port Cells:"
                         FontSize="24"
                         Margin="0,10,0,0"
                         WidthRequest="293"
@@ -263,7 +263,7 @@
                 </StackLayout>
                 <StackLayout Orientation="Horizontal">
                     <Label
-                        Text="Inner Port Cells"
+                        Text="Inner Port Cells:"
                         FontSize="24"
                         Margin="0,10,0,0"
                         WidthRequest="293"
@@ -294,7 +294,7 @@
                 </StackLayout>
                 <StackLayout Orientation="Horizontal">
                     <Label
-                        Text="Rotation Control"
+                        Text="Rotation Control:"
                         FontSize="24"
                         Margin="0,10,0,0"
                         WidthRequest="293"
@@ -318,7 +318,7 @@
                 </StackLayout>
                 <StackLayout Orientation="Horizontal">
                     <Label
-                        Text="Position Control"
+                        Text="Position Control:"
                         FontSize="24"
                         Margin="0,10,0,0"
                         WidthRequest="293"
@@ -378,33 +378,25 @@
                         Clicked="Button_ClimbStatus_Park_Clicked"
                         />
                     <Button
-                        x:Name="Button_ClimbStatus_Left"
-                        Text="Left"
-                        FontSize="24"
-                        WidthRequest="58"
-                        BackgroundColor="LightGray"
-                        Clicked="Button_ClimbStatus_Left_Clicked"
-                        />
-                    <Button
                         x:Name="Button_ClimbStatus_Middle"
                         Text="Mid"
                         FontSize="24"
-                        WidthRequest="58"
+                        WidthRequest="90"
                         BackgroundColor="LightGray"
                         Clicked="Button_ClimbStatus_Middle_Clicked"
                         />
                     <Button
-                        x:Name="Button_ClimbStatus_Right"
-                        Text="Right"
+                        x:Name="Button_ClimbStatus_Edge"
+                        Text="Edge"
                         FontSize="24"
-                        WidthRequest="58"
+                        WidthRequest="90"
                         BackgroundColor="LightGray"
-                        Clicked="Button_ClimbStatus_Right_Clicked"
+                        Clicked="Button_ClimbStatus_Edge_Clicked"
                         />
                 </StackLayout>
                 <StackLayout Orientation="Horizontal">
                     <Label
-                        Text="Level Switch"
+                        Text="Level Switch:"
                         FontSize="24"
                         Margin="0,10,0,0"
                         WidthRequest="293"
@@ -427,13 +419,13 @@
                         />
                 </StackLayout>
 
-                <!-- GAMEPLAY -->
+                <!-- MATCH RESULTS -->
 
                 <StackLayout
                     HorizontalOptions="Fill"
                     BackgroundColor="#22BE1C">
                     <Label
-                        Text="Gameplay"
+                        Text="Match Results"
                         HorizontalOptions="Center"
                         BackgroundColor="#22BE1C"
                         FontSize="Large"
@@ -494,19 +486,6 @@
                         WidthRequest="90"
                         BackgroundColor="LightGray"
                         Clicked="Button_Broken_Some_Clicked"
-                        />
-                </StackLayout>
-
-                <!-- GAMEPLAY -->
-
-                <StackLayout
-                    HorizontalOptions="Fill"
-                    BackgroundColor="#22BE1C">
-                    <Label
-                        Text="Match Results"
-                        HorizontalOptions="Center"
-                        BackgroundColor="#22BE1C"
-                        FontSize="Large"
                         />
                 </StackLayout>
 
@@ -589,16 +568,6 @@
                         BackgroundColor="LightGray"
                         Clicked="Button_ClimbRankingPoint_Yes_Clicked"
                         />
-                </StackLayout>
-
-                <StackLayout Orientation="Horizontal">
-                    <Label
-                        x:Name="LabelChangeVersion"
-                        Text=""
-                        HorizontalOptions="Center"
-                        FontSize="24"
-                        IsVisible="False"
-                    />
                 </StackLayout>
 
             </StackLayout>

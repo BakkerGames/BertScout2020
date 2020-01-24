@@ -21,11 +21,6 @@ namespace BertScout2020.Views
 
             BindingContext = viewModel = new EditEventTeamMatchViewModel(item);
 
-#if DEBUG
-            LabelChangeVersion.Text = $"Change Version: {item.Changed}";
-            LabelChangeVersion.IsVisible = true;
-#endif
-
             SetButtons();
         }
 
@@ -69,21 +64,21 @@ namespace BertScout2020.Views
                 {
                     case 1:
                         newValue = 1;
-                        Button_AutoStartPos_None.BackgroundColor = App.UnselectedButtonColor;
-                        Button_AutoStartPos_Auto.BackgroundColor = App.SelectedButtonColor;
-                        Button_AutoStartPos_Tele.BackgroundColor = App.UnselectedButtonColor;
+                        Button_AutoStartPos_Left.BackgroundColor = App.UnselectedButtonColor;
+                        Button_AutoStartPos_Middle.BackgroundColor = App.SelectedButtonColor;
+                        Button_AutoStartPos_Right.BackgroundColor = App.UnselectedButtonColor;
                         break;
                     case 2:
                         newValue = 2;
-                        Button_AutoStartPos_None.BackgroundColor = App.UnselectedButtonColor;
-                        Button_AutoStartPos_Auto.BackgroundColor = App.UnselectedButtonColor;
-                        Button_AutoStartPos_Tele.BackgroundColor = App.SelectedButtonColor;
+                        Button_AutoStartPos_Left.BackgroundColor = App.UnselectedButtonColor;
+                        Button_AutoStartPos_Middle.BackgroundColor = App.UnselectedButtonColor;
+                        Button_AutoStartPos_Right.BackgroundColor = App.SelectedButtonColor;
                         break;
                     default:
                         newValue = 0;
-                        Button_AutoStartPos_None.BackgroundColor = App.SelectedButtonColor;
-                        Button_AutoStartPos_Auto.BackgroundColor = App.UnselectedButtonColor;
-                        Button_AutoStartPos_Tele.BackgroundColor = App.UnselectedButtonColor;
+                        Button_AutoStartPos_Left.BackgroundColor = App.SelectedButtonColor;
+                        Button_AutoStartPos_Middle.BackgroundColor = App.UnselectedButtonColor;
+                        Button_AutoStartPos_Right.BackgroundColor = App.UnselectedButtonColor;
                         break;
                 }
                 if (viewModel.item.AutoStartPos != newValue)
@@ -94,17 +89,17 @@ namespace BertScout2020.Views
             }
         }
 
-        private void Button_AutoStartPos_None_Clicked(object sender, System.EventArgs e)
+        private void Button_AutoStartPos_Left_Clicked(object sender, System.EventArgs e)
         {
             AutoStartPos = 0;
         }
 
-        private void Button_AutoStartPos_Auto_Clicked(object sender, System.EventArgs e)
+        private void Button_AutoStartPos_Middle_Clicked(object sender, System.EventArgs e)
         {
             AutoStartPos = 1;
         }
 
-        private void Button_AutoStartPos_Tele_Clicked(object sender, System.EventArgs e)
+        private void Button_AutoStartPos_Right_Clicked(object sender, System.EventArgs e)
         {
             AutoStartPos = 2;
         }
@@ -484,41 +479,29 @@ namespace BertScout2020.Views
                         newValue = 1;
                         Button_ClimbStatus_None.BackgroundColor = App.UnselectedButtonColor;
                         Button_ClimbStatus_Park.BackgroundColor = App.SelectedButtonColor;
-                        Button_ClimbStatus_Left.BackgroundColor = App.UnselectedButtonColor;
                         Button_ClimbStatus_Middle.BackgroundColor = App.UnselectedButtonColor;
-                        Button_ClimbStatus_Right.BackgroundColor = App.UnselectedButtonColor;
+                        Button_ClimbStatus_Edge.BackgroundColor = App.UnselectedButtonColor;
                         break;
                     case 2:
                         newValue = 2;
                         Button_ClimbStatus_None.BackgroundColor = App.UnselectedButtonColor;
                         Button_ClimbStatus_Park.BackgroundColor = App.UnselectedButtonColor;
-                        Button_ClimbStatus_Left.BackgroundColor = App.SelectedButtonColor;
-                        Button_ClimbStatus_Middle.BackgroundColor = App.UnselectedButtonColor;
-                        Button_ClimbStatus_Right.BackgroundColor = App.UnselectedButtonColor;
+                        Button_ClimbStatus_Middle.BackgroundColor = App.SelectedButtonColor;
+                        Button_ClimbStatus_Edge.BackgroundColor = App.UnselectedButtonColor;
                         break;
                     case 3:
                         newValue = 3;
                         Button_ClimbStatus_None.BackgroundColor = App.UnselectedButtonColor;
                         Button_ClimbStatus_Park.BackgroundColor = App.UnselectedButtonColor;
-                        Button_ClimbStatus_Left.BackgroundColor = App.UnselectedButtonColor;
-                        Button_ClimbStatus_Middle.BackgroundColor = App.SelectedButtonColor;
-                        Button_ClimbStatus_Right.BackgroundColor = App.UnselectedButtonColor;
-                        break;
-                    case 4:
-                        newValue = 4;
-                        Button_ClimbStatus_None.BackgroundColor = App.UnselectedButtonColor;
-                        Button_ClimbStatus_Park.BackgroundColor = App.UnselectedButtonColor;
-                        Button_ClimbStatus_Left.BackgroundColor = App.UnselectedButtonColor;
                         Button_ClimbStatus_Middle.BackgroundColor = App.UnselectedButtonColor;
-                        Button_ClimbStatus_Right.BackgroundColor = App.SelectedButtonColor;
+                        Button_ClimbStatus_Edge.BackgroundColor = App.SelectedButtonColor;
                         break;
                     default:
                         newValue = 0;
                         Button_ClimbStatus_None.BackgroundColor = App.SelectedButtonColor;
                         Button_ClimbStatus_Park .BackgroundColor = App.UnselectedButtonColor;
-                        Button_ClimbStatus_Left.BackgroundColor = App.UnselectedButtonColor;
                         Button_ClimbStatus_Middle.BackgroundColor = App.UnselectedButtonColor;
-                        Button_ClimbStatus_Right.BackgroundColor = App.UnselectedButtonColor;
+                        Button_ClimbStatus_Edge.BackgroundColor = App.UnselectedButtonColor;
                         break;
                 }
                 if (viewModel.item.ClimbStatus != newValue)
@@ -539,17 +522,12 @@ namespace BertScout2020.Views
             ClimbStatus = 1;
         }
 
-        private void Button_ClimbStatus_Left_Clicked(object sender, System.EventArgs e)
-        {
-            ClimbStatus = 2;
-        }
-
         private void Button_ClimbStatus_Middle_Clicked(object sender, System.EventArgs e)
         {
             ClimbStatus = 3;
         }
 
-        private void Button_ClimbStatus_Right_Clicked(object sender, System.EventArgs e)
+        private void Button_ClimbStatus_Edge_Clicked(object sender, System.EventArgs e)
         {
             ClimbStatus = 4;
         }

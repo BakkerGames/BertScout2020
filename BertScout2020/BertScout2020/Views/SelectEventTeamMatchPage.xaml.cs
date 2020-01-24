@@ -72,7 +72,10 @@ namespace BertScout2020.Views
             }
             _addNewMatchBusy = true;
             doAddNewMatch(App.highestMatchNumber + 1);
-            App.highestMatchNumber++;
+            if (App.highestMatchNumber < 999)
+            {
+                App.highestMatchNumber++;
+            }
             _addNewMatchBusy = false;
         }
 
