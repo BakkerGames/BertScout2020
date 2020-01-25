@@ -140,7 +140,7 @@ namespace BertScout2020.ViewModels
                     break;
             }
             //not scoring buddy climb
-            //score += match.LevelSwitch;
+            score += match.LevelSwitch * 15;
 
             //score += match.Defense;
             //score += match.Cooperation;
