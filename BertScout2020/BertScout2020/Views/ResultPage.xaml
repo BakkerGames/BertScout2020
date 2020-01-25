@@ -34,43 +34,27 @@
                     BackgroundColor="LightGray"
                 />
                 <Button
-                    x:Name="HatchCount"
-                    Text="Hatches"
+                    x:Name="PowercellCount"
+                    Text="Powercells"
                     HorizontalOptions="Start"
                     VerticalOptions="Start"
                     FontSize="24"
-                    Clicked="HatchCount_Clicked"
+                    Clicked="PowercellCount_Clicked"
                     BackgroundColor="LightGray"
                 />
             </StackLayout>
             <StackLayout Orientation="Horizontal" Margin="10,0,10,0">
+                
                 <Button
-                    x:Name="CargoCount"
-                    Text="Cargo"
+                    x:Name="AveragePowercells"
+                    Text="Avg. Powercells"
                     HorizontalOptions="Start"
                     VerticalOptions="Start"
                     FontSize="24"
-                    Clicked="CargoCount_Clicked"
+                    Clicked="AveragePowercells_Clicked"
                     BackgroundColor="LightGray"
                 />
-                <Button
-                    x:Name="AverageHatches"
-                    Text="Avg. Hatches"
-                    HorizontalOptions="Start"
-                    VerticalOptions="Start"
-                    FontSize="24"
-                    Clicked="AverageHatches_Clicked"
-                    BackgroundColor="LightGray"
-                />
-                <Button
-                    x:Name="AverageCargo"
-                    Text="Avg. Cargo"
-                    HorizontalOptions="Start"
-                    VerticalOptions="Start"
-                    FontSize="24"
-                    Clicked="AverageCargo_Clicked"
-                    BackgroundColor="LightGray"
-                />
+               
             </StackLayout>
             <ListView 
                 x:Name="EventTeamsListView"
@@ -133,57 +117,36 @@
                                            FontAttributes="Bold"
                                            FontSize="24"
                                            />
-                                    <Label Text="- Hatches:"
+                                    <Label Text="- Powercells:"
                                            LineBreakMode="NoWrap"
                                            Style="{DynamicResource ListItemTextStyle}"
                                            FontAttributes="Bold"
                                            FontSize="24"
                                            />
-                                    <Label Text="{Binding TotalHatches}"
+                                    <Label Text="{Binding TotalPowercells}"
                                            LineBreakMode="NoWrap"
                                            Style="{DynamicResource ListItemTextStyle}"
                                            FontAttributes="Bold"
                                            FontSize="24"
                                            />
-                                    <Label Text="- Cargo:"
-                                           LineBreakMode="NoWrap"
-                                           Style="{DynamicResource ListItemTextStyle}"
-                                           FontAttributes="Bold"
-                                           FontSize="24"
-                                           />
-                                    <Label Text="{Binding TotalCargo}"
-                                           LineBreakMode="NoWrap"
-                                           Style="{DynamicResource ListItemTextStyle}"
-                                           FontAttributes="Bold"
-                                           FontSize="24"
-                                           />
+                                    
+                                    
                                 </StackLayout>
                                 <StackLayout Orientation="Horizontal">
-                                    <Label Text="Avg Hatches:"
+                                    <Label Text="Avg Powercells:"
                                            LineBreakMode="NoWrap"
                                            Style="{DynamicResource ListItemTextStyle}"
                                            FontAttributes="Bold"
                                            FontSize="24"
                                            Margin="20,0,0,0"
                                            />
-                                    <Label Text="{Binding AverageHatches}"
+                                    <Label Text="{Binding AveragePowercells}"
                                            LineBreakMode="NoWrap"
                                            Style="{DynamicResource ListItemTextStyle}"
                                            FontAttributes="Bold"
                                            FontSize="24"
                                            />
-                                    <Label Text="- Avg Cargo:"
-                                           LineBreakMode="NoWrap"
-                                           Style="{DynamicResource ListItemTextStyle}"
-                                           FontAttributes="Bold"
-                                           FontSize="24"
-                                           />
-                                    <Label Text="{Binding AverageCargo}"
-                                           LineBreakMode="NoWrap"
-                                           Style="{DynamicResource ListItemTextStyle}"
-                                           FontAttributes="Bold"
-                                           FontSize="24"
-                                           />
+                                   
                                 </StackLayout>
                             </StackLayout>
                         </ViewCell>

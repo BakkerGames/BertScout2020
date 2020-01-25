@@ -63,43 +63,31 @@ namespace BertScout2020.Views
             viewModel.SortByAverageScore();
         }
 
-        private void HatchCount_Clicked(object sender, EventArgs e)
+        private void PowercellCount_Clicked(object sender, EventArgs e)
         {
             ClearAllSortButtons();
-            HatchCount.BackgroundColor = App.SelectedButtonColor;
-            viewModel.SortByHatchCount();
+            PowercellCount.BackgroundColor = App.SelectedButtonColor;
+            viewModel.SortByPowercellCount();
         }
 
-        private void CargoCount_Clicked(object sender, EventArgs e)
+       
+
+        private void AveragePowercells_Clicked(object sender, EventArgs e)
         {
             ClearAllSortButtons();
-            CargoCount.BackgroundColor = App.SelectedButtonColor;
-            viewModel.SortByCargoCount();
+            AveragePowercells.BackgroundColor = App.SelectedButtonColor;
+            viewModel.SortByAveragePowercells();
         }
 
-        private void AverageHatches_Clicked(object sender, EventArgs e)
-        {
-            ClearAllSortButtons();
-            AverageHatches.BackgroundColor = App.SelectedButtonColor;
-            viewModel.SortByAverageHatches();
-        }
-
-        private void AverageCargo_Clicked(object sender, EventArgs e)
-        {
-            ClearAllSortButtons();
-            AverageCargo.BackgroundColor = App.SelectedButtonColor;
-            viewModel.SortByAverageCargo();
-        }
+      
 
         private void ClearAllSortButtons()
         {
             TeamNumber.BackgroundColor = App.UnselectedButtonColor;
             RP.BackgroundColor = App.UnselectedButtonColor;
             AvgScore.BackgroundColor = App.UnselectedButtonColor;
-            HatchCount.BackgroundColor = App.UnselectedButtonColor;
-            CargoCount.BackgroundColor = App.UnselectedButtonColor;
-            AverageHatches.BackgroundColor = App.UnselectedButtonColor;
-            AverageCargo.BackgroundColor = App.UnselectedButtonColor;
+            PowercellCount.BackgroundColor = App.UnselectedButtonColor;
+            AveragePowercells.BackgroundColor = App.UnselectedButtonColor;
         }
     }
 }

@@ -16,10 +16,8 @@ namespace BertScout2020.ViewModels
         public int TotalScore = 0;
         public int MatchCount = 0;
         public int AverageScore = 0;
-        public int TotalHatches = 0;
-        public int TotalCargo = 0;
-        public int AverageHatches = 0;
-        public int AverageCargo = 0;
+        public int TotalPowercells = 0;
+        public int AveragePowercells = 0;
 
         public IDataStore<EventTeamMatch> DataStoreMatch;
 
@@ -54,12 +52,11 @@ namespace BertScout2020.ViewModels
                     obj.MatchNumber = match.MatchNumber;
                     int matchRP = CalculateMatchRP(match);
                     int matchScore = CalculateMatchResult(match);
-                    int hatchCount = CalculateHatchCount(match);
-                    int cargoCount = CalculateCargoCount(match);
+                    int powercellCount = CalculatePowercellCount(match);
                     // show match results
                     obj.Text1 = $"Match {match.MatchNumber} -" +
                         $" Score: {matchScore} RP: {matchRP}" +
-                        $" Hatch: {hatchCount} Cargo: {cargoCount}";
+                        $" Powercell: {powercellCount}";
                     string broken = "";
                     if (match.Broken == 1)
                     {
@@ -70,19 +67,17 @@ namespace BertScout2020.ViewModels
                         broken= "Broken: Lots ";
                     }
                     obj.Text2 = broken + match.Comments;
-                    if (matchRP > 0 || matchScore > 0 || match.Broken > 0 || hatchCount > 0 || cargoCount > 0)
+                    if (matchRP > 0 || matchScore > 0 || match.Broken > 0 || powercellCount > 0) 
                     {
                         TotalRP += matchRP;
                         TotalScore += matchScore;
-                        TotalHatches += hatchCount;
-                        TotalCargo += cargoCount;
+                        TotalPowercells += powercellCount;
                         MatchCount++;
                         MatchResults.Add(obj);
                     }
                 }
                 AverageScore = TotalScore / MatchCount;
-                AverageHatches = TotalHatches / MatchCount;
-                AverageCargo = TotalCargo / MatchCount;
+                AveragePowercells = TotalPowercells / MatchCount;
             }
             catch (Exception ex)
             {
@@ -94,16 +89,9 @@ namespace BertScout2020.ViewModels
             }
         }
 
-        private int CalculateCargoCount(EventTeamMatch match)
-        {
-            int result = 0;
-            result += match.AutoOuterCell;
-            result += match.TeleBottomCell;
-            result += match.TeleInnerCell;
-            return result;
-        }
+      
 
-        private int CalculateHatchCount(EventTeamMatch match)
+        private int CalculatePowercellCount(EventTeamMatch match)
         {
             int result = 0;
             result += match.AutoBottomCell;

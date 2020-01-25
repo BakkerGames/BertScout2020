@@ -42,10 +42,8 @@ namespace BertScout2020.ViewModels
                     teamResult.Name = team.Name;
                     teamResult.TotalRP = matchViewModel.TotalRP;
                     teamResult.AverageScore = matchViewModel.AverageScore;
-                    teamResult.TotalHatches = matchViewModel.TotalHatches;
-                    teamResult.TotalCargo = matchViewModel.TotalCargo;
-                    teamResult.AverageHatches = matchViewModel.AverageHatches;
-                    teamResult.AverageCargo = matchViewModel.AverageCargo;
+                    teamResult.TotalPowercells = matchViewModel.TotalPowercells;
+                    teamResult.AveragePowercells = matchViewModel.AveragePowercells;
                     TeamResults.Add(teamResult);
                 }
             }
@@ -89,9 +87,9 @@ namespace BertScout2020.ViewModels
             }
         }
 
-        public void SortByHatchCount()
+        public void SortByPowercellCount()
         {
-            List<TeamResult> ordered = TeamResults.OrderByDescending(o => o.TotalHatches).ToList();
+            List<TeamResult> ordered = TeamResults.OrderByDescending(o => o.TotalPowercells).ToList();
             TeamResults.Clear();
             foreach (TeamResult item in ordered)
             {
@@ -99,9 +97,9 @@ namespace BertScout2020.ViewModels
             }
         }
 
-        internal void SortByAverageHatches()
+        internal void SortByAveragePowercells()
         {
-            List<TeamResult> ordered = TeamResults.OrderByDescending(o => o.AverageHatches).ToList();
+            List<TeamResult> ordered = TeamResults.OrderByDescending(o => o.AveragePowercells).ToList();
             TeamResults.Clear();
             foreach (TeamResult item in ordered)
             {
@@ -109,24 +107,6 @@ namespace BertScout2020.ViewModels
             }
         }
 
-        internal void SortByAverageCargo()
-        {
-            List<TeamResult> ordered = TeamResults.OrderByDescending(o => o.AverageCargo).ToList();
-            TeamResults.Clear();
-            foreach (TeamResult item in ordered)
-            {
-                TeamResults.Add(item);
-            }
-        }
 
-        public void SortByCargoCount()
-        {
-            List<TeamResult> ordered = TeamResults.OrderByDescending(o => o.TotalCargo).ToList();
-            TeamResults.Clear();
-            foreach (TeamResult item in ordered)
-            {
-                TeamResults.Add(item);
-            }
-        }
     }
 }
