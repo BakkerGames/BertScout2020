@@ -60,12 +60,9 @@ namespace BertScout2020.ViewModels
                     string broken = "";
                     if (match.Broken == 1)
                     {
-                        broken= "Broken: Some ";
+                        broken= "Broken ";
                     }
-                    else if (match.Broken == 2)
-                    {
-                        broken= "Broken: Lots ";
-                    }
+                   
                     obj.Text2 = broken + match.Comments;
                     if (matchRP > 0 || matchScore > 0 || match.Broken > 0 || powercellCount > 0) 
                     {
@@ -96,7 +93,10 @@ namespace BertScout2020.ViewModels
             int result = 0;
             result += match.AutoBottomCell;
             result += match.AutoInnerCell;
+            result += match.AutoOuterCell;
             result += match.TeleOuterCell;
+            result += match.TeleBottomCell;
+            result += match.TeleInnerCell;
             return result;
         }
 
@@ -114,12 +114,12 @@ namespace BertScout2020.ViewModels
             int score = 0;
             //not scoring movement type
             //score += match.AutoStartPos;
-            score += match.AutoLeaveInitLine * 3;
+            score += match.AutoLeaveInitLine * 5;
             score += match.AutoBottomCell * 2;
-            score += match.AutoOuterCell * 3;
+            score += match.AutoOuterCell * 4;
 
-            score += match.AutoInnerCell * 2;
-            score += match.TeleBottomCell * 3;
+            score += match.AutoInnerCell * 6;
+            score += match.TeleBottomCell * 1;
             score += match.TeleOuterCell * 2;
             score += match.TeleInnerCell * 3;
             //not scoring highest platform
@@ -130,13 +130,13 @@ namespace BertScout2020.ViewModels
             switch (match.ClimbStatus)
             {
                 case 1:
-                    score += 3;
+                    score += 5;
                     break;
                 case 2:
-                    score += 6;
+                    score += 25;
                     break;
                 case 3:
-                    score += 12;
+                    score += 25;
                     break;
             }
             //not scoring buddy climb
