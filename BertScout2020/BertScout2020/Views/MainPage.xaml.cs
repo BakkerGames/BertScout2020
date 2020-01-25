@@ -94,7 +94,7 @@ namespace BertScout2020.Views
             _syncFlag = true;
             if (string.IsNullOrEmpty(LabelVersionMessage.Text))
             {
-                LabelVersionMessage.Text = "This app was coded by:\nChloe, Lucas, and Scott";
+                LabelVersionMessage.Text = "This app was coded by:\nChloe, Lucas, Nick, Remington, and Scott";
                 LabelVersionMessage2.Text = App.AppVersionDate;
             }
             else
