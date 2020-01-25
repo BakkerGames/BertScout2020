@@ -123,8 +123,8 @@ namespace BertScout2020.ViewModels
             score += match.TeleOuterCell * 2;
             score += match.TeleInnerCell * 3;
             //not scoring highest platform
-            //score += match.RotationControl;
-            //score += match.PositionControl;
+            score += match.RotationControl * 10;
+            score += match.PositionControl * 20;
 
             //score += match.ClimbStatus;
             switch (match.ClimbStatus)
