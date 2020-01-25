@@ -56,7 +56,25 @@ namespace BertScout2020.Views
 
         private void ToolbarItem_Save_Clicked(object sender, System.EventArgs e)
         {
-            SaveComments();
+            if (Editor_MatchScouterName.Text.ToLower() == App.DeleteMatchPassword.ToLower())
+            {
+                //Delete the match record
+                ErrorMessage.Text = "Deleting the match record";
+                if (viewModel.item.Id.HasValue)
+                {
+                    App.database.DeleteEventTeamMatchAsync(viewModel.item.Id.Value);
+                    ErrorMessage.Text = "Match record has been deleted";
+                }
+                else
+                {
+                    ErrorMessage.Text = "Nothing to do, match record not saved yet";
+                }
+            }
+            else
+            { 
+                //dont delete match
+                SaveComments();
+            }
         }
 
         private void SaveComments()
