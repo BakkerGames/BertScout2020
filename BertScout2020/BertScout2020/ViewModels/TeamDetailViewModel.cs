@@ -16,10 +16,8 @@ namespace BertScout2020.ViewModels
         public int TotalScore = 0;
         public int MatchCount = 0;
         public int AverageScore = 0;
-        public int TotalHatches = 0;
-        public int TotalCargo = 0;
-        public int AverageHatches = 0;
-        public int AverageCargo = 0;
+        public int TotalPowercells = 0;
+        public int AveragePowercells = 0;
 
         public IDataStore<EventTeamMatch> DataStoreMatch;
 
@@ -54,35 +52,29 @@ namespace BertScout2020.ViewModels
                     obj.MatchNumber = match.MatchNumber;
                     int matchRP = CalculateMatchRP(match);
                     int matchScore = CalculateMatchResult(match);
-                    int hatchCount = CalculateHatchCount(match);
-                    int cargoCount = CalculateCargoCount(match);
+                    int powercellCount = CalculatePowercellCount(match);
                     // show match results
                     obj.Text1 = $"Match {match.MatchNumber} -" +
                         $" Score: {matchScore} RP: {matchRP}" +
-                        $" Hatch: {hatchCount} Cargo: {cargoCount}";
+                        $" Powercell: {powercellCount}";
                     string broken = "";
                     if (match.Broken == 1)
                     {
-                        broken= "Broken: Some ";
+                        broken= "Broken ";
                     }
-                    else if (match.Broken == 2)
-                    {
-                        broken= "Broken: Lots ";
-                    }
+                   
                     obj.Text2 = broken + match.Comments;
-                    if (matchRP > 0 || matchScore > 0 || match.Broken > 0 || hatchCount > 0 || cargoCount > 0)
+                    if (matchRP > 0 || matchScore > 0 || match.Broken > 0 || powercellCount > 0) 
                     {
                         TotalRP += matchRP;
                         TotalScore += matchScore;
-                        TotalHatches += hatchCount;
-                        TotalCargo += cargoCount;
+                        TotalPowercells += powercellCount;
                         MatchCount++;
                         MatchResults.Add(obj);
                     }
                 }
                 AverageScore = TotalScore / MatchCount;
-                AverageHatches = TotalHatches / MatchCount;
-                AverageCargo = TotalCargo / MatchCount;
+                AveragePowercells = TotalPowercells / MatchCount;
             }
             catch (Exception ex)
             {
@@ -94,21 +86,17 @@ namespace BertScout2020.ViewModels
             }
         }
 
-        private int CalculateCargoCount(EventTeamMatch match)
-        {
-            int result = 0;
-            result += match.AutoOuterCell;
-            result += match.TeleBottomCell;
-            result += match.TeleInnerCell;
-            return result;
-        }
+      
 
-        private int CalculateHatchCount(EventTeamMatch match)
+        private int CalculatePowercellCount(EventTeamMatch match)
         {
             int result = 0;
             result += match.AutoBottomCell;
             result += match.AutoInnerCell;
+            result += match.AutoOuterCell;
             result += match.TeleOuterCell;
+            result += match.TeleBottomCell;
+            result += match.TeleInnerCell;
             return result;
         }
 
@@ -126,33 +114,33 @@ namespace BertScout2020.ViewModels
             int score = 0;
             //not scoring movement type
             //score += match.AutoStartPos;
-            score += match.AutoLeaveInitLine * 3;
+            score += match.AutoLeaveInitLine * 5;
             score += match.AutoBottomCell * 2;
-            score += match.AutoOuterCell * 3;
+            score += match.AutoOuterCell * 4;
 
-            score += match.AutoInnerCell * 2;
-            score += match.TeleBottomCell * 3;
+            score += match.AutoInnerCell * 6;
+            score += match.TeleBottomCell * 1;
             score += match.TeleOuterCell * 2;
             score += match.TeleInnerCell * 3;
             //not scoring highest platform
-            //score += match.RotationControl;
-            //score += match.PositionControl;
+            score += match.RotationControl * 10;
+            score += match.PositionControl * 20;
 
             //score += match.ClimbStatus;
             switch (match.ClimbStatus)
             {
                 case 1:
-                    score += 3;
+                    score += 5;
                     break;
                 case 2:
-                    score += 6;
+                    score += 25;
                     break;
                 case 3:
-                    score += 12;
+                    score += 25;
                     break;
             }
             //not scoring buddy climb
-            //score += match.LevelSwitch;
+            score += match.LevelSwitch * 15;
 
             //score += match.Defense;
             //score += match.Cooperation;

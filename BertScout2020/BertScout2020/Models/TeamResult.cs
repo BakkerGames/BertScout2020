@@ -6,9 +6,7 @@
         public string Name { get; set; }
         public int TotalRP { get; set; }
         public int AverageScore { get; set; }
-        public int TotalHatches { get; set; }
-        public int TotalCargo { get; set; }
-        public int AverageHatches { get; internal set; }
-        public int AverageCargo { get; internal set; }
+        public int TotalPowercells { get; set; }
+        public int AveragePowercells { get; internal set; }
     }
 }
