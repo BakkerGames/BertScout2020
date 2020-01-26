@@ -58,8 +58,8 @@ namespace BertScout2020.Views
         {
             if (Editor_MatchScouterName.Text.ToLower() == App.DeleteMatchPassword.ToLower())
             {
-                //Delete the match record
-                ErrorMessage.Text = "Deleting the match record";
+                // delete the match record
+                ErrorMessage.Text = "Deleting the match record...";
                 if (viewModel.item.Id.HasValue)
                 {
                     App.database.DeleteEventTeamMatchAsync(viewModel.item.Id.Value);
@@ -71,8 +71,8 @@ namespace BertScout2020.Views
                 }
             }
             else
-            { 
-                //dont delete match
+            {
+                // don't delete the match
                 SaveComments();
             }
         }

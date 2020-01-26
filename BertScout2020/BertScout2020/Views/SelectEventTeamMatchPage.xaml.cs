@@ -70,10 +70,13 @@ namespace BertScout2020.Views
             {
                 return;
             }
-            _addNewMatchBusy = true;
-            doAddNewMatch(App.highestMatchNumber + 1);
-            App.highestMatchNumber++;
-            _addNewMatchBusy = false;
+            if (App.highestMatchNumber < 999)
+            {
+                _addNewMatchBusy = true;
+                doAddNewMatch(App.highestMatchNumber + 1);
+                App.highestMatchNumber++;
+                _addNewMatchBusy = false;
+            }
         }
 
         private async void doAddNewMatch(int value)
