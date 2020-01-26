@@ -27,25 +27,10 @@ namespace BertScout2020.Views
         {
             base.OnAppearing();
             _loadingFlag = true;
-            Editor_MatchScouterName.Text = viewModel.item.ScouterName ?? "";
             Editor_MatchComment.Text = viewModel.item.Comments ?? "";
-            if (string.IsNullOrEmpty(Editor_MatchScouterName.Text?.Trim()))
-            {
-                ErrorMessage.Text = "Please enter your name";
-            }
-            else
-            {
-                ErrorMessage.Text = "";
-            }
+            ErrorMessage.Text = "";
             _loadingFlag = false;
-            if (string.IsNullOrEmpty(Editor_MatchScouterName.Text))
-            {
-                Editor_MatchScouterName.Focus();
-            }
-            else
-            {
-                Editor_MatchComment.Focus();
-            }
+            Editor_MatchComment.Focus();
         }
 
         protected override void OnDisappearing()
@@ -56,7 +41,7 @@ namespace BertScout2020.Views
 
         private void ToolbarItem_Save_Clicked(object sender, System.EventArgs e)
         {
-            if (Editor_MatchScouterName.Text.ToLower() == App.DeleteMatchPassword.ToLower())
+            if (Editor_MatchComment.Text.ToLower() == App.DeleteMatchPassword.ToLower())
             {
                 // delete the match record
                 ErrorMessage.Text = "Deleting the match record...";
@@ -81,21 +66,12 @@ namespace BertScout2020.Views
         {
             try
             {
-                if (viewModel.item.ScouterName != Editor_MatchScouterName.Text
-                    || viewModel.item.Comments != Editor_MatchComment.Text)
+                if (viewModel.item.Comments != Editor_MatchComment.Text)
                 {
-                    viewModel.item.ScouterName = Editor_MatchScouterName.Text?.Trim();
                     viewModel.item.Comments = Editor_MatchComment.Text?.Trim();
                     App.database.SaveEventTeamMatchAsync(viewModel.item);
                 }
-                if (string.IsNullOrEmpty(Editor_MatchScouterName.Text?.Trim()))
-                {
-                    ErrorMessage.Text = "Please enter your name";
-                }
-                else
-                {
-                    ErrorMessage.Text = "";
-                }
+                ErrorMessage.Text = "";
             }
             catch (System.Exception ex)
             {
@@ -104,14 +80,6 @@ namespace BertScout2020.Views
         }
 
         private void Editor_MatchComment_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            if (!_loadingFlag && string.IsNullOrEmpty(ErrorMessage.Text))
-            {
-                ErrorMessage.Text = "(Not Saved)";
-            }
-        }
-
-        private void Editor_MatchScouterName_TextChanged(object sender, TextChangedEventArgs e)
         {
             if (!_loadingFlag && string.IsNullOrEmpty(ErrorMessage.Text))
             {

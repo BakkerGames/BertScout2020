@@ -30,6 +30,7 @@ namespace BertScout2020
         static public int highestMatchNumber { get; set; } = 0;
         static public string syncIpAddress { get; set; } = "";
         static public string kindleName { get; set; } = "00";
+        static public string currScouterName { get; set; } = "";
 
         // app database
         static public BertScout2020Database database;
@@ -44,6 +45,9 @@ namespace BertScout2020
         private const string propNameHighestMatchNumber = "highestMatchNumber";
         private const string propNameIpAddress = "syncIpAddress";
         private const string propNameKindleName = "currKindleName";
+        private const string propNameScouterName = "currScouterName";
+
+
 
         public App()
         {
@@ -72,6 +76,10 @@ namespace BertScout2020
                     {
                         kindleName = (string)Properties[propNameKindleName];
                     }
+                    if (Properties.ContainsKey(propNameScouterName))
+                    {
+                        currScouterName = (string)Properties[propNameScouterName];
+                    }
                 }
             }
             catch (Exception)
@@ -82,6 +90,7 @@ namespace BertScout2020
                 Properties[propNameHighestMatchNumber] = 0;
                 Properties[propNameIpAddress] = "";
                 Properties[propNameKindleName] = "";
+                Properties[propNameScouterName] = "";
             }
             InitializeComponent();
             MainPage = new NavigationPage(new MainPage())
@@ -129,6 +138,7 @@ namespace BertScout2020
             Properties[propNameHighestMatchNumber] = highestMatchNumber;
             Properties[propNameIpAddress] = syncIpAddress;
             Properties[propNameKindleName] = kindleName;
+            Properties[propNameScouterName] = currScouterName;
         }
 
         public static string GetMyDocumentsPath()

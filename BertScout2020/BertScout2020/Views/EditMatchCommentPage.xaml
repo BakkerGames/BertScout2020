@@ -21,23 +21,6 @@
         <StackLayout
             VerticalOptions="FillAndExpand"
             HorizontalOptions="FillAndExpand">
-            <StackLayout Orientation="Horizontal">
-                <Label 
-                    Text="Name: "
-                    FontSize="24"
-                    VerticalTextAlignment="Center"
-                    />
-                <Entry 
-                    x:Name="Editor_MatchScouterName"
-                    Text=""
-                    FontSize="24"
-                    IsSpellCheckEnabled="False"
-                    IsTextPredictionEnabled="False"
-                    HorizontalOptions="FillAndExpand"
-                    MaxLength="25"
-                    TextChanged="Editor_MatchScouterName_TextChanged"
-                    />
-            </StackLayout>
             <Label 
                 Text="Comment:"
                 FontSize="24"

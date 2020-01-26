@@ -22,6 +22,11 @@ namespace BertScout2020.Views
             SqlDataEventTeamMatches = new SqlDataStoreEventTeamMatches(App.currFRCEventKey);
         }
 
+        private void Editor_MatchScouterName_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            App.currScouterName = Editor_MatchScouterName.Text;
+        }
+
         protected override void OnAppearing()
         {
             base.OnAppearing();
@@ -30,6 +35,7 @@ namespace BertScout2020.Views
                 App.highestMatchNumber = 0;
             }
             MatchNumberLabelValue.Text = (App.highestMatchNumber + 1).ToString();
+            Editor_MatchScouterName.Text = App.currScouterName;
         }
 
         private async void EventTeamsListMatchView_ItemSelected(object sender, SelectedItemChangedEventArgs args)

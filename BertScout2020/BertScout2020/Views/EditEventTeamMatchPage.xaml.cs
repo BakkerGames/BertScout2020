@@ -524,12 +524,12 @@ namespace BertScout2020.Views
 
         private void Button_ClimbStatus_Middle_Clicked(object sender, System.EventArgs e)
         {
-            ClimbStatus = 3;
+            ClimbStatus = 2;
         }
 
         private void Button_ClimbStatus_Edge_Clicked(object sender, System.EventArgs e)
         {
-            ClimbStatus = 4;
+            ClimbStatus = 3;
         }
 
         #endregion
