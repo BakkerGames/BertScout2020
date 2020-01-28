@@ -2,10 +2,42 @@
 <ArrayOfFRCEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <FRCEvent>
     <Uuid>80811106-f404-472a-9bd3-15bdfcb68474</Uuid>
-    <EventKey>TEST</EventKey>
+    <EventKey>2020test</EventKey>
     <Name>Testing</Name>
-    <Location>TBD</Location>
+    <Location>Everywhere</Location>
     <StartDate>2020-01-01</StartDate>
     <EndDate>2020-12-31</EndDate>
+  </FRCEvent>
+  <FRCEvent>
+    <Uuid>80811106-f404-472a-9bd3-15bdfcb68474</Uuid>
+    <EventKey>2020nhgrs</EventKey>
+    <Name>NE District Granite State Event</Name>
+    <Location>Salem, NH</Location>
+    <StartDate>2020-02-27</StartDate>
+    <EndDate>2020-02-29</EndDate>
+  </FRCEvent>
+  <FRCEvent>
+    <Uuid>80811106-f404-472a-9bd3-15bdfcb68474</Uuid>
+    <EventKey>2020melew</EventKey>
+    <Name>NE District Pine Tree Event</Name>
+    <Location>Lewiston, ME</Location>
+    <StartDate>2020-04-02</StartDate>
+    <EndDate>2020-04-04</EndDate>
+  </FRCEvent>
+  <FRCEvent>
+    <Uuid>80811106-f404-472a-9bd3-15bdfcb68474</Uuid>
+    <EventKey>2020necmp</EventKey>
+    <Name>New England District Championship</Name>
+    <Location>West Springfield, MA</Location>
+    <StartDate>2020-04-08</StartDate>
+    <EndDate>2020-04-11</EndDate>
+  </FRCEvent>
+  <FRCEvent>
+    <Uuid>80811106-f404-472a-9bd3-15bdfcb68474</Uuid>
+    <EventKey>2020cmpmi</EventKey>
+    <Name>FIRST Championship (Detroit)</Name>
+    <Location>Detroit, MI</Location>
+    <StartDate>2020-04-29</StartDate>
+    <EndDate>2020-05-02</EndDate>
   </FRCEvent>
 </ArrayOfFRCEvent>

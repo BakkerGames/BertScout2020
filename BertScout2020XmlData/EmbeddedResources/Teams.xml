@@ -42810,4 +42810,64 @@
     <Name>CRUSADERS</Name>
     <Location>--</Location>
   </Team>
+  <Team>
+    <Uuid>99999999-9999-9999-9999-999999999990</Uuid>
+    <TeamNumber>9990</TeamNumber>
+    <Name>Team 9990</Name>
+    <Location>--</Location>
+  </Team>
+  <Team>
+    <Uuid>99999999-9999-9999-9999-999999999991</Uuid>
+    <TeamNumber>9991</TeamNumber>
+    <Name>Team 9991</Name>
+    <Location>--</Location>
+  </Team>
+  <Team>
+    <Uuid>99999999-9999-9999-9999-999999999992</Uuid>
+    <TeamNumber>9992</TeamNumber>
+    <Name>Team 9992</Name>
+    <Location>--</Location>
+  </Team>
+  <Team>
+    <Uuid>99999999-9999-9999-9999-999999999993</Uuid>
+    <TeamNumber>9993</TeamNumber>
+    <Name>Team 9993</Name>
+    <Location>--</Location>
+  </Team>
+  <Team>
+    <Uuid>99999999-9999-9999-9999-999999999994</Uuid>
+    <TeamNumber>9994</TeamNumber>
+    <Name>Team 9994</Name>
+    <Location>--</Location>
+  </Team>
+  <Team>
+    <Uuid>99999999-9999-9999-9999-999999999995</Uuid>
+    <TeamNumber>9995</TeamNumber>
+    <Name>Team 9995</Name>
+    <Location>--</Location>
+  </Team>
+  <Team>
+    <Uuid>99999999-9999-9999-9999-999999999996</Uuid>
+    <TeamNumber>9996</TeamNumber>
+    <Name>Team 9996</Name>
+    <Location>--</Location>
+  </Team>
+  <Team>
+    <Uuid>99999999-9999-9999-9999-999999999997</Uuid>
+    <TeamNumber>9997</TeamNumber>
+    <Name>Team 9997</Name>
+    <Location>--</Location>
+  </Team>
+  <Team>
+    <Uuid>99999999-9999-9999-9999-999999999998</Uuid>
+    <TeamNumber>9998</TeamNumber>
+    <Name>Team 9998</Name>
+    <Location>--</Location>
+  </Team>
+  <Team>
+    <Uuid>99999999-9999-9999-9999-999999999999</Uuid>
+    <TeamNumber>9999</TeamNumber>
+    <Name>Team 9999</Name>
+    <Location>--</Location>
+  </Team>
 </ArrayOfTeam>
