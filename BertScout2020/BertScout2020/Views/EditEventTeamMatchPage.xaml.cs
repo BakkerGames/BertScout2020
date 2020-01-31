@@ -87,6 +87,8 @@ namespace BertScout2020.Views
                     if (string.IsNullOrEmpty(viewModel.item.ScouterName))
                     {
                         viewModel.item.ScouterName = App.currScouterName;
+                        Title = $"Team {App.currTeamNumber} - Match {App.currMatchNumber} - {viewModel.item.ScouterName}";
+
                     }
                     App.database.SaveEventTeamMatchAsync(viewModel.item);
                 }
@@ -140,6 +142,8 @@ namespace BertScout2020.Views
                     if (string.IsNullOrEmpty(viewModel.item.ScouterName))
                     {
                         viewModel.item.ScouterName = App.currScouterName;
+                        Title = $"Team {App.currTeamNumber} - Match {App.currMatchNumber} - {viewModel.item.ScouterName}";
+
                     }
                     App.database.SaveEventTeamMatchAsync(viewModel.item);
                 }
@@ -175,6 +179,8 @@ namespace BertScout2020.Views
                     if (string.IsNullOrEmpty(viewModel.item.ScouterName))
                     {
                         viewModel.item.ScouterName = App.currScouterName;
+                        Title = $"Team {App.currTeamNumber} - Match {App.currMatchNumber} - {viewModel.item.ScouterName}";
+
                     }
                     App.database.SaveEventTeamMatchAsync(viewModel.item);
                 }
@@ -216,6 +222,8 @@ namespace BertScout2020.Views
                     if (string.IsNullOrEmpty(viewModel.item.ScouterName))
                     {
                         viewModel.item.ScouterName = App.currScouterName;
+                        Title = $"Team {App.currTeamNumber} - Match {App.currMatchNumber} - {viewModel.item.ScouterName}";
+
                     }
                     App.database.SaveEventTeamMatchAsync(viewModel.item);
                 }
@@ -257,6 +265,8 @@ namespace BertScout2020.Views
                     if (string.IsNullOrEmpty(viewModel.item.ScouterName))
                     {
                         viewModel.item.ScouterName = App.currScouterName;
+                        Title = $"Team {App.currTeamNumber} - Match {App.currMatchNumber} - {viewModel.item.ScouterName}";
+
                     }
                     App.database.SaveEventTeamMatchAsync(viewModel.item);
                 }
@@ -298,6 +308,8 @@ namespace BertScout2020.Views
                     if (string.IsNullOrEmpty(viewModel.item.ScouterName))
                     {
                         viewModel.item.ScouterName = App.currScouterName;
+                        Title = $"Team {App.currTeamNumber} - Match {App.currMatchNumber} - {viewModel.item.ScouterName}";
+
                     }
                     App.database.SaveEventTeamMatchAsync(viewModel.item);
                 }
@@ -339,6 +351,8 @@ namespace BertScout2020.Views
                     if (string.IsNullOrEmpty(viewModel.item.ScouterName))
                     {
                         viewModel.item.ScouterName = App.currScouterName;
+                        Title = $"Team {App.currTeamNumber} - Match {App.currMatchNumber} - {viewModel.item.ScouterName}";
+
                     }
                     App.database.SaveEventTeamMatchAsync(viewModel.item);
                 }
@@ -380,6 +394,8 @@ namespace BertScout2020.Views
                     if (string.IsNullOrEmpty(viewModel.item.ScouterName))
                     {
                         viewModel.item.ScouterName = App.currScouterName;
+                        Title = $"Team {App.currTeamNumber} - Match {App.currMatchNumber} - {viewModel.item.ScouterName}";
+
                     }
                     App.database.SaveEventTeamMatchAsync(viewModel.item);
                 }
@@ -434,6 +450,8 @@ namespace BertScout2020.Views
                     if (string.IsNullOrEmpty(viewModel.item.ScouterName))
                     {
                         viewModel.item.ScouterName = App.currScouterName;
+                        Title = $"Team {App.currTeamNumber} - Match {App.currMatchNumber} - {viewModel.item.ScouterName}";
+
                     }
                     App.database.SaveEventTeamMatchAsync(viewModel.item);
                 }
@@ -484,6 +502,8 @@ namespace BertScout2020.Views
                     if (string.IsNullOrEmpty(viewModel.item.ScouterName))
                     {
                         viewModel.item.ScouterName = App.currScouterName;
+                        Title = $"Team {App.currTeamNumber} - Match {App.currMatchNumber} - {viewModel.item.ScouterName}";
+
                     }
                     App.database.SaveEventTeamMatchAsync(viewModel.item);
                 }
@@ -550,6 +570,8 @@ namespace BertScout2020.Views
                     if (string.IsNullOrEmpty(viewModel.item.ScouterName))
                     {
                         viewModel.item.ScouterName = App.currScouterName;
+                        Title = $"Team {App.currTeamNumber} - Match {App.currMatchNumber} - {viewModel.item.ScouterName}";
+
                     }
                     App.database.SaveEventTeamMatchAsync(viewModel.item);
                 }
@@ -613,6 +635,8 @@ namespace BertScout2020.Views
                     if (string.IsNullOrEmpty(viewModel.item.ScouterName))
                     {
                         viewModel.item.ScouterName = App.currScouterName;
+                        Title = $"Team {App.currTeamNumber} - Match {App.currMatchNumber} - {viewModel.item.ScouterName}";
+
                     }
                     App.database.SaveEventTeamMatchAsync(viewModel.item);
                 }
@@ -768,6 +792,12 @@ namespace BertScout2020.Views
                 if (viewModel.item.Fouls != value)
                 {
                     viewModel.item.Fouls = value;
+                    if (string.IsNullOrEmpty(viewModel.item.ScouterName))
+                    {
+                        viewModel.item.ScouterName = App.currScouterName;
+                        Title = $"Team {App.currTeamNumber} - Match {App.currMatchNumber} - {viewModel.item.ScouterName}";
+
+                    }
                     App.database.SaveEventTeamMatchAsync(viewModel.item);
                 }
             }
@@ -862,6 +892,12 @@ namespace BertScout2020.Views
                 if (viewModel.item.Broken != newValue)
                 {
                     viewModel.item.Broken = newValue;
+                    if (string.IsNullOrEmpty(viewModel.item.ScouterName))
+                    {
+                        viewModel.item.ScouterName = App.currScouterName;
+                        Title = $"Team {App.currTeamNumber} - Match {App.currMatchNumber} - {viewModel.item.ScouterName}";
+
+                    }
                     App.database.SaveEventTeamMatchAsync(viewModel.item);
                 }
             }
@@ -919,6 +955,12 @@ namespace BertScout2020.Views
                 if (viewModel.item.AllianceResult != newValue)
                 {
                     viewModel.item.AllianceResult = newValue;
+                    if (string.IsNullOrEmpty(viewModel.item.ScouterName))
+                    {
+                        viewModel.item.ScouterName = App.currScouterName;
+                        Title = $"Team {App.currTeamNumber} - Match {App.currMatchNumber} - {viewModel.item.ScouterName}";
+
+                    }
                     App.database.SaveEventTeamMatchAsync(viewModel.item);
                 }
             }
@@ -968,6 +1010,12 @@ namespace BertScout2020.Views
                 if (viewModel.item.StageRankingPoint != newValue)
                 {
                     viewModel.item.StageRankingPoint = newValue;
+                    if (string.IsNullOrEmpty(viewModel.item.ScouterName))
+                    {
+                        viewModel.item.ScouterName = App.currScouterName;
+                        Title = $"Team {App.currTeamNumber} - Match {App.currMatchNumber} - {viewModel.item.ScouterName}";
+
+                    }
                     App.database.SaveEventTeamMatchAsync(viewModel.item);
                 }
             }
@@ -1012,6 +1060,12 @@ namespace BertScout2020.Views
                 if (viewModel.item.ClimbRankingPoint != newValue)
                 {
                     viewModel.item.ClimbRankingPoint = newValue;
+                    if (string.IsNullOrEmpty(viewModel.item.ScouterName))
+                    {
+                        viewModel.item.ScouterName = App.currScouterName;
+                        Title = $"Team {App.currTeamNumber} - Match {App.currMatchNumber} - {viewModel.item.ScouterName}";
+
+                    }
                     App.database.SaveEventTeamMatchAsync(viewModel.item);
                 }
             }
