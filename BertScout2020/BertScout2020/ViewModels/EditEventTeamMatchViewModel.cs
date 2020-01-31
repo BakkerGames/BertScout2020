@@ -9,7 +9,7 @@ namespace BertScout2020.ViewModels
         public EditEventTeamMatchViewModel(EventTeamMatch item)
         {
             this.item = item;
-            Title = $"Team {App.currTeamNumber} - Match {App.currMatchNumber} - {App.currScouterName}";
+            Title = $"Team {App.currTeamNumber} - Match {App.currMatchNumber} - {this.item.ScouterName}";
         }
     }
 }

@@ -84,6 +84,10 @@ namespace BertScout2020.Views
                 if (viewModel.item.AutoStartPos != newValue)
                 {
                     viewModel.item.AutoStartPos = newValue;
+                    if (string.IsNullOrEmpty(viewModel.item.ScouterName))
+                    {
+                        viewModel.item.ScouterName = App.currScouterName;
+                    }
                     App.database.SaveEventTeamMatchAsync(viewModel.item);
                 }
             }
@@ -133,6 +137,10 @@ namespace BertScout2020.Views
                 if (viewModel.item.AutoLeaveInitLine != newValue)
                 {
                     viewModel.item.AutoLeaveInitLine = newValue;
+                    if (string.IsNullOrEmpty(viewModel.item.ScouterName))
+                    {
+                        viewModel.item.ScouterName = App.currScouterName;
+                    }
                     App.database.SaveEventTeamMatchAsync(viewModel.item);
                 }
             }
@@ -164,6 +172,10 @@ namespace BertScout2020.Views
                 if (viewModel.item.AutoBottomCell != value)
                 {
                     viewModel.item.AutoBottomCell = value;
+                    if (string.IsNullOrEmpty(viewModel.item.ScouterName))
+                    {
+                        viewModel.item.ScouterName = App.currScouterName;
+                    }
                     App.database.SaveEventTeamMatchAsync(viewModel.item);
                 }
             }
@@ -201,6 +213,10 @@ namespace BertScout2020.Views
                 if (viewModel.item.AutoOuterCell != value)
                 {
                     viewModel.item.AutoOuterCell = value;
+                    if (string.IsNullOrEmpty(viewModel.item.ScouterName))
+                    {
+                        viewModel.item.ScouterName = App.currScouterName;
+                    }
                     App.database.SaveEventTeamMatchAsync(viewModel.item);
                 }
             }
@@ -238,6 +254,10 @@ namespace BertScout2020.Views
                 if (viewModel.item.AutoInnerCell != value)
                 {
                     viewModel.item.AutoInnerCell = value;
+                    if (string.IsNullOrEmpty(viewModel.item.ScouterName))
+                    {
+                        viewModel.item.ScouterName = App.currScouterName;
+                    }
                     App.database.SaveEventTeamMatchAsync(viewModel.item);
                 }
             }
@@ -275,6 +295,10 @@ namespace BertScout2020.Views
                 if (viewModel.item.TeleBottomCell != value)
                 {
                     viewModel.item.TeleBottomCell = value;
+                    if (string.IsNullOrEmpty(viewModel.item.ScouterName))
+                    {
+                        viewModel.item.ScouterName = App.currScouterName;
+                    }
                     App.database.SaveEventTeamMatchAsync(viewModel.item);
                 }
             }
@@ -312,6 +336,10 @@ namespace BertScout2020.Views
                 if (viewModel.item.TeleOuterCell != value)
                 {
                     viewModel.item.TeleOuterCell = value;
+                    if (string.IsNullOrEmpty(viewModel.item.ScouterName))
+                    {
+                        viewModel.item.ScouterName = App.currScouterName;
+                    }
                     App.database.SaveEventTeamMatchAsync(viewModel.item);
                 }
             }
@@ -349,6 +377,10 @@ namespace BertScout2020.Views
                 if (viewModel.item.TeleInnerCell != value)
                 {
                     viewModel.item.TeleInnerCell = value;
+                    if (string.IsNullOrEmpty(viewModel.item.ScouterName))
+                    {
+                        viewModel.item.ScouterName = App.currScouterName;
+                    }
                     App.database.SaveEventTeamMatchAsync(viewModel.item);
                 }
             }
@@ -399,6 +431,10 @@ namespace BertScout2020.Views
                 if (viewModel.item.RotationControl != value)
                 {
                     viewModel.item.RotationControl = value;
+                    if (string.IsNullOrEmpty(viewModel.item.ScouterName))
+                    {
+                        viewModel.item.ScouterName = App.currScouterName;
+                    }
                     App.database.SaveEventTeamMatchAsync(viewModel.item);
                 }
             }
@@ -445,6 +481,10 @@ namespace BertScout2020.Views
                 if (viewModel.item.PositionControl != value)
                 {
                     viewModel.item.PositionControl = value;
+                    if (string.IsNullOrEmpty(viewModel.item.ScouterName))
+                    {
+                        viewModel.item.ScouterName = App.currScouterName;
+                    }
                     App.database.SaveEventTeamMatchAsync(viewModel.item);
                 }
             }
@@ -507,6 +547,10 @@ namespace BertScout2020.Views
                 if (viewModel.item.ClimbStatus != newValue)
                 {
                     viewModel.item.ClimbStatus = newValue;
+                    if (string.IsNullOrEmpty(viewModel.item.ScouterName))
+                    {
+                        viewModel.item.ScouterName = App.currScouterName;
+                    }
                     App.database.SaveEventTeamMatchAsync(viewModel.item);
                 }
             }
@@ -566,6 +610,10 @@ namespace BertScout2020.Views
                 if (viewModel.item.LevelSwitch != newValue)
                 {
                     viewModel.item.LevelSwitch = newValue;
+                    if (string.IsNullOrEmpty(viewModel.item.ScouterName))
+                    {
+                        viewModel.item.ScouterName = App.currScouterName;
+                    }
                     App.database.SaveEventTeamMatchAsync(viewModel.item);
                 }
             }
