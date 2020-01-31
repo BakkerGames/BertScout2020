@@ -59,6 +59,12 @@ namespace BertScout2020.Views
             {
                 // don't delete the match
                 SaveComments();
+                if (string.IsNullOrEmpty(viewModel.item.ScouterName))
+                {
+                    viewModel.item.ScouterName = App.currScouterName;
+                    Title = $"Team {App.currTeamNumber} - Match {App.currMatchNumber} - {viewModel.item.ScouterName}";
+
+                }
             }
         }
 
