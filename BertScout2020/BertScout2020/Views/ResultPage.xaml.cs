@@ -56,6 +56,13 @@ namespace BertScout2020.Views
             viewModel.SortByRankingPoints();
         }
 
+        private void Score_Clicked(object sender, EventArgs e)
+        {
+            ClearAllSortButtons();
+            Score.BackgroundColor = App.SelectedButtonColor;
+            viewModel.SortByTotalScore();
+        }
+
         private void AvgScore_Clicked(object sender, EventArgs e)
         {
             ClearAllSortButtons();
@@ -70,7 +77,14 @@ namespace BertScout2020.Views
             viewModel.SortByPowercellCount();
         }
 
-       
+        private void Broken_Clicked(object sender, EventArgs e)
+        {
+            ClearAllSortButtons();
+            Broken.BackgroundColor = App.SelectedButtonColor;
+            viewModel.SortByBroken();
+        }
+
+
 
         private void AveragePowercells_Clicked(object sender, EventArgs e)
         {

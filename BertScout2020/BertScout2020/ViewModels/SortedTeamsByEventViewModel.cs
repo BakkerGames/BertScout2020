@@ -41,9 +41,13 @@ namespace BertScout2020.ViewModels
                     teamResult.TeamNumber = team.TeamNumber;
                     teamResult.Name = team.Name;
                     teamResult.TotalRP = matchViewModel.TotalRP;
+                    teamResult.TotalScore = matchViewModel.TotalScore;
                     teamResult.AverageScore = matchViewModel.AverageScore;
                     teamResult.TotalPowercells = matchViewModel.TotalPowercells;
                     teamResult.AveragePowercells = matchViewModel.AveragePowercells;
+                    teamResult.Broken = matchViewModel.Broken;
+
+
                     TeamResults.Add(teamResult);
                 }
             }
@@ -60,6 +64,17 @@ namespace BertScout2020.ViewModels
         internal void SortByTeamNumber()
         {
             List<TeamResult> ordered = TeamResults.OrderBy(o => o.TeamNumber).ToList();
+            TeamResults.Clear();
+            foreach (TeamResult item in ordered)
+            {
+                TeamResults.Add(item);
+            }
+        }
+
+        //FIXME - still sorts by avg. score
+        public void SortByTotalScore()
+        {
+            List<TeamResult> ordered = TeamResults.OrderByDescending(o => o.TotalScore).ToList();
             TeamResults.Clear();
             foreach (TeamResult item in ordered)
             {
@@ -100,6 +115,17 @@ namespace BertScout2020.ViewModels
         internal void SortByAveragePowercells()
         {
             List<TeamResult> ordered = TeamResults.OrderByDescending(o => o.AveragePowercells).ToList();
+            TeamResults.Clear();
+            foreach (TeamResult item in ordered)
+            {
+                TeamResults.Add(item);
+            }
+        }
+
+        //FIXME - still sorts by avg. pow. cells
+        internal void SortByBroken()
+        {
+            List<TeamResult> ordered = TeamResults.OrderByDescending(o => o.Broken).ToList();
             TeamResults.Clear();
             foreach (TeamResult item in ordered)
             {

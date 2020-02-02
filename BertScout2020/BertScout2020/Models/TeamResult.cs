@@ -5,8 +5,11 @@
         public int TeamNumber { get; set; }
         public string Name { get; set; }
         public int TotalRP { get; set; }
+        public int TotalScore { get; set; }
         public int AverageScore { get; set; }
         public int TotalPowercells { get; set; }
-        public int AveragePowercells { get; internal set; }
+        public int AveragePowercells { get; set; }
+        public int Broken { get; set; }
+
     }
 }
