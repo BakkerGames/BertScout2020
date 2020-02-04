@@ -18,6 +18,7 @@ namespace BertScout2020.ViewModels
         public int AverageScore = 0;
         public int TotalPowercells = 0;
         public int AveragePowercells = 0;
+        public int TotalBroken = 0;
 
         public IDataStore<EventTeamMatch> DataStoreMatch;
 
@@ -53,22 +54,24 @@ namespace BertScout2020.ViewModels
                     int matchRP = CalculateMatchRP(match);
                     int matchScore = CalculateMatchResult(match);
                     int powercellCount = CalculatePowercellCount(match);
+                    int brokenCount = match.Broken;
                     // show match results
                     obj.Text1 = $"Match {match.MatchNumber} -" +
                         $" Score: {matchScore} RP: {matchRP}" +
                         $" Powercell: {powercellCount}";
-                    string broken = "";
+                    obj.Text2 = "";
                     if (match.Broken == 1)
                     {
-                        broken= "Broken ";
+                        obj.Text2 += "Broken ";
                     }
-                   
-                    obj.Text2 = broken + match.Comments;
-                    if (matchRP > 0 || matchScore > 0 || match.Broken > 0 || powercellCount > 0) 
+                    obj.Text2 += match.Comments;
+
+                    if (matchRP > 0 || matchScore > 0 || brokenCount > 0 || powercellCount > 0) 
                     {
                         TotalRP += matchRP;
                         TotalScore += matchScore;
                         TotalPowercells += powercellCount;
+                        TotalBroken += brokenCount;
                         MatchCount++;
                         MatchResults.Add(obj);
                     }

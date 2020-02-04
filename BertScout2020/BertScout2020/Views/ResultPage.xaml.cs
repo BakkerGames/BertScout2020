@@ -99,9 +99,12 @@ namespace BertScout2020.Views
         {
             TeamNumber.BackgroundColor = App.UnselectedButtonColor;
             RP.BackgroundColor = App.UnselectedButtonColor;
+            Score.BackgroundColor = App.UnselectedButtonColor;
             AvgScore.BackgroundColor = App.UnselectedButtonColor;
             PowercellCount.BackgroundColor = App.UnselectedButtonColor;
             AveragePowercells.BackgroundColor = App.UnselectedButtonColor;
+            Broken.BackgroundColor = App.UnselectedButtonColor;
+
         }
     }
 }
