@@ -25,6 +25,15 @@
                     BackgroundColor="LightGray"
                 />
                 <Button
+                    x:Name="Score"
+                    Text="Score"
+                    HorizontalOptions="Start"
+                    VerticalOptions="Start"
+                    FontSize="24"
+                    Clicked="Score_Clicked"
+                    BackgroundColor="LightGray"
+                />
+                <Button
                     x:Name="AvgScore"
                     Text="Avg. Score"
                     HorizontalOptions="Start"
@@ -33,6 +42,8 @@
                     Clicked="AvgScore_Clicked"
                     BackgroundColor="LightGray"
                 />
+            </StackLayout>
+            <StackLayout Orientation="Horizontal" Margin="10,0,10,0">
                 <Button
                     x:Name="PowercellCount"
                     Text="Powercells"
@@ -42,9 +53,6 @@
                     Clicked="PowercellCount_Clicked"
                     BackgroundColor="LightGray"
                 />
-            </StackLayout>
-            <StackLayout Orientation="Horizontal" Margin="10,0,10,0">
-                
                 <Button
                     x:Name="AveragePowercells"
                     Text="Avg. Powercells"
@@ -52,6 +60,15 @@
                     VerticalOptions="Start"
                     FontSize="24"
                     Clicked="AveragePowercells_Clicked"
+                    BackgroundColor="LightGray"
+                />
+                <Button
+                    x:Name="Broken"
+                    Text="Broken"
+                    HorizontalOptions="Start"
+                    VerticalOptions="Start"
+                    FontSize="24"
+                    Clicked="Broken_Clicked"
                     BackgroundColor="LightGray"
                 />
                
@@ -132,6 +149,7 @@
                                     
                                     
                                 </StackLayout>
+
                                 <StackLayout Orientation="Horizontal">
                                     <Label Text="Avg Powercells:"
                                            LineBreakMode="NoWrap"
@@ -146,8 +164,23 @@
                                            FontAttributes="Bold"
                                            FontSize="24"
                                            />
-                                   
+
+                                    <Label Text="Broken:"
+                                           LineBreakMode="NoWrap"
+                                           Style="{DynamicResource ListItemTextStyle}"
+                                           FontAttributes="Bold"
+                                           FontSize="24"
+                                           Margin="20,0,0,0"
+                                           />
+                                    <Label Text="{Binding TotalBroken}"
+                                           LineBreakMode="NoWrap"
+                                           Style="{DynamicResource ListItemTextStyle}"
+                                           FontAttributes="Bold"
+                                           FontSize="24"
+                                           />
+
                                 </StackLayout>
+                            
                             </StackLayout>
                         </ViewCell>
                     </DataTemplate>
