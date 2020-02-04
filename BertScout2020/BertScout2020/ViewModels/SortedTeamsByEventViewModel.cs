@@ -45,9 +45,7 @@ namespace BertScout2020.ViewModels
                     teamResult.AverageScore = matchViewModel.AverageScore;
                     teamResult.TotalPowercells = matchViewModel.TotalPowercells;
                     teamResult.AveragePowercells = matchViewModel.AveragePowercells;
-                    teamResult.Broken = matchViewModel.Broken;
-
-
+                    teamResult.TotalBroken = matchViewModel.TotalBroken;
                     TeamResults.Add(teamResult);
                 }
             }
@@ -125,14 +123,12 @@ namespace BertScout2020.ViewModels
         //FIXME - still sorts by avg. pow. cells
         internal void SortByBroken()
         {
-            List<TeamResult> ordered = TeamResults.OrderByDescending(o => o.Broken).ToList();
+            List<TeamResult> ordered = TeamResults.OrderBy(o => o.TotalBroken).ToList();
             TeamResults.Clear();
             foreach (TeamResult item in ordered)
             {
                 TeamResults.Add(item);
             }
         }
-
-
     }
 }

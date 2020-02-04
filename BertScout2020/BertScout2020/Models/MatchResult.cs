@@ -7,5 +7,6 @@
         public int MatchNumber { get; set; }
         public string Text1 { get; set; }
         public string Text2 { get; set; }
+        //public int Broken { get; set; }
     }
 }

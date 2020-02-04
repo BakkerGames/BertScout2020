@@ -44,7 +44,6 @@
                 />
             </StackLayout>
             <StackLayout Orientation="Horizontal" Margin="10,0,10,0">
-
                 <Button
                     x:Name="PowercellCount"
                     Text="Powercells"
@@ -150,6 +149,7 @@
                                     
                                     
                                 </StackLayout>
+
                                 <StackLayout Orientation="Horizontal">
                                     <Label Text="Avg Powercells:"
                                            LineBreakMode="NoWrap"
@@ -164,8 +164,23 @@
                                            FontAttributes="Bold"
                                            FontSize="24"
                                            />
-                                   
+
+                                    <Label Text="Broken:"
+                                           LineBreakMode="NoWrap"
+                                           Style="{DynamicResource ListItemTextStyle}"
+                                           FontAttributes="Bold"
+                                           FontSize="24"
+                                           Margin="20,0,0,0"
+                                           />
+                                    <Label Text="{Binding TotalBroken}"
+                                           LineBreakMode="NoWrap"
+                                           Style="{DynamicResource ListItemTextStyle}"
+                                           FontAttributes="Bold"
+                                           FontSize="24"
+                                           />
+
                                 </StackLayout>
+                            
                             </StackLayout>
                         </ViewCell>
                     </DataTemplate>
