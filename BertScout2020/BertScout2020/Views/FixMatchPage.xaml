@@ -5,11 +5,86 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="BertScout2020.Views.FixMatchPage">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem
+            Text="Save"
+            Clicked="ToolbarItem_Save_Clicked"
+            >
+            <ToolbarItem.Icon>
+                <OnPlatform x:TypeArguments="FileImageSource">
+                    <On Platform="UWP" Value="save.png"/>
+                </OnPlatform>
+            </ToolbarItem.Icon>
+        </ToolbarItem>
+    </ContentPage.ToolbarItems>
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+        <StackLayout
+            VerticalOptions="FillAndExpand"
+            >
+            <StackLayout
+                Orientation="Horizontal"
+                Margin="10"
+                >
+                <Label 
+                    Text="Scouter Name:"
+                    FontSize="24"
+                />
+                <Entry
+                    x:Name="Entry_ScouterName"
+                    Text=""
+                    FontSize="24"
+                    IsSpellCheckEnabled="False"
+                    IsTextPredictionEnabled="False"
+                    HorizontalOptions="FillAndExpand"
+                    MaxLength="25"
+                />
+            </StackLayout>
+            <StackLayout
+                Orientation="Horizontal"
+                Margin="10"
+                >
+                <Label 
+                    Text="Team Number:"
+                    FontSize="24"
+                />
+                <Entry
+                    x:Name="Entry_TeamNumber"
+                    Text=""
+                    FontSize="24"
+                    IsSpellCheckEnabled="False"
+                    IsTextPredictionEnabled="False"
+                    HorizontalOptions="FillAndExpand"
+                    MaxLength="25"
+                />
+            </StackLayout>
+            <StackLayout
+                Orientation="Horizontal"
+                Margin="10"
+                >
+                <Label 
+                    Text="Match Number:"
+                    FontSize="24"
+                />
+                <Entry
+                    x:Name="Entry_MatchNumber"
+                    Text=""
+                    FontSize="24"
+                    IsSpellCheckEnabled="False"
+                    IsTextPredictionEnabled="False"
+                    HorizontalOptions="FillAndExpand"
+                    MaxLength="25"
+                />
+            </StackLayout>
+            <StackLayout
+                Orientation="Horizontal"
+                Margin="10">
+                <Label
+                    x:Name="Label_ErrorMessage"
+                    Text=""
+                    FontSize="24"
+                    HorizontalOptions="CenterAndExpand"
+                />
+            </StackLayout>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
