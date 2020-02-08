@@ -10,5 +10,6 @@
         public int TotalPowercells { get; set; }
         public int AveragePowercells { get; set; }
         public int TotalBroken { get; set; }
+
     }
 }

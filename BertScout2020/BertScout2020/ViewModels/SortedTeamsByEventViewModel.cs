@@ -46,6 +46,8 @@ namespace BertScout2020.ViewModels
                     teamResult.TotalPowercells = matchViewModel.TotalPowercells;
                     teamResult.AveragePowercells = matchViewModel.AveragePowercells;
                     teamResult.TotalBroken = matchViewModel.TotalBroken;
+
+
                     TeamResults.Add(teamResult);
                 }
             }
@@ -130,5 +132,7 @@ namespace BertScout2020.ViewModels
                 TeamResults.Add(item);
             }
         }
+
+
     }
 }

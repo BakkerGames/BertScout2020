@@ -26,7 +26,7 @@
                 />
                 <Button
                     x:Name="Score"
-                    Text="Score"
+                    Text="TotalScore"
                     HorizontalOptions="Start"
                     VerticalOptions="Start"
                     FontSize="24"
@@ -44,6 +44,7 @@
                 />
             </StackLayout>
             <StackLayout Orientation="Horizontal" Margin="10,0,10,0">
+
                 <Button
                     x:Name="PowercellCount"
                     Text="Powercells"
@@ -122,6 +123,18 @@
                                            FontAttributes="Bold"
                                            FontSize="24"
                                            />
+                                    <Label Text="- Score:"
+                                           LineBreakMode="NoWrap"
+                                           Style="{DynamicResource ListItemTextStyle}"
+                                           FontAttributes="Bold"
+                                           FontSize="24"
+                                           />
+                                    <Label Text="{Binding TotalScore}"
+                                           LineBreakMode="NoWrap"
+                                           Style="{DynamicResource ListItemTextStyle}"
+                                           FontAttributes="Bold"
+                                           FontSize="24"
+                                           />
                                     <Label Text="- AvgScore:"
                                            LineBreakMode="NoWrap"
                                            Style="{DynamicResource ListItemTextStyle}"
@@ -134,11 +147,16 @@
                                            FontAttributes="Bold"
                                            FontSize="24"
                                            />
-                                    <Label Text="- Powercells:"
+
+                                </StackLayout>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="Powercells:"
                                            LineBreakMode="NoWrap"
                                            Style="{DynamicResource ListItemTextStyle}"
                                            FontAttributes="Bold"
                                            FontSize="24"
+                                           Margin="20,0,0,0"
+                                           
                                            />
                                     <Label Text="{Binding TotalPowercells}"
                                            LineBreakMode="NoWrap"
@@ -146,17 +164,11 @@
                                            FontAttributes="Bold"
                                            FontSize="24"
                                            />
-                                    
-                                    
-                                </StackLayout>
-
-                                <StackLayout Orientation="Horizontal">
-                                    <Label Text="Avg Powercells:"
+                                    <Label Text="- Avg Powercells:"
                                            LineBreakMode="NoWrap"
                                            Style="{DynamicResource ListItemTextStyle}"
                                            FontAttributes="Bold"
                                            FontSize="24"
-                                           Margin="20,0,0,0"
                                            />
                                     <Label Text="{Binding AveragePowercells}"
                                            LineBreakMode="NoWrap"
@@ -164,7 +176,8 @@
                                            FontAttributes="Bold"
                                            FontSize="24"
                                            />
-
+                                </StackLayout>
+                                <StackLayout Orientation="Horizontal">
                                     <Label Text="Broken:"
                                            LineBreakMode="NoWrap"
                                            Style="{DynamicResource ListItemTextStyle}"
@@ -178,9 +191,7 @@
                                            FontAttributes="Bold"
                                            FontSize="24"
                                            />
-
                                 </StackLayout>
-                            
                             </StackLayout>
                         </ViewCell>
                     </DataTemplate>

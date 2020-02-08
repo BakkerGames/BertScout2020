@@ -13,7 +13,6 @@ namespace BertScout2020.Views
         public IDataStore<EventTeamMatch> SqlDataEventTeamMatches;
         SelectMatchesByEventTeamViewModel viewModel;
         Team currTeam;
-        private int _maxMatchNum = 998;
 
         public SelectEventTeamMatchPage(string eventKey, Team team)
         {
@@ -52,11 +51,8 @@ namespace BertScout2020.Views
 
         private void AddMatch_Minus_Clicked(object sender, System.EventArgs e)
         {
-            if (App.highestMatchNumber > 0)
-            {
-                App.highestMatchNumber--;
-            }
-            else
+            App.highestMatchNumber--;
+            if (App.highestMatchNumber < 0)
             {
                 App.highestMatchNumber = 0;
             }
@@ -65,13 +61,10 @@ namespace BertScout2020.Views
 
         private void AddMatch_Plus_Clicked(object sender, System.EventArgs e)
         {
-            if (App.highestMatchNumber < _maxMatchNum)
+            App.highestMatchNumber++;
+            if (App.highestMatchNumber > 998)
             {
-                App.highestMatchNumber++;
-            }
-            else
-            {
-                App.highestMatchNumber = _maxMatchNum;
+                App.highestMatchNumber = 998;
             }
             MatchNumberLabelValue.Text = (App.highestMatchNumber + 1).ToString();
         }
@@ -83,18 +76,11 @@ namespace BertScout2020.Views
             {
                 return;
             }
-            if (App.highestMatchNumber < _maxMatchNum)
+            if (App.highestMatchNumber < 999)
             {
                 _addNewMatchBusy = true;
                 doAddNewMatch(App.highestMatchNumber + 1);
-                if (App.highestMatchNumber < _maxMatchNum)
-                {
-                    App.highestMatchNumber++;
-                }
-                else
-                {
-                    App.highestMatchNumber = _maxMatchNum;
-                }
+                App.highestMatchNumber++;
                 _addNewMatchBusy = false;
             }
         }

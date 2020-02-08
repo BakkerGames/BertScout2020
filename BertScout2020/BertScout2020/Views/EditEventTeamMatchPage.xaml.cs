@@ -1087,5 +1087,9 @@ namespace BertScout2020.Views
         {
             Navigation.PushAsync(new EditMatchCommentPage(viewModel.item));
         }
+        private void ToolbarItem_FixMatch_Clicked(object sender, System.EventArgs e)
+        {
+            Navigation.PushAsync(new FixMatchPage(viewModel.item));
+        }
     }
 }

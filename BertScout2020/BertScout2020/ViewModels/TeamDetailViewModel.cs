@@ -55,12 +55,10 @@ namespace BertScout2020.ViewModels
                     int matchScore = CalculateMatchResult(match);
                     int powercellCount = CalculatePowercellCount(match);
                     int brokenCount = match.Broken;
-
                     // show match results
                     obj.Text1 = $"Match {match.MatchNumber} -" +
                         $" Score: {matchScore} RP: {matchRP}" +
                         $" Powercell: {powercellCount}";
-
                     obj.Text2 = "";
                     if (match.Broken == 1)
                     {
