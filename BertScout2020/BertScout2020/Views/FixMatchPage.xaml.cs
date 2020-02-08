@@ -1,4 +1,5 @@
-﻿using BertScout2020Data.Models;
+﻿using BertScout2020.Services;
+using BertScout2020Data.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,12 +15,34 @@ namespace BertScout2020.Views
     public partial class FixMatchPage : ContentPage
     {
         private EventTeamMatch match;
+
+        private readonly List<Team> Teams;
+        private readonly SortedList<int, string> TeamNumName;
+
         public FixMatchPage(EventTeamMatch item)
         {
             InitializeComponent();
             match = item;
+            Teams = App.Database.GetTeamsByEventAsync(App.currFRCEventKey).Result;
+            TeamNumName = new SortedList<int, string>();
+            foreach (Team t in Teams)
+            {
+                string teamPadded = $"    {t.TeamNumber}";
+                teamPadded = teamPadded.Substring(teamPadded.Length - 4);
+                TeamNumName.Add(t.TeamNumber, $"{teamPadded} - {t.Name}");
+            }
+            int savePickerIndex = -1;
+            for (int i = 0; i < TeamNumName.Count; i++)
+            {
+                string value = TeamNumName.Values[i];
+                Picker_TeamNumber.Items.Add(value);
+                if (TeamNumName.Keys[i] == match.TeamNumber)
+                {
+                    savePickerIndex = i;
+                }
+            }
             Entry_ScouterName.Text = match.ScouterName;
-            Entry_TeamNumber.Text = match.TeamNumber.ToString();
+            Picker_TeamNumber.SelectedIndex = savePickerIndex;
             Entry_MatchNumber.Text = match.MatchNumber.ToString();
         }
 
@@ -42,20 +65,22 @@ namespace BertScout2020.Views
                 Label_ErrorMessage.Text = "Invalid Scouter Name";
                 return;
             }
-            try
-            {
-                dummyTeamNumber = int.Parse(Entry_TeamNumber.Text);
-                if (dummyTeamNumber <= 0 || dummyTeamNumber > 9999)
-                {
-                    throw new SystemException();
-                }
-            }
-            catch (Exception)
-            {
-                Label_ErrorMessage.Text = "Invalid Team Number";
-                return;
-                //TODO if team not in event, add it (if doesn't exist?
-            }
+            dummyTeamNumber = int.Parse(Picker_TeamNumber.SelectedItem.ToString().Substring(0, 4));
+            //try
+            //{
+            //    dummyTeamNumber = int.Parse(Entry_TeamNumber.Text);
+            //    if (dummyTeamNumber <= 0 || dummyTeamNumber > 9999)
+            //    {
+            //        throw new SystemException();
+            //    }
+            //}
+            //catch (Exception)
+            //{
+            //    Label_ErrorMessage.Text = "Invalid Team Number";
+            //    return;
+            //    //TODO if team not in event, add it (if doesn't exist?
+
+            //}
             try
             {
                 dummyMatchNumber = int.Parse(Entry_MatchNumber.Text);

@@ -4,7 +4,8 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="BertScout2020.Views.FixMatchPage">
+             x:Class="BertScout2020.Views.FixMatchPage"
+             Title="Fix Match Information">
     <ContentPage.ToolbarItems>
         <ToolbarItem
             Text="Save"
@@ -47,15 +48,11 @@
                     Text="Team Number:"
                     FontSize="24"
                 />
-                <Entry
-                    x:Name="Entry_TeamNumber"
-                    Text=""
+                <Picker
+                    x:Name="Picker_TeamNumber"
                     FontSize="24"
-                    IsSpellCheckEnabled="False"
-                    IsTextPredictionEnabled="False"
-                    HorizontalOptions="FillAndExpand"
-                    MaxLength="25"
-                />
+                    HorizontalOptions="FillAndExpand" 
+                    />
             </StackLayout>
             <StackLayout
                 Orientation="Horizontal"
@@ -73,6 +70,7 @@
                     IsTextPredictionEnabled="False"
                     HorizontalOptions="FillAndExpand"
                     MaxLength="25"
+                    Keyboard="Numeric"
                 />
             </StackLayout>
             <StackLayout
