@@ -107,6 +107,7 @@
   <ItemGroup>
     <Content Include="Assets\NEW! BERT logo - 2018.png" />
     <Content Include="edit.png" />
+    <Content Include="fixmatch.png" />
     <Content Include="info.png" />
     <Content Include="NEW! BERT logo - 2018.scale-100.png" />
     <Content Include="NEW! BERT logo - 2018.scale-125.png" />
