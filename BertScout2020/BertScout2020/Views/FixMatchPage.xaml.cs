@@ -25,28 +25,56 @@ namespace BertScout2020.Views
 
         private void ToolbarItem_Save_Clicked(object sender, EventArgs e)
         {
-            match.ScouterName = Entry_ScouterName.Text;
+            int dummyTeamNumber = 0;
+            int dummyMatchNumber = 0;
+            string dummyScouterName = "";
+
             try
             {
-                match.TeamNumber = int.Parse(Entry_TeamNumber.Text);
+                dummyScouterName = Entry_ScouterName.Text;
+                if (string.IsNullOrEmpty(dummyScouterName))
+                {
+                    throw new SystemException();
+                }
+            }
+            catch (Exception)
+            {
+                Label_ErrorMessage.Text = "Invalid Scouter Name";
+                return;
+            }
+            try
+            {
+                dummyTeamNumber = int.Parse(Entry_TeamNumber.Text);
+                if (dummyTeamNumber <= 0 || dummyTeamNumber > 9999)
+                {
+                    throw new SystemException();
+                }
             }
             catch (Exception)
             {
                 Label_ErrorMessage.Text = "Invalid Team Number";
                 return;
+                //TODO if team not in event, add it (if doesn't exist?
             }
             try
             {
-                match.MatchNumber = int.Parse(Entry_MatchNumber.Text);
+                dummyMatchNumber = int.Parse(Entry_MatchNumber.Text);
+                if (dummyMatchNumber <= 0 || dummyMatchNumber > 999)
+                {
+                    throw new SystemException();
+                }
             }
             catch (Exception)
             {
                 Label_ErrorMessage.Text = "Invalid Match Number";
                 return;
             }
+            match.TeamNumber = dummyTeamNumber;
+            match.MatchNumber = dummyMatchNumber;
+            match.ScouterName = dummyScouterName;
             App.database.SaveEventTeamMatchAsync(match);
-            Label_ErrorMessage.Text = "Save Complete";
-            Navigation.PopAsync();
+            Label_ErrorMessage.Text = "Save Complete - Please exit to team selection page";
+            //Navigation.PopAsync();
 
         }
     }
