@@ -1,4 +1,5 @@
-﻿using BertScout2020.Services;
+﻿using AirtableApiClient;
+using BertScout2020.Services;
 using BertScout2020Data.Models;
 using Common.JSON;
 using System;
@@ -8,6 +9,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
+using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -83,6 +85,8 @@ namespace BertScout2020.Views
 
         //private int totalUploaded = 0;
         //private int toBeUploaded = 0;
+
+        //private AirtableListRecordsResponse _airtableGet = new AirtableListRecordsResponse();
 
         public SyncDatabasePage()
         {
@@ -477,7 +481,80 @@ namespace BertScout2020.Views
 
         private void Button_Airtable_Download_Clicked(object sender, EventArgs e)
         {
-            Label_Results.Text = "Airtable Download";
+            AirtableFetchRecords();
+        }
+
+        async private void AirtableFetchRecords()
+        {
+            string offset = null;
+            string errorMessage = null;
+            var records = new List<AirtableRecord>();
+
+            using (AirtableBase airtableBase = new AirtableBase(App.AirtableKey, App.AirtableBase))
+            {
+                do
+                {
+                    Task<AirtableListRecordsResponse> task = airtableBase.ListRecords(
+                           "Match",
+                           offset,
+                           null /*fieldsArray*/,
+                           $"EventKey='{App.currFRCEventKey}'" /*filterByFormula*/,
+                           null /*maxRecords*/,
+                           null /*pageSize*/,
+                           null /*sort*/,
+                           null /*view*/);
+
+                    AirtableListRecordsResponse response = await task;
+
+                    if (response.Success)
+                    {
+                        records.AddRange(response.Records.ToList());
+                        offset = response.Offset;
+                    }
+                    else if (response.AirtableApiError is AirtableApiException)
+                    {
+                        errorMessage = response.AirtableApiError.ErrorMessage;
+                        break;
+                    }
+                    else
+                    {
+                        errorMessage = "Unknown error";
+                        break;
+                    }
+                } while (offset != null);
+            }
+
+            if (!string.IsNullOrEmpty(errorMessage))
+            {
+                Label_Results.Text = errorMessage;
+            }
+            else
+            {
+                foreach (AirtableRecord ar in records)
+                {
+                    bool addComma = false;
+                    Label_Results.Text += "{";
+                    foreach (KeyValuePair<string, object> kv in ar.Fields)
+                    {
+                        if (addComma)
+                        {
+                            Label_Results.Text +=",";
+                        }
+                        addComma = true;
+                        Label_Results.Text += $"\"{kv.Key}\":";
+                        switch (Type.GetTypeCode(kv.Value.GetType()))
+                        {
+                            case TypeCode.String:
+                                Label_Results.Text += $"\"{kv.Value}\"";
+                                break;
+                            default:
+                                Label_Results.Text += $"{kv.Value}";
+                                break;
+                        }
+                    }
+                    Label_Results.Text += "}\r\n";
+                }
+            }
         }
     }
 }

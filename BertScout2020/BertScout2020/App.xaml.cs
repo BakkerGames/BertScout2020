@@ -47,7 +47,8 @@ namespace BertScout2020
         private const string propNameKindleName = "currKindleName";
         private const string propNameScouterName = "currScouterName";
 
-
+        static public string AirtableBase = "appeBQ6HTf90jtgwo";
+        static public string AirtableKey = "keyKaMroYDAVnmnPQ";
 
         public App()
         {
