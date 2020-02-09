@@ -380,11 +380,20 @@ namespace BertScout2020.Views
             int exportCount = 0;
             foreach (EventTeamMatch item in matches)
             {
+                if (exportCount > 0)
+                {
+                    exportData.AppendLine(",");
+                }
                 item.Id = null; // don't preserve id
                 item.Changed = 0; // changed = 0 so downloaded data is not uploaded
-                exportData.Append(item.ToString());
-                exportData.AppendLine(",");
+                exportData.Append(item.ToString()
+                                      .Replace("\"Id\":null,", "")
+                                      .Replace("\"Changed\":0,", ""));
                 exportCount++;
+            }
+            if (exportCount > 0)
+            {
+                exportData.AppendLine();
             }
             exportData.AppendLine("]");
 
