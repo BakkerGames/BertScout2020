@@ -103,7 +103,7 @@
                                            FontSize="24"
                                            />
                                     <Label Text="{Binding Name}"
-                                           LineBreakMode="NoWrap"
+                                           LineBreakMode="TailTruncation"
                                            Style="{DynamicResource ListItemTextStyle}"
                                            FontAttributes="Bold"
                                            FontSize="24"

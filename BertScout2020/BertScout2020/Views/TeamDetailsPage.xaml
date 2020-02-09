@@ -34,6 +34,7 @@
                     Text=""
                     FontAttributes="Bold"
                     FontSize="24"
+                    LineBreakMode="TailTruncation"
                 />
             </StackLayout>
             <!-- Team Location -->

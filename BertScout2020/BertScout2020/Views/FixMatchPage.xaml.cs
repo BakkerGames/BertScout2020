@@ -72,5 +72,16 @@ namespace BertScout2020.Views
             App.database.SaveEventTeamMatchAsync(match);
             Label_ErrorMessage.Text = "Save Complete - Please exit to team selection page";
         }
+
+        private void Button_DeleteMatch_Clicked(object sender, System.EventArgs e)
+        {
+            Button_DeleteMatch.BackgroundColor = App.SelectedButtonColor;
+        }
+
+        private void Entry_DeleteMatchPassword_Value_TextChanged(object sender, System.EventArgs e)
+        {
+            
+        }
+
     }
 }

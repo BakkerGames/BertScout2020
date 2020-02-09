@@ -19,9 +19,9 @@ namespace BertScout2020Data.Models
         {
             get
             {
-                if (Name.Length > 40)
+                if (Name.Length > 30)
                 {
-                    return $"{TeamNumber} - {Name.Substring(0, 40)}";
+                    return $"{TeamNumber} - {Name.Substring(0, 30)}";
                 }
                 else
                 {
