@@ -1,7 +1,6 @@
 ﻿using BertScout2020.Services;
 using BertScout2020.ViewModels;
 using BertScout2020Data.Models;
-using System.Collections.Generic;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -17,6 +16,7 @@ namespace BertScout2020.Views
         public SelectEventTeamMatchPage(string eventKey, Team team)
         {
             InitializeComponent();
+            AddNewMatch.IsEnabled = false;
             currTeam = team;
             BindingContext = viewModel = new SelectMatchesByEventTeamViewModel(eventKey, team);
             SqlDataEventTeamMatches = new SqlDataStoreEventTeamMatches(App.currFRCEventKey);
@@ -24,7 +24,15 @@ namespace BertScout2020.Views
 
         private void Editor_MatchScouterName_TextChanged(object sender, TextChangedEventArgs e)
         {
-            App.currScouterName = Editor_MatchScouterName.Text;
+            if (string.IsNullOrEmpty(Editor_MatchScouterName.Text))
+            {
+                AddNewMatch.IsEnabled = false;
+            }
+            else
+            {
+                App.currScouterName = Editor_MatchScouterName.Text;
+                AddNewMatch.IsEnabled = true;
+            }
         }
 
         protected override void OnAppearing()
@@ -34,7 +42,16 @@ namespace BertScout2020.Views
             {
                 App.highestMatchNumber = 0;
             }
-            MatchNumberLabelValue.Text = (App.highestMatchNumber + 1).ToString();
+            int tempHighest = App.highestMatchNumber + 1;
+            if (tempHighest <= 0)
+            {
+                tempHighest = 1;
+            }
+            else if (tempHighest > 999)
+            {
+                tempHighest = 999;
+            }
+            MatchNumberLabelValue.Text = tempHighest.ToString();
             Editor_MatchScouterName.Text = App.currScouterName;
         }
 
@@ -51,6 +68,10 @@ namespace BertScout2020.Views
 
         private void AddMatch_Minus_Clicked(object sender, System.EventArgs e)
         {
+            if (App.highestMatchNumber > 998)
+            {
+                App.highestMatchNumber = 998;
+            }
             App.highestMatchNumber--;
             if (App.highestMatchNumber < 0)
             {
@@ -76,13 +97,14 @@ namespace BertScout2020.Views
             {
                 return;
             }
-            if (App.highestMatchNumber < 999)
+            if (App.highestMatchNumber >= 999)
             {
-                _addNewMatchBusy = true;
-                doAddNewMatch(App.highestMatchNumber + 1);
-                App.highestMatchNumber++;
-                _addNewMatchBusy = false;
+                App.highestMatchNumber = 998;
             }
+            _addNewMatchBusy = true;
+            doAddNewMatch(App.highestMatchNumber + 1);
+            App.highestMatchNumber++;
+            _addNewMatchBusy = false;
         }
 
         private async void doAddNewMatch(int value)
