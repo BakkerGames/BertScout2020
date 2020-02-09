@@ -138,6 +138,7 @@
     <Content Include="Assets\Wide310x150Logo.scale-125.png" />
     <Content Include="Assets\Wide310x150Logo.scale-150.png" />
     <Content Include="edit.png" />
+    <Content Include="fixmatch.png" />
     <Content Include="info.png" />
     <Content Include="options.png" />
     <Content Include="Properties\Default.rd.xml" />
