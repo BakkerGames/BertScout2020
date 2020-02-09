@@ -36,7 +36,7 @@ namespace BertScout2020.Views
 
         void OnItemSelected(object sender, SelectedItemChangedEventArgs args)
         {
-            var item = args.SelectedItem as FRCEvent;
+            FRCEvent item = (FRCEvent)args.SelectedItem;
             if (item == null)
                 return;
 
@@ -45,6 +45,7 @@ namespace BertScout2020.Views
             App.highestMatchNumber = 0;
 
             this.Title = item.Name;
+            Navigation.PopAsync();
         }
     }
 }

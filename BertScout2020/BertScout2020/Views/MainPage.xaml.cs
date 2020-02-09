@@ -16,7 +16,7 @@ namespace BertScout2020.Views
 
         protected override void OnAppearing()
         {
-            MainPage_Version_Label.Text = $"Ver {App.dbVersion}";
+            MainPage_Version_Label.Text = $"Version {App.dbVersion.ToString("0.0")}";
             CurrentFRCEventLabel.Text = App.currFRCEventName;
             LabelVersionMessage.Text = "";
             LabelVersionMessage2.Text = "";
