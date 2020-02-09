@@ -9,24 +9,6 @@
             HorizontalOptions="FillAndExpand">
             <StackLayout Orientation="Horizontal">
                 <Label
-                    Text="IPAddress:"
-                    VerticalOptions="Center" 
-                    HorizontalOptions="Center" 
-                    FontSize="24"
-                    />
-                <Entry
-                    x:Name="Entry_IpAddress"
-                    Text=""
-                    FontSize="24"
-                    HorizontalOptions="FillAndExpand"
-                    IsPassword="False"
-                    IsSpellCheckEnabled="False"
-                    IsTextPredictionEnabled="False"
-                    TextChanged="Entry_IpAddress_TextChanged"
-                    />
-            </StackLayout>
-            <StackLayout Orientation="Horizontal">
-                <Label
                     Text="KindleName:"
                     VerticalOptions="Center" 
                     HorizontalOptions="Center" 
@@ -45,42 +27,6 @@
             </StackLayout>
             <StackLayout>
                 <Button
-                    x:Name="Button_Upload"
-                    Text="Upload Data"
-                    Clicked="Button_Upload_Clicked"
-                    BackgroundColor="#B19CD9"
-                    HorizontalOptions="Center"
-                    VerticalOptions="Center"
-                    FontSize="24"
-                    Margin="10"
-                    WidthRequest="300"
-                    IsEnabled="True"
-                    />
-                <Button
-                    x:Name="Button_Download"
-                    Text="Download Data"
-                    Clicked="Button_Download_Clicked"
-                    BackgroundColor="#B19CD9"
-                    HorizontalOptions="Center"
-                    VerticalOptions="Center"
-                    FontSize="24"
-                    Margin="10"
-                    WidthRequest="300"
-                    IsEnabled="True"
-                    />
-                <Button
-                    x:Name="Button_Reset_Upload"
-                    Text="Reset Upload"
-                    Clicked="Button_Reset_Upload_Clicked"
-                    BackgroundColor="#B19CD9"
-                    HorizontalOptions="Center"
-                    VerticalOptions="Center"
-                    FontSize="24"
-                    Margin="10"
-                    WidthRequest="300"
-                    IsEnabled="True"
-                    />
-                <Button
                     x:Name="Button_Export"
                     Text="Export Data"
                     Clicked="Button_Export_Clicked"
@@ -96,6 +42,30 @@
                     x:Name="Button_Import"
                     Text="Import Data"
                     Clicked="Button_Import_Clicked"
+                    BackgroundColor="#B19CD9"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"
+                    FontSize="24"
+                    Margin="10"
+                    WidthRequest="300"
+                    IsEnabled="True"
+                    />
+                <Button
+                    x:Name="Button_Airtable_Upload"
+                    Text="Airtable Upload Data"
+                    Clicked="Button_Airtable_Upload_Clicked"
+                    BackgroundColor="#B19CD9"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"
+                    FontSize="24"
+                    Margin="10"
+                    WidthRequest="300"
+                    IsEnabled="True"
+                    />
+                <Button
+                    x:Name="Button_Airtable_Download"
+                    Text="Airtable Download Data"
+                    Clicked="Button_Airtable_Download_Clicked"
                     BackgroundColor="#B19CD9"
                     HorizontalOptions="Center"
                     VerticalOptions="Center"
