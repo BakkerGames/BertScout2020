@@ -79,7 +79,10 @@ namespace BertScout2020Data.Data
 
         public Task<List<FRCEvent>> GetEventsAsync()
         {
-            return _database.Table<FRCEvent>().ToListAsync();
+            StringBuilder query = new StringBuilder();
+            query.Append("SELECT [FRCEvent].* FROM [FRCEvent]");
+            query.Append(" ORDER BY [FRCEvent].[StartDate]");
+            return _database.QueryAsync<FRCEvent>(query.ToString());
         }
 
         public Task<FRCEvent> GetEventAsync(string eventKey)
@@ -122,7 +125,10 @@ namespace BertScout2020Data.Data
 
         public Task<List<Team>> GetTeamsAsync()
         {
-            return _database.Table<Team>().ToListAsync();
+            StringBuilder query = new StringBuilder();
+            query.Append("SELECT [Team].* FROM [Team]");
+            query.Append(" ORDER BY [Team].[TeamNumber]");
+            return _database.QueryAsync<Team>(query.ToString());
         }
 
         public Task<List<Team>> GetTeamsByEventAsync(string eventKey)
