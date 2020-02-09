@@ -9,6 +9,7 @@ namespace BertScout2020.Views
     public partial class SelectEventPage : ContentPage
     {
         SelectEventsViewModel viewModel;
+        bool _preparing = false;
 
         public SelectEventPage()
         {
@@ -21,6 +22,8 @@ namespace BertScout2020.Views
         {
             base.OnAppearing();
 
+            _preparing = true;
+
             if (viewModel.FRCEvents.Count == 0)
                 viewModel.LoadFRCEventsCommand.Execute(null);
 
@@ -32,6 +35,8 @@ namespace BertScout2020.Views
                     break;
                 }
             }
+
+            _preparing = false;
         }
 
         void OnItemSelected(object sender, SelectedItemChangedEventArgs args)
@@ -45,6 +50,12 @@ namespace BertScout2020.Views
             App.highestMatchNumber = 0;
 
             this.Title = item.Name;
+
+            if (_preparing)
+            {
+                return;
+            }
+
             Navigation.PopAsync();
         }
     }

@@ -22,6 +22,7 @@
                     TextChanged="Add_New_Team_TextChanged"
                     WidthRequest="75"
                     MaxLength="4"
+                    Keyboard="Numeric"
                 />
                 <Button
                     x:Name="Add_NewTeam"

@@ -134,6 +134,7 @@ namespace BertScout2020Data.Data
             query.Append(" WHERE [EventTeam].[EventKey] = '");
             query.Append(FixSqlValue(eventKey));
             query.Append("'");
+            query.Append(" ORDER BY [Team].[TeamNumber]");
             return _database.QueryAsync<Team>(query.ToString());
         }
 

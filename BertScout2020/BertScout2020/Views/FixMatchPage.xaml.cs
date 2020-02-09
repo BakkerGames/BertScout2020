@@ -1,11 +1,6 @@
-﻿using BertScout2020.Services;
-using BertScout2020Data.Models;
+﻿using BertScout2020Data.Models;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -17,26 +12,18 @@ namespace BertScout2020.Views
         private EventTeamMatch match;
 
         private readonly List<Team> Teams;
-        private readonly SortedList<int, string> TeamNumName;
 
         public FixMatchPage(EventTeamMatch item)
         {
             InitializeComponent();
             match = item;
             Teams = App.Database.GetTeamsByEventAsync(App.currFRCEventKey).Result;
-            TeamNumName = new SortedList<int, string>();
-            foreach (Team t in Teams)
-            {
-                string teamPadded = $"    {t.TeamNumber}";
-                teamPadded = teamPadded.Substring(teamPadded.Length - 4);
-                TeamNumName.Add(t.TeamNumber, $"{teamPadded} - {t.Name}");
-            }
             int savePickerIndex = -1;
-            for (int i = 0; i < TeamNumName.Count; i++)
+            for (int i = 0; i < Teams.Count; i++)
             {
-                string value = TeamNumName.Values[i];
-                Picker_TeamNumber.Items.Add(value);
-                if (TeamNumName.Keys[i] == match.TeamNumber)
+                Team t = Teams[i];
+                Picker_TeamNumber.Items.Add(t.TeamNumberDashName);
+                if (t.TeamNumber == match.TeamNumber)
                 {
                     savePickerIndex = i;
                 }
@@ -65,22 +52,7 @@ namespace BertScout2020.Views
                 Label_ErrorMessage.Text = "Invalid Scouter Name";
                 return;
             }
-            dummyTeamNumber = int.Parse(Picker_TeamNumber.SelectedItem.ToString().Substring(0, 4));
-            //try
-            //{
-            //    dummyTeamNumber = int.Parse(Entry_TeamNumber.Text);
-            //    if (dummyTeamNumber <= 0 || dummyTeamNumber > 9999)
-            //    {
-            //        throw new SystemException();
-            //    }
-            //}
-            //catch (Exception)
-            //{
-            //    Label_ErrorMessage.Text = "Invalid Team Number";
-            //    return;
-            //    //TODO if team not in event, add it (if doesn't exist?
-
-            //}
+            dummyTeamNumber = Teams[Picker_TeamNumber.SelectedIndex].TeamNumber;
             try
             {
                 dummyMatchNumber = int.Parse(Entry_MatchNumber.Text);
@@ -99,8 +71,6 @@ namespace BertScout2020.Views
             match.ScouterName = dummyScouterName;
             App.database.SaveEventTeamMatchAsync(match);
             Label_ErrorMessage.Text = "Save Complete - Please exit to team selection page";
-            //Navigation.PopAsync();
-
         }
     }
 }
