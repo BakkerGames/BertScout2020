@@ -1,0 +1,77 @@
+curl "https://api.airtable.com/v0/appeBQ6HTf90jtgwo/Match?maxRecords=3&view=Grid%20view" -H "Authorization: Bearer keyKaMroYDAVnmnPQ"
+{"records":[{"id":"recI8kVHFStj5OtVd","fields":{},"createdTime":"2020-02-03T23:58:32.000Z"},{"id":"recFKoGyIKejUTCQI","fields":{},"createdTime":"2020-02-03T23:58:32.000Z"},{"id":"recxIfHXel2O0PEhu","fields":{},"createdTime":"2020-02-03T23:58:32.000Z"}]}
+
+
+$ curl "https://api.airtable.com/v0/appeBQ6HTf90jtgwo/Match?maxRecords=3&view=Grid%20view"   -H "Authorization: Bearer keyKaMroYDAVnmnPQ"
+{"records":[]}
+
+
+curl -v -X POST https://api.airtable.com/v0/appeBQ6HTf90jtgwo/Match \
+  -H "Authorization: Bearer keyKaMroYDAVnmnPQ" \
+  -H "Content-Type: application/json" \
+  --data '{
+  "records": [
+    {
+      "fields": {
+		"Uuid": "c427525a-eefe-4dca-afc0-ff62305a9ef6",
+		"EventKey": "2020test",
+		"TeamNumber": 133,
+		"MatchNumber": 1,
+		"AutoStartPos": 0,
+		"AutoLeaveInitLine": 0,
+		"AutoBottomCell": 0,
+		"AutoOuterCell": 0,
+		"AutoInnerCell": 0,
+		"TeleBottomCell": 1,
+		"TeleOuterCell": 1,
+		"TeleInnerCell": 1,
+		"RotationControl": 0,
+		"PositionControl": 0,
+		"ClimbStatus": 0,
+		"LevelSwitch": 0,
+		"Fouls": 0,
+		"Broken": 1,
+		"AllianceResult": 0,
+		"StageRankingPoint": 0,
+		"ClimbRankingPoint": 0,
+		"ScouterName": "Scott",
+		"Comments": ""
+	  }
+    }
+  ]
+}'
+
+
+$ curl "https://api.airtable.com/v0/appeBQ6HTf90jtgwo/Match?maxRecords=3&view=Grid%20view" -H "Authorization: Bearer keyKaMroYDAVnmnPQ"
+{
+	"records": [{
+			"id": "recMOBxUkgWl7Hpnr",
+			"fields": {
+				"Uuid": "c427525a-eefe-4dca-afc0-ff62305a9ef6",
+				"EventKey": "2020test",
+				"TeamNumber": 133,
+				"MatchNumber": 1,
+				"AutoStartPos": 0,
+				"AutoLeaveInitLine": 0,
+				"AutoBottomCell": 0,
+				"AutoOuterCell": 0,
+				"AutoInnerCell": 0,
+				"TeleBottomCell": 1,
+				"TeleOuterCell": 1,
+				"TeleInnerCell": 1,
+				"RotationControl": 0,
+				"PositionControl": 0,
+				"ClimbStatus": 0,
+				"LevelSwitch": 0,
+				"Fouls": 0,
+				"Broken": 1,
+				"AllianceResult": 0,
+				"StageRankingPoint": 0,
+				"ClimbRankingPoint": 0,
+				"ScouterName": "Scott",
+				"Comments": "123abc"
+			},
+			"createdTime": "2020-02-09T03:29:24.000Z"
+		}
+	]
+}
