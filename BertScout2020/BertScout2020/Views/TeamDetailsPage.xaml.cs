@@ -21,8 +21,25 @@ namespace BertScout2020.Views
         protected override void OnAppearing()
         {
             TeamDetails_Number.Text = viewModel.savedTeam.TeamNumber.ToString(); //Show Team Number ex: 133
-            TeamDetails_Name.Text = viewModel.savedTeam.Name; // Show Team Name ex: Bonny Eagle Robotics Team
+            if (viewModel.savedTeam.Name.Length > 28)
+            {
+            TeamDetails_Name.Text = viewModel.savedTeam.Name.Substring(0,28); // Show Team Name ex: B.E.R.T.
+            }
+            else
+            {
+
+            TeamDetails_Name.Text = viewModel.savedTeam.Name; // Show Team Name ex: B.E.R.T.
+            }
+
+            if(viewModel.savedTeam.Location.Length > 28)
+            {
+                TeamDetails_Location.Text = viewModel.savedTeam.Location.Substring(0,28); //Show Location ex: Standish, ME, USA
+            }
+            else
+            {
+
             TeamDetails_Location.Text = viewModel.savedTeam.Location; //Show Location ex: Standish, ME, USA
+            }
             TeamDetails_RP.Text = viewModel.TotalRP.ToString(); //Show total RP
             TeamDetails_AVGS.Text = viewModel.AverageScore.ToString(); //Show Average Score
         }
