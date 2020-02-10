@@ -35,6 +35,7 @@ namespace BertScout2020Data.Models
                 { "ClimbRankingPoint", ClimbRankingPoint },
                 { "ScouterName", ScouterName },
                 { "Comments", Comments },
+                { "DeviceName", DeviceName },
             };
             return result;
         }
@@ -73,7 +74,8 @@ namespace BertScout2020Data.Models
                 StageRankingPoint = (int)(item.GetValueOrNull("StageRankingPoint") ?? 0),
                 ClimbRankingPoint = (int)(item.GetValueOrNull("ClimbRankingPoint") ?? 0),
                 ScouterName = (string)(item.GetValueOrNull("ScouterName") ?? ""),
-                Comments = (string)(item.GetValueOrNull("Comments") ?? "")
+                Comments = (string)(item.GetValueOrNull("Comments") ?? ""),
+                DeviceName = (string)(item.GetValueOrNull("DeviceName") ?? "")
             };
             return result;
         }

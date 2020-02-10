@@ -36,6 +36,7 @@ namespace BertScout2020Data.Models
         public int ClimbRankingPoint { get; set; }
         public string ScouterName { get; set; }
         public string Comments { get; set; }
+        public string DeviceName { get; set; }
 
         public int CompareTo(EventTeamMatch other)
         {
