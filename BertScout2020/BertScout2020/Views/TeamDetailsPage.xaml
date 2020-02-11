@@ -4,6 +4,18 @@
              x:Class="BertScout2020.Views.TeamDetailsPage"
              Title="{Binding Title}">
 
+    <ContentPage.ToolbarItems>
+        <ToolbarItem
+            Text="Picture"
+            Clicked="ToolbarItem_Picture_Clicked"
+            >
+            <ToolbarItem.Icon>
+                <OnPlatform x:TypeArguments="FileImageSource">
+                    <On Platform="UWP" Value="camera.png"/>
+                </OnPlatform>
+            </ToolbarItem.Icon>
+        </ToolbarItem>
+    </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout
             Margin="10"

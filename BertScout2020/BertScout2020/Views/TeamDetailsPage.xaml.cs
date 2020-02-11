@@ -39,5 +39,10 @@ namespace BertScout2020.Views
             EventTeamMatch itemMatch = viewModel.DataStoreMatch.GetItemByKeyAsync(key).Result;
             await Navigation.PushAsync(new EditEventTeamMatchPage(itemMatch));
         }
+
+        private void ToolbarItem_Picture_Clicked(object sender, System.EventArgs e)
+        {
+            Navigation.PushAsync(new PicturePage());
+        }
     }
 }
