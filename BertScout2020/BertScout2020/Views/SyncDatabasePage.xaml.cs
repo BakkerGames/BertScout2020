@@ -69,7 +69,7 @@ namespace BertScout2020.Views
             string myDocumentsPath = App.GetMyDocumentsPath();
             Label_Results.Text += $"\n\n{myDocumentsPath}";
 
-            string path = Path.Combine(myDocumentsPath, $"{App.AppYear}_{App.currFRCEventKey}_{App.kindleName}.json");
+            string path = Path.Combine(myDocumentsPath, $"{App.AppYear}_{App.currFRCEventKey}_{App.KindleName}.json");
 
             File.WriteAllText(path, exportData.ToString());
 

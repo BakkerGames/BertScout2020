@@ -193,7 +193,7 @@
   </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\WindowsXaml\v$(VisualStudioVersion)\Microsoft.Windows.UI.Xaml.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>IF "$(ConfigurationName)"=="Release" XCOPY /D /Y "$(TargetDir)*.dll" "$(ProjectDir)..\..\EXE"
-IF "$(ConfigurationName)"=="Release" XCOPY /D /Y "$(TargetDir)*.exe" "$(ProjectDir)..\..\EXE"</PostBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
   </PropertyGroup>
 </Project>

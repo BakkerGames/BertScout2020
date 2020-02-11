@@ -29,7 +29,7 @@ namespace BertScout2020
         static public int currMatchNumber { get; set; }
         static public int highestMatchNumber { get; set; } = 0;
         static public string syncIpAddress { get; set; } = "";
-        static public string kindleName { get; set; } = "";
+        static public string KindleName { get; set; } = "";
         static public string currScouterName { get; set; } = "";
 
         // app database
@@ -75,7 +75,7 @@ namespace BertScout2020
                     }
                     if (Properties.ContainsKey(propNameKindleName))
                     {
-                        kindleName = (string)Properties[propNameKindleName];
+                        KindleName = (string)Properties[propNameKindleName];
                     }
                     if (Properties.ContainsKey(propNameScouterName))
                     {
@@ -138,7 +138,7 @@ namespace BertScout2020
             Properties[propNameFRCEventName] = currFRCEventName;
             Properties[propNameHighestMatchNumber] = highestMatchNumber;
             Properties[propNameIpAddress] = syncIpAddress;
-            Properties[propNameKindleName] = kindleName;
+            Properties[propNameKindleName] = KindleName;
             Properties[propNameScouterName] = currScouterName;
         }
 

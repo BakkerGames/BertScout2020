@@ -21,6 +21,12 @@ namespace BertScout2020.Views
             InitializeComponent();
         }
 
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            Entry_KindleName.Text = App.KindleName;
+        }
+
         public void Reset_Database_Button_Clicked(object sender, EventArgs e)
         {
             if (_nateSyncFlag)
@@ -94,7 +100,10 @@ namespace BertScout2020.Views
         {
             if (!string.IsNullOrEmpty(Entry_KindleName.Text))
             {
-                App.kindleName = Entry_KindleName.Text;
+                if (App.KindleName != Entry_KindleName.Text)
+                {
+                    App.KindleName = Entry_KindleName.Text;
+                }
             }
         }
     }

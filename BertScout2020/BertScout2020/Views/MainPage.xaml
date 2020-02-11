@@ -41,6 +41,7 @@
                 Margin="20"
                 WidthRequest="300"
                 BackgroundColor="LightGray"
+                IsEnabled="False"
                 />
             <Button
                 x:Name="Button_Match_Scouting"
@@ -52,6 +53,7 @@
                 Margin="20"
                 WidthRequest="300"
                 BackgroundColor="LightGray"
+                IsEnabled="False"
                 />
             <Button
                 x:Name="Button_Event_Results"
@@ -63,6 +65,7 @@
                 Margin="20"
                 WidthRequest="300"
                 BackgroundColor="LightGray"
+                IsEnabled="False"
                 />
             <Label
                 x:Name="LabelVersionMessage"

@@ -19,19 +19,27 @@ namespace BertScout2020.Views
             MainPage_Version_Label.Text = $"Version {App.dbVersion.ToString("0.0")}";
             LabelVersionMessage.Text = "";
             LabelVersionMessage2.Text = "";
-            if (string.IsNullOrEmpty(App.kindleName))
+            if (string.IsNullOrEmpty(App.KindleName))
             {
                 CurrentFRCEventLabel.Text = "Please enter Kindle name";
+                Button_Select_FRC_Event.IsEnabled = false;
+                Button_Match_Scouting.IsEnabled = false;
+                Button_Event_Results.IsEnabled = false;
             }
             else if (string.IsNullOrEmpty(App.currFRCEventName))
             {
                 CurrentFRCEventLabel.Text = "Please select an event";
+                Button_Select_FRC_Event.IsEnabled = true;
+                Button_Match_Scouting.IsEnabled = false;
+                Button_Event_Results.IsEnabled = false;
             }
             else
             {
                 CurrentFRCEventLabel.Text = App.currFRCEventName;
+                Button_Select_FRC_Event.IsEnabled = true;
+                Button_Match_Scouting.IsEnabled = true;
+                Button_Event_Results.IsEnabled = true;
             }
-            Button_Match_Scouting.IsEnabled = (!string.IsNullOrEmpty(App.currFRCEventName));
         }
 
         async private void MainPage_Options_Clicked(object sender, EventArgs e)

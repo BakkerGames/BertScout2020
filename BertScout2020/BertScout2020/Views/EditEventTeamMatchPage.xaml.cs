@@ -840,7 +840,7 @@ namespace BertScout2020.Views
                 viewModel.item.ScouterName = App.currScouterName;
                 Title = $"Team {App.currTeamNumber} - Match {App.currMatchNumber} - {viewModel.item.ScouterName}";
             }
-            viewModel.item.DeviceName = App.kindleName;
+            viewModel.item.DeviceName = App.KindleName;
             App.database.SaveEventTeamMatchAsync(viewModel.item);
         }
     }
