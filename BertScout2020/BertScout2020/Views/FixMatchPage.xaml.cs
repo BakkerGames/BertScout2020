@@ -10,8 +10,9 @@ namespace BertScout2020.Views
     public partial class FixMatchPage : ContentPage
     {
         private EventTeamMatch match;
-
         private readonly List<Team> Teams;
+        private bool _syncFlag;
+        private string deletePassword = "deletematchplease";
 
         public FixMatchPage(EventTeamMatch item)
         {
@@ -75,12 +76,23 @@ namespace BertScout2020.Views
 
         private void Button_DeleteMatch_Clicked(object sender, System.EventArgs e)
         {
+            if (_syncFlag)
+            {
+                return;
+            }
+            _syncFlag = true;
             Button_DeleteMatch.BackgroundColor = App.SelectedButtonColor;
+            App.database.DeleteEventTeamMatchAsync(match.Id.Value);
+            Label_ErrorMessage.Text = "Match record has been deleted. Please exit to team selection page.";
+            _syncFlag = false;
         }
 
         private void Entry_DeleteMatchPassword_Value_TextChanged(object sender, System.EventArgs e)
         {
-            
+            if (Entry_DeleteMatchPassword_Value.Text.ToLower() == deletePassword.ToLower())
+            {
+                Button_DeleteMatch.IsEnabled = true;
+            }
         }
 
     }

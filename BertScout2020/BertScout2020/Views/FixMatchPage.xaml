@@ -84,6 +84,7 @@
                     WidthRequest="225"
                     BackgroundColor="LightGray"
                     Clicked="Button_DeleteMatch_Clicked"
+                    IsEnabled="False"
                 />
                 <Label
                     Text="Password:"
