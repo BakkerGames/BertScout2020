@@ -15,11 +15,11 @@ namespace BertScout2020
         static public string HighlightColor = "#23DAFF";
         static public Color SelectedButtonColor = Color.FromHex(BertColor);
         static public Color UnselectedButtonColor = Color.LightGray;
-        static public double dbVersion = 2.0;
         static public string OptionPassword = "letmein";
         static public string DeleteMatchPassword = "thismatchisfake";
         static public string AppVersionDate = "2020.02.08.1920";
         static public string AppYear = "2020";
+        static public readonly decimal dbVersion = BertScout2020Database.dbVersion;
 
         // app properties for easy page communication
         static public string currFRCEventKey { get; set; }
@@ -29,7 +29,7 @@ namespace BertScout2020
         static public int currMatchNumber { get; set; }
         static public int highestMatchNumber { get; set; } = 0;
         static public string syncIpAddress { get; set; } = "";
-        static public string kindleName { get; set; } = "00";
+        static public string kindleName { get; set; } = "";
         static public string currScouterName { get; set; } = "";
 
         // app database
@@ -55,7 +55,7 @@ namespace BertScout2020
             try
             {
                 if (Properties.ContainsKey(propNameVersionNumber)
-                    && (double)Properties[propNameVersionNumber] == dbVersion)
+                    && (decimal)Properties[propNameVersionNumber] == dbVersion)
                 {
                     if (Properties.ContainsKey(propNameFRCEventKey))
                     {

@@ -6,6 +6,26 @@
     <ContentPage.Content>
         <StackLayout
             VerticalOptions="CenterAndExpand">
+            <StackLayout Orientation="Horizontal"
+                         HorizontalOptions="Center">
+                <Label
+                    Text="Kindle Name:"
+                    VerticalOptions="Center" 
+                    HorizontalOptions="Center" 
+                    FontSize="24"
+                    />
+                <Entry
+                    x:Name="Entry_KindleName"
+                    Text=""
+                    FontSize="24"
+                    HorizontalOptions="FillAndExpand"
+                    IsPassword="False"
+                    IsSpellCheckEnabled="False"
+                    IsTextPredictionEnabled="False"
+                    WidthRequest="200"
+                    TextChanged="Entry_KindleName_TextChanged"
+                    />
+            </StackLayout>
             <Button
                 x:Name="Button_SyncDatabase"
                 Text="Sync Database"

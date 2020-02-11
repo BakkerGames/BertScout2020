@@ -89,5 +89,13 @@ namespace BertScout2020.Views
             Button_SyncDatabase.BackgroundColor = App.UnselectedButtonColor;
             _syncFlag = false;
         }
+
+        private void Entry_KindleName_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(Entry_KindleName.Text))
+            {
+                App.kindleName = Entry_KindleName.Text;
+            }
+        }
     }
 }

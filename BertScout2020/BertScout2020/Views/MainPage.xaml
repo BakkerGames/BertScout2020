@@ -24,7 +24,7 @@
         <StackLayout VerticalOptions="CenterAndExpand">
             <Label
                 x:Name="CurrentFRCEventLabel"
-                Text="You haven't selected an event yet"
+                Text=""
                 HorizontalOptions="CenterAndExpand"
                 FontSize="30"
                 TextColor="Green"
@@ -81,5 +81,4 @@
                 />
         </StackLayout>
     </ContentPage.Content>
-    
 </ContentPage>

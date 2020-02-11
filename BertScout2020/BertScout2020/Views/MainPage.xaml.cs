@@ -17,12 +17,19 @@ namespace BertScout2020.Views
         protected override void OnAppearing()
         {
             MainPage_Version_Label.Text = $"Version {App.dbVersion.ToString("0.0")}";
-            CurrentFRCEventLabel.Text = App.currFRCEventName;
             LabelVersionMessage.Text = "";
             LabelVersionMessage2.Text = "";
-            if (string.IsNullOrEmpty(App.currFRCEventName))
+            if (string.IsNullOrEmpty(App.kindleName))
             {
-                LabelVersionMessage.Text = "Please select an event";
+                CurrentFRCEventLabel.Text = "Please enter Kindle name";
+            }
+            else if (string.IsNullOrEmpty(App.currFRCEventName))
+            {
+                CurrentFRCEventLabel.Text = "Please select an event";
+            }
+            else
+            {
+                CurrentFRCEventLabel.Text = App.currFRCEventName;
             }
             Button_Match_Scouting.IsEnabled = (!string.IsNullOrEmpty(App.currFRCEventName));
         }

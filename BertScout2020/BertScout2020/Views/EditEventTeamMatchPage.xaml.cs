@@ -84,13 +84,7 @@ namespace BertScout2020.Views
                 if (viewModel.item.AutoStartPos != newValue)
                 {
                     viewModel.item.AutoStartPos = newValue;
-                    if (string.IsNullOrEmpty(viewModel.item.ScouterName))
-                    {
-                        viewModel.item.ScouterName = App.currScouterName;
-                        Title = $"Team {App.currTeamNumber} - Match {App.currMatchNumber} - {viewModel.item.ScouterName}";
-
-                    }
-                    App.database.SaveEventTeamMatchAsync(viewModel.item);
+                    SaveChanges();
                 }
             }
         }
@@ -139,13 +133,7 @@ namespace BertScout2020.Views
                 if (viewModel.item.AutoLeaveInitLine != newValue)
                 {
                     viewModel.item.AutoLeaveInitLine = newValue;
-                    if (string.IsNullOrEmpty(viewModel.item.ScouterName))
-                    {
-                        viewModel.item.ScouterName = App.currScouterName;
-                        Title = $"Team {App.currTeamNumber} - Match {App.currMatchNumber} - {viewModel.item.ScouterName}";
-
-                    }
-                    App.database.SaveEventTeamMatchAsync(viewModel.item);
+                    SaveChanges();
                 }
             }
         }
@@ -176,13 +164,7 @@ namespace BertScout2020.Views
                 if (viewModel.item.AutoBottomCell != value)
                 {
                     viewModel.item.AutoBottomCell = value;
-                    if (string.IsNullOrEmpty(viewModel.item.ScouterName))
-                    {
-                        viewModel.item.ScouterName = App.currScouterName;
-                        Title = $"Team {App.currTeamNumber} - Match {App.currMatchNumber} - {viewModel.item.ScouterName}";
-
-                    }
-                    App.database.SaveEventTeamMatchAsync(viewModel.item);
+                    SaveChanges();
                 }
             }
         }
@@ -219,13 +201,7 @@ namespace BertScout2020.Views
                 if (viewModel.item.AutoOuterCell != value)
                 {
                     viewModel.item.AutoOuterCell = value;
-                    if (string.IsNullOrEmpty(viewModel.item.ScouterName))
-                    {
-                        viewModel.item.ScouterName = App.currScouterName;
-                        Title = $"Team {App.currTeamNumber} - Match {App.currMatchNumber} - {viewModel.item.ScouterName}";
-
-                    }
-                    App.database.SaveEventTeamMatchAsync(viewModel.item);
+                    SaveChanges();
                 }
             }
         }
@@ -262,13 +238,7 @@ namespace BertScout2020.Views
                 if (viewModel.item.AutoInnerCell != value)
                 {
                     viewModel.item.AutoInnerCell = value;
-                    if (string.IsNullOrEmpty(viewModel.item.ScouterName))
-                    {
-                        viewModel.item.ScouterName = App.currScouterName;
-                        Title = $"Team {App.currTeamNumber} - Match {App.currMatchNumber} - {viewModel.item.ScouterName}";
-
-                    }
-                    App.database.SaveEventTeamMatchAsync(viewModel.item);
+                    SaveChanges();
                 }
             }
         }
@@ -305,13 +275,7 @@ namespace BertScout2020.Views
                 if (viewModel.item.TeleBottomCell != value)
                 {
                     viewModel.item.TeleBottomCell = value;
-                    if (string.IsNullOrEmpty(viewModel.item.ScouterName))
-                    {
-                        viewModel.item.ScouterName = App.currScouterName;
-                        Title = $"Team {App.currTeamNumber} - Match {App.currMatchNumber} - {viewModel.item.ScouterName}";
-
-                    }
-                    App.database.SaveEventTeamMatchAsync(viewModel.item);
+                    SaveChanges();
                 }
             }
         }
@@ -348,13 +312,7 @@ namespace BertScout2020.Views
                 if (viewModel.item.TeleOuterCell != value)
                 {
                     viewModel.item.TeleOuterCell = value;
-                    if (string.IsNullOrEmpty(viewModel.item.ScouterName))
-                    {
-                        viewModel.item.ScouterName = App.currScouterName;
-                        Title = $"Team {App.currTeamNumber} - Match {App.currMatchNumber} - {viewModel.item.ScouterName}";
-
-                    }
-                    App.database.SaveEventTeamMatchAsync(viewModel.item);
+                    SaveChanges();
                 }
             }
         }
@@ -391,13 +349,7 @@ namespace BertScout2020.Views
                 if (viewModel.item.TeleInnerCell != value)
                 {
                     viewModel.item.TeleInnerCell = value;
-                    if (string.IsNullOrEmpty(viewModel.item.ScouterName))
-                    {
-                        viewModel.item.ScouterName = App.currScouterName;
-                        Title = $"Team {App.currTeamNumber} - Match {App.currMatchNumber} - {viewModel.item.ScouterName}";
-
-                    }
-                    App.database.SaveEventTeamMatchAsync(viewModel.item);
+                    SaveChanges();
                 }
             }
         }
@@ -447,17 +399,11 @@ namespace BertScout2020.Views
                 if (viewModel.item.RotationControl != value)
                 {
                     viewModel.item.RotationControl = value;
-                    if (string.IsNullOrEmpty(viewModel.item.ScouterName))
-                    {
-                        viewModel.item.ScouterName = App.currScouterName;
-                        Title = $"Team {App.currTeamNumber} - Match {App.currMatchNumber} - {viewModel.item.ScouterName}";
-
-                    }
-                    App.database.SaveEventTeamMatchAsync(viewModel.item);
+                    SaveChanges();
                 }
             }
         }
-        
+
 
         private void Button_RotationControl_No_Clicked(object sender, System.EventArgs e)
         {
@@ -499,13 +445,7 @@ namespace BertScout2020.Views
                 if (viewModel.item.PositionControl != value)
                 {
                     viewModel.item.PositionControl = value;
-                    if (string.IsNullOrEmpty(viewModel.item.ScouterName))
-                    {
-                        viewModel.item.ScouterName = App.currScouterName;
-                        Title = $"Team {App.currTeamNumber} - Match {App.currMatchNumber} - {viewModel.item.ScouterName}";
-
-                    }
-                    App.database.SaveEventTeamMatchAsync(viewModel.item);
+                    SaveChanges();
                 }
             }
         }
@@ -559,7 +499,7 @@ namespace BertScout2020.Views
                     default:
                         newValue = 0;
                         Button_ClimbStatus_None.BackgroundColor = App.SelectedButtonColor;
-                        Button_ClimbStatus_Park .BackgroundColor = App.UnselectedButtonColor;
+                        Button_ClimbStatus_Park.BackgroundColor = App.UnselectedButtonColor;
                         Button_ClimbStatus_Middle.BackgroundColor = App.UnselectedButtonColor;
                         Button_ClimbStatus_Edge.BackgroundColor = App.UnselectedButtonColor;
                         break;
@@ -567,13 +507,7 @@ namespace BertScout2020.Views
                 if (viewModel.item.ClimbStatus != newValue)
                 {
                     viewModel.item.ClimbStatus = newValue;
-                    if (string.IsNullOrEmpty(viewModel.item.ScouterName))
-                    {
-                        viewModel.item.ScouterName = App.currScouterName;
-                        Title = $"Team {App.currTeamNumber} - Match {App.currMatchNumber} - {viewModel.item.ScouterName}";
-
-                    }
-                    App.database.SaveEventTeamMatchAsync(viewModel.item);
+                    SaveChanges();
                 }
             }
         }
@@ -632,13 +566,7 @@ namespace BertScout2020.Views
                 if (viewModel.item.LevelSwitch != newValue)
                 {
                     viewModel.item.LevelSwitch = newValue;
-                    if (string.IsNullOrEmpty(viewModel.item.ScouterName))
-                    {
-                        viewModel.item.ScouterName = App.currScouterName;
-                        Title = $"Team {App.currTeamNumber} - Match {App.currMatchNumber} - {viewModel.item.ScouterName}";
-
-                    }
-                    App.database.SaveEventTeamMatchAsync(viewModel.item);
+                    SaveChanges();
                 }
             }
         }
@@ -658,125 +586,7 @@ namespace BertScout2020.Views
             LevelSwitch = 2;
         }
 
-
         #endregion
-        
-        /*
-        #region Defense
-
-        public int Defense
-        {
-            get
-            {
-                return viewModel.item.Defense;
-            }
-            set
-            {
-                int newValue = value;
-                switch (value)
-                {
-                    case 1:
-                        newValue = 1;
-                        Button_Defense_None.BackgroundColor = App.UnselectedButtonColor;
-                        Button_Defense_Some.BackgroundColor = App.SelectedButtonColor;
-                        Button_Defense_Lots.BackgroundColor = App.UnselectedButtonColor;
-                        break;
-                    case 2:
-                        newValue = 2;
-                        Button_Defense_None.BackgroundColor = App.UnselectedButtonColor;
-                        Button_Defense_Some.BackgroundColor = App.UnselectedButtonColor;
-                        Button_Defense_Lots.BackgroundColor = App.SelectedButtonColor;
-                        break;
-                    default:
-                        newValue = 0;
-                        Button_Defense_None.BackgroundColor = App.SelectedButtonColor;
-                        Button_Defense_Some.BackgroundColor = App.UnselectedButtonColor;
-                        Button_Defense_Lots.BackgroundColor = App.UnselectedButtonColor;
-                        break;
-                }
-                if (viewModel.item.Defense != newValue)
-                {
-                    viewModel.item.Defense = newValue;
-                    App.database.SaveEventTeamMatchAsync(viewModel.item);
-                }
-            }
-        }
-
-        private void Button_Defense_None_Clicked(object sender, System.EventArgs e)
-        {
-            Defense = 0;
-        }
-
-        private void Button_Defense_Some_Clicked(object sender, System.EventArgs e)
-        {
-            Defense = 1;
-        }
-
-        private void Button_Defense_Lots_Clicked(object sender, System.EventArgs e)
-        {
-            Defense = 2;
-        }
-
-        #endregion
-
-        #region Cooperation
-        
-        public int Cooperation
-        {
-            get
-            {
-                return viewModel.item.Cooperation;
-            }
-            set
-            {
-                int newValue = value;
-                switch (value)
-                {
-                    case 1:
-                        newValue = 1;
-                        Button_Cooperation_None.BackgroundColor = App.UnselectedButtonColor;
-                        Button_Cooperation_Some.BackgroundColor = App.SelectedButtonColor;
-                        Button_Cooperation_Lots.BackgroundColor = App.UnselectedButtonColor;
-                        break;
-                    case 2:
-                        newValue = 2;
-                        Button_Cooperation_None.BackgroundColor = App.UnselectedButtonColor;
-                        Button_Cooperation_Some.BackgroundColor = App.UnselectedButtonColor;
-                        Button_Cooperation_Lots.BackgroundColor = App.SelectedButtonColor;
-                        break;
-                    default:
-                        newValue = 0;
-                        Button_Cooperation_None.BackgroundColor = App.SelectedButtonColor;
-                        Button_Cooperation_Some.BackgroundColor = App.UnselectedButtonColor;
-                        Button_Cooperation_Lots.BackgroundColor = App.UnselectedButtonColor;
-                        break;
-                }
-                if (viewModel.item.Cooperation != newValue)
-                {
-                    viewModel.item.Cooperation = newValue;
-                    App.database.SaveEventTeamMatchAsync(viewModel.item);
-                }
-            }
-        }
-        
-
-        private void Button_Cooperation_None_Clicked(object sender, System.EventArgs e)
-        {
-            Cooperation = 0;
-        }
-
-        private void Button_Cooperation_Some_Clicked(object sender, System.EventArgs e)
-        {
-            Cooperation = 1;
-        }
-
-        private void Button_Cooperation_Lots_Clicked(object sender, System.EventArgs e)
-        {
-            Cooperation = 2;
-        }
-
-        #endregion
-        */
 
         #region Fouls
 
@@ -792,13 +602,7 @@ namespace BertScout2020.Views
                 if (viewModel.item.Fouls != value)
                 {
                     viewModel.item.Fouls = value;
-                    if (string.IsNullOrEmpty(viewModel.item.ScouterName))
-                    {
-                        viewModel.item.ScouterName = App.currScouterName;
-                        Title = $"Team {App.currTeamNumber} - Match {App.currMatchNumber} - {viewModel.item.ScouterName}";
-
-                    }
-                    App.database.SaveEventTeamMatchAsync(viewModel.item);
+                    SaveChanges();
                 }
             }
         }
@@ -820,45 +624,6 @@ namespace BertScout2020.Views
         }
 
         #endregion
-
-        /*
-        #region TechFouls
-
-        public int TechFouls
-        {
-            get
-            {
-                return viewModel.item.TechFouls;
-            }
-            set
-            {
-                Label_TechFouls_Value.Text = value.ToString();
-                if (viewModel.item.TechFouls != value)
-                {
-                    viewModel.item.TechFouls = value;
-                    App.database.SaveEventTeamMatchAsync(viewModel.item);
-                }
-            }
-        }
-
-        private void Button_TechFouls_Minus_Clicked(object sender, System.EventArgs e)
-        {
-            if (TechFouls > 0)
-            {
-                TechFouls--;
-            }
-        }
-
-        private void Button_TechFouls_Plus_Clicked(object sender, System.EventArgs e)
-        {
-            if (TechFouls < 99)
-            {
-                TechFouls++;
-            }
-        }
-
-        #endregion
-        */
 
         #region Broken
 
@@ -892,13 +657,7 @@ namespace BertScout2020.Views
                 if (viewModel.item.Broken != newValue)
                 {
                     viewModel.item.Broken = newValue;
-                    if (string.IsNullOrEmpty(viewModel.item.ScouterName))
-                    {
-                        viewModel.item.ScouterName = App.currScouterName;
-                        Title = $"Team {App.currTeamNumber} - Match {App.currMatchNumber} - {viewModel.item.ScouterName}";
-
-                    }
-                    App.database.SaveEventTeamMatchAsync(viewModel.item);
+                    SaveChanges();
                 }
             }
         }
@@ -955,13 +714,7 @@ namespace BertScout2020.Views
                 if (viewModel.item.AllianceResult != newValue)
                 {
                     viewModel.item.AllianceResult = newValue;
-                    if (string.IsNullOrEmpty(viewModel.item.ScouterName))
-                    {
-                        viewModel.item.ScouterName = App.currScouterName;
-                        Title = $"Team {App.currTeamNumber} - Match {App.currMatchNumber} - {viewModel.item.ScouterName}";
-
-                    }
-                    App.database.SaveEventTeamMatchAsync(viewModel.item);
+                    SaveChanges();
                 }
             }
         }
@@ -1010,13 +763,7 @@ namespace BertScout2020.Views
                 if (viewModel.item.StageRankingPoint != newValue)
                 {
                     viewModel.item.StageRankingPoint = newValue;
-                    if (string.IsNullOrEmpty(viewModel.item.ScouterName))
-                    {
-                        viewModel.item.ScouterName = App.currScouterName;
-                        Title = $"Team {App.currTeamNumber} - Match {App.currMatchNumber} - {viewModel.item.ScouterName}";
-
-                    }
-                    App.database.SaveEventTeamMatchAsync(viewModel.item);
+                    SaveChanges();
                 }
             }
         }
@@ -1060,13 +807,7 @@ namespace BertScout2020.Views
                 if (viewModel.item.ClimbRankingPoint != newValue)
                 {
                     viewModel.item.ClimbRankingPoint = newValue;
-                    if (string.IsNullOrEmpty(viewModel.item.ScouterName))
-                    {
-                        viewModel.item.ScouterName = App.currScouterName;
-                        Title = $"Team {App.currTeamNumber} - Match {App.currMatchNumber} - {viewModel.item.ScouterName}";
-
-                    }
-                    App.database.SaveEventTeamMatchAsync(viewModel.item);
+                    SaveChanges();
                 }
             }
         }
@@ -1090,6 +831,17 @@ namespace BertScout2020.Views
         private void ToolbarItem_FixMatch_Clicked(object sender, System.EventArgs e)
         {
             Navigation.PushAsync(new FixMatchPage(viewModel.item));
+        }
+
+        private void SaveChanges()
+        {
+            if (string.IsNullOrEmpty(viewModel.item.ScouterName))
+            {
+                viewModel.item.ScouterName = App.currScouterName;
+                Title = $"Team {App.currTeamNumber} - Match {App.currMatchNumber} - {viewModel.item.ScouterName}";
+            }
+            viewModel.item.DeviceName = App.kindleName;
+            App.database.SaveEventTeamMatchAsync(viewModel.item);
         }
     }
 }
