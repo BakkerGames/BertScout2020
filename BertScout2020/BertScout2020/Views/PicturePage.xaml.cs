@@ -16,5 +16,11 @@ namespace BertScout2020.Views
         {
             InitializeComponent();
         }
+
+        private void Button_TakePicture_Clicked(object sender, EventArgs e)
+        {
+            Button_TakePicture.BackgroundColor = App.SelectedButtonColor;
+            //https://docs.microsoft.com/en-us/xamarin/android/app-fundamentals/permissions?tabs=windows
+        }
     }
 }
