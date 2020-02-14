@@ -159,13 +159,21 @@ namespace BertScout2020.Views
             {
                 do
                 {
+                    if (offset != null)
+                    {
+                        // Sleep for half a second so we don't make requests too fast.
+                        // The free Airtable only allows 5 requests per second.
+                        // Each download is 100 records (pagesize).
+                        System.Threading.Thread.Sleep(500);
+                    }
+
                     Task<AirtableListRecordsResponse> task = airtableBase.ListRecords(
                            "Match",
                            offset,
                            null /*fieldsArray*/,
                            $"EventKey='{App.currFRCEventKey}'" /*filterByFormula*/,
                            null /*maxRecords*/,
-                           null /*pageSize*/,
+                           100 /*pageSize*/,
                            null /*sort*/,
                            null /*view*/);
 
