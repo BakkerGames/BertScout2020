@@ -7,9 +7,24 @@
              x:Class="BertScout2020.Views.PicturePage">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+            <StackLayout>
+                <Image
+                x:Name="Image_Uploaded"
+                Source="camera.png"
+                Aspect="AspectFit"
+                />
+            </StackLayout>
+            <StackLayout>
+                <Button 
+                x:Name="Button_TakePicture"
+                Text="Take Picture"
+                FontSize="24"
+                WidthRequest="150"
+                HorizontalOptions="Center"
+                BackgroundColor="LightGray"
+                Clicked="Button_TakePicture_Clicked"
+                />
+            </StackLayout>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
