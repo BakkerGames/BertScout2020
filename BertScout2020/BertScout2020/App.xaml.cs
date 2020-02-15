@@ -177,5 +177,40 @@ namespace BertScout2020
             }
             return myDocumentsPath;
         }
+        public static string GetMyPicturesPath()
+        {
+            string basePicturesPath = "";
+            string myPicturesPath = "";
+
+            basePicturesPath = "/storage/sdcard0"; // android kindle
+            if (!Directory.Exists(basePicturesPath))
+            {
+                basePicturesPath = "/storage/sdcard"; // android emulator
+            }
+            if (Directory.Exists(basePicturesPath))
+            {
+                myPicturesPath = $"{basePicturesPath}/DCIM/Camera";
+                if (!Directory.Exists(myPicturesPath))
+                {
+                    try
+                    {
+                        Directory.CreateDirectory(myPicturesPath);
+                    }
+                    catch
+                    {
+                        //ignore
+                    }
+                }
+            }
+            if (!Directory.Exists(myPicturesPath))
+            {
+                myPicturesPath = Environment.GetFolderPath(Environment.SpecialFolder.MyPictures); // windows
+            }
+            if (!Directory.Exists(myPicturesPath))
+            {
+                myPicturesPath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData); // local data
+            }
+            return myPicturesPath;
+        }
     }
 }

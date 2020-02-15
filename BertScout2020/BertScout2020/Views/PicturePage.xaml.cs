@@ -21,6 +21,9 @@ namespace BertScout2020.Views
         {
             Button_TakePicture.BackgroundColor = App.SelectedButtonColor;
             //https://docs.microsoft.com/en-us/xamarin/android/app-fundamentals/permissions?tabs=windows
+            //async access camera
+            //rename + store picture in app
+            //Image_Display.Source = "";
         }
     }
 }

@@ -9,8 +9,8 @@
         <StackLayout>
             <StackLayout>
                 <Image
-                x:Name="Image_Uploaded"
-                Source="camera.png"
+                x:Name="Image_Display"
+                Source=""
                 Aspect="AspectFit"
                 />
             </StackLayout>
