@@ -9,6 +9,14 @@
     <EndDate>2020-12-31</EndDate>
   </FRCEvent>
   <FRCEvent>
+    <Uuid>77F25D73-2D89-453E-85E0-10CC29714D4F</Uuid>
+    <EventKey>2020week0</EventKey>
+    <Name>Week Zero</Name>
+    <Location>Nashua, NH</Location>
+    <StartDate>2020-02-15</StartDate>
+    <EndDate>2020-02-15</EndDate>
+  </FRCEvent>
+  <FRCEvent>
     <Uuid>80811106-f404-472a-9bd3-15bdfcb68474</Uuid>
     <EventKey>2020nhgrs</EventKey>
     <Name>NE District Granite State Event</Name>
