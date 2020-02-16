@@ -109,7 +109,24 @@
                     Clicked="Button_AddNewEvent_Clicked"
                 />
             </StackLayout>
-
+            <StackLayout
+                Orientation="Horizontal">
+                <Label 
+                    x:Name="Label_ErrorMessage"
+                    Text=""
+                    FontSize="24"
+                    HorizontalOptions="CenterAndExpand"
+                    />
+            </StackLayout>
+            <StackLayout
+                Orientation="Horizontal">
+                <Label 
+                    x:Name="Label_ErrorMessage2"
+                    Text=""
+                    FontSize="24"
+                    HorizontalOptions="CenterAndExpand"
+                    />
+            </StackLayout>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

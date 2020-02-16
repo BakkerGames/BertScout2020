@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BertScout2020Data.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,6 +16,7 @@ namespace BertScout2020.Views
         public AddNewEventPage()
         {
             InitializeComponent();
+            this.Title = "Add New Team";
         }
 
         private bool _addNewEventBusy = false;
@@ -30,39 +32,59 @@ namespace BertScout2020.Views
             _addNewEventBusy = false;
         }
 
-        private void doAddNewEvent()
+        async private void doAddNewEvent()
         {
             string eventName = Entry_EventName.Text;
             string eventKey = Entry_EventKey.Text;
             string eventLocation = Entry_EventLocation.Text;
-            string startDate = Start_DatePicker.Date.ToString();
-            string endDate = End_DatePicker.Date.ToString();
+            string startDate = Start_DatePicker.Date.ToString("yyyy-MM-dd");
+            string endDate = End_DatePicker.Date.ToString("yyyy-MM-dd");
 
-            if (string.IsNullOrEmpty(eventName) || 
-                string.IsNullOrEmpty(eventKey) || 
+            if (Start_DatePicker.Date > End_DatePicker.Date)
+            {
+                Label_ErrorMessage.Text = "Invalid end or start date";
+                return;
+            }
+
+            if (string.IsNullOrEmpty(eventName) ||
+                string.IsNullOrEmpty(eventKey) ||
                 string.IsNullOrEmpty(eventLocation))
             {
-                this.Title = "Please fill out all fields.";
+                Label_ErrorMessage.Text = "Please fill out all fields.";
                 return;
             }
 
             //add new event - does it already exist?
-            foreach (FRCEvent existing in viewModel.Events)
+            FRCEvent oldEvent = null;
+            try
             {
-                if (existing.EventKey == eventKey)
-                {
-                    this.Title = $"Event {eventName} already exists.";
-                    return;
-                }
+                oldEvent = await App.database.GetEventAsync(eventKey);
+            }
+            catch (Exception)
+            {
+                //do nothing
             }
 
-            //TODO: sort by date and paste into event list page
+            if (oldEvent != null && oldEvent.Id != null)
+            {
+                Label_ErrorMessage.Text = $"Event {eventName} already exists.";
+                return;
+            }
 
+            FRCEvent newEvent = new FRCEvent();
+            newEvent.EventKey = eventKey;
+            newEvent.Name = eventName;
+            newEvent.Location = eventLocation;
+            newEvent.StartDate = startDate;
+            newEvent.EndDate = endDate;
+            newEvent.Changed = 1;
+            await App.database.SaveFRCEventAsync(newEvent);
 
             Entry_EventName.Text = "";
             Entry_EventKey.Text = "";
             Entry_EventLocation.Text = "";
-            this.Title = $"Added new event {Entry_EventName.Text}";
+            Label_ErrorMessage.Text = $"Added new event {Entry_EventName.Text}.";
+            Label_ErrorMessage2.Text = $"Please exit to main page or add another event.";
         }
     }
 }
