@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ArrayOfFRCEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <FRCEvent>
-    <Uuid>80811106-f404-472a-9bd3-15bdfcb68474</Uuid>
+    <Uuid>64fe511c-33bd-45b1-a457-ab7bebdb4e65</Uuid>
     <EventKey>2020test</EventKey>
     <Name>Testing</Name>
     <Location>Everywhere</Location>
@@ -9,7 +9,7 @@
     <EndDate>2020-12-31</EndDate>
   </FRCEvent>
   <FRCEvent>
-    <Uuid>77F25D73-2D89-453E-85E0-10CC29714D4F</Uuid>
+    <Uuid>77f25d73-2d89-453e-85e0-10cc29714d4f</Uuid>
     <EventKey>2020week0</EventKey>
     <Name>Week Zero</Name>
     <Location>Nashua, NH</Location>
@@ -17,7 +17,7 @@
     <EndDate>2020-02-15</EndDate>
   </FRCEvent>
   <FRCEvent>
-    <Uuid>80811106-f404-472a-9bd3-15bdfcb68474</Uuid>
+    <Uuid>bafdd2f6-b9bc-4d8c-a9b7-211b24b9d57d</Uuid>
     <EventKey>2020nhgrs</EventKey>
     <Name>NE District Granite State Event</Name>
     <Location>Salem, NH</Location>
@@ -25,7 +25,7 @@
     <EndDate>2020-02-29</EndDate>
   </FRCEvent>
   <FRCEvent>
-    <Uuid>80811106-f404-472a-9bd3-15bdfcb68474</Uuid>
+    <Uuid>de26174f-6002-4f54-9e1a-ca4e0dc1f75c</Uuid>
     <EventKey>2020melew</EventKey>
     <Name>NE District Pine Tree Event</Name>
     <Location>Lewiston, ME</Location>
@@ -33,7 +33,7 @@
     <EndDate>2020-04-04</EndDate>
   </FRCEvent>
   <FRCEvent>
-    <Uuid>80811106-f404-472a-9bd3-15bdfcb68474</Uuid>
+    <Uuid>73f29de3-391b-42e1-aea8-0567b445e89f</Uuid>
     <EventKey>2020necmp</EventKey>
     <Name>New England District Championship</Name>
     <Location>West Springfield, MA</Location>
@@ -41,7 +41,7 @@
     <EndDate>2020-04-11</EndDate>
   </FRCEvent>
   <FRCEvent>
-    <Uuid>80811106-f404-472a-9bd3-15bdfcb68474</Uuid>
+    <Uuid>701c71dc-c0a9-41b1-acac-1cf9d1de868a</Uuid>
     <EventKey>2020cmpmi</EventKey>
     <Name>FIRST Championship (Detroit)</Name>
     <Location>Detroit, MI</Location>
