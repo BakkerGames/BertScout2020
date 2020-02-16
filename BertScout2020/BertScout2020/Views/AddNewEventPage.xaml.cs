@@ -27,30 +27,42 @@ namespace BertScout2020.Views
             }
             _addNewEventBusy = true;
             doAddNewEvent();
-            Entry_EventName.Text = "";
             _addNewEventBusy = false;
         }
 
         private void doAddNewEvent()
         {
-            if (string.IsNullOrEmpty(Entry_EventName.Text))
+            string eventName = Entry_EventName.Text;
+            string eventKey = Entry_EventKey.Text;
+            string eventLocation = Entry_EventLocation.Text;
+            string startDate = Start_DatePicker.Date.ToString();
+            string endDate = End_DatePicker.Date.ToString();
+
+            if (string.IsNullOrEmpty(eventName) || 
+                string.IsNullOrEmpty(eventKey) || 
+                string.IsNullOrEmpty(eventLocation))
             {
+                this.Title = "Please fill out all fields.";
                 return;
             }
-            this.Title = $"Added new event {Entry_EventName.Text}";
 
-            /*// add new event - does it already exist?
-            foreach (Team existing in viewModel.Teams)
+            //add new event - does it already exist?
+            foreach (FRCEvent existing in viewModel.Events)
             {
-                if (existing.TeamNumber == newTeamNumber)
+                if (existing.EventKey == eventKey)
                 {
-                    this.Title = $"Team {newTeamNumber} is already in this event";
+                    this.Title = $"Event {eventName} already exists.";
                     return;
                 }
-            }*/
+            }
 
             //TODO: sort by date and paste into event list page
 
+
+            Entry_EventName.Text = "";
+            Entry_EventKey.Text = "";
+            Entry_EventLocation.Text = "";
+            this.Title = $"Added new event {Entry_EventName.Text}";
         }
     }
 }

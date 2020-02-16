@@ -5,7 +5,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="BertScout2020.Views.AddNewEventPage">
-
+    
     <ContentPage.Content>
         <StackLayout
             Margin="10,10,10,10">
@@ -16,6 +16,7 @@
                     FontSize="24"
                     HorizontalOptions="Start"
                     Margin="5,5,0,0"
+                    WidthRequest="140"
                     />
                 <Entry 
                     x:Name="Entry_EventName"
@@ -26,14 +27,89 @@
                     IsTextPredictionEnabled="False"
                     HorizontalOptions="FillAndExpand"
                     />
+            </StackLayout>
+            <StackLayout
+                Orientation="Horizontal">
+                <Label 
+                    Text="Event Key:"
+                    FontSize="24"
+                    HorizontalOptions="Start"
+                    Margin="5,5,0,0"
+                    WidthRequest="140"
+                    />
+                <Entry 
+                    x:Name="Entry_EventKey"
+                    Text=""
+                    FontSize="24"
+                    WidthRequest="200"
+                    IsSpellCheckEnabled="False"
+                    IsTextPredictionEnabled="False"
+                    HorizontalOptions="FillAndExpand"
+                    />
+            </StackLayout>
+            <StackLayout
+                Orientation="Horizontal">
+                <Label 
+                    Text="Location:"
+                    FontSize="24"
+                    HorizontalOptions="Start"
+                    Margin="5,5,0,0"
+                    WidthRequest="140"
+                    />
+                <Entry 
+                    x:Name="Entry_EventLocation"
+                    Text=""
+                    FontSize="24"
+                    WidthRequest="200"
+                    IsSpellCheckEnabled="False"
+                    IsTextPredictionEnabled="False"
+                    HorizontalOptions="FillAndExpand"
+                    />
+            </StackLayout>
+            <StackLayout
+                Orientation="Horizontal">
+                <Label 
+                    Text="Start Date"
+                    FontSize="24"
+                    HorizontalOptions="Start"
+                    Margin="5,5,0,0"
+                    WidthRequest="140"
+                    VerticalOptions="Center"
+                    />
+                <DatePicker 
+                    x:Name="Start_DatePicker"
+                    MinimumDate="1/1/2020"
+                    FontSize="24"
+                    VerticalOptions="Center"
+                    />
+            </StackLayout>
+            <StackLayout
+                Orientation="Horizontal">
+                <Label 
+                    Text="End Date"
+                    FontSize="24"
+                    HorizontalOptions="Start"
+                    Margin="5,5,0,0"
+                    WidthRequest="140"
+                    />
+                <DatePicker 
+                    x:Name="End_DatePicker"
+                    MinimumDate="1/1/2020"
+                    MaximumDate="12/31/2020"
+                    FontSize="24"
+                    VerticalOptions="Center"
+                    />
+            </StackLayout>
+            <StackLayout>
                 <Button 
                     x:Name="Button_AddNewEvent"
                     Text="Add"
                     FontSize="24"
                     WidthRequest="75"
                     Clicked="Button_AddNewEvent_Clicked"
-                    />
+                />
             </StackLayout>
+
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
