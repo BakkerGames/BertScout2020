@@ -28,6 +28,11 @@ namespace BertScout2020Data.Models
         public static Team Parse(string value)
         {
             JObject item = JObject.Parse(value);
+            return FromJson(item);
+        }
+
+        public static Team FromJson(JObject item)
+        {
             Team result = new Team()
             {
                 Id = (int)item.GetValue("Id"),

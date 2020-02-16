@@ -28,6 +28,11 @@ namespace BertScout2020Data.Models
         public static FRCEvent Parse(string value)
         {
             JObject item = JObject.Parse(value);
+            return FromJson(item);
+        }
+        
+        public static FRCEvent FromJson(JObject item)
+        {
             FRCEvent result = new FRCEvent()
             {
                 Id = (int)item.GetValue("Id"),
