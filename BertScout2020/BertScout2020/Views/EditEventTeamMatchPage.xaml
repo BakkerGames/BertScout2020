@@ -568,6 +568,7 @@
                         FontSize="24"
                         WidthRequest="90"
                         BackgroundColor="LightGray"
+                        Margin="0,0,0,20"
                         Clicked="Button_ClimbRankingPoint_No_Clicked"
                         />
                     <Button
@@ -576,6 +577,7 @@
                         FontSize="24"
                         WidthRequest="90"
                         BackgroundColor="LightGray"
+                        Margin="0,0,0,20"
                         Clicked="Button_ClimbRankingPoint_Yes_Clicked"
                         />
                 </StackLayout>

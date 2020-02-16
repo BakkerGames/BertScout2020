@@ -58,5 +58,10 @@ namespace BertScout2020.Views
 
             Navigation.PopAsync();
         }
+
+        private void ToolbarItem_AddEvent_Clicked(object sender, System.EventArgs e)
+        {
+            Navigation.PushAsync(new AddNewEventPage());
+        }
     }
 }
