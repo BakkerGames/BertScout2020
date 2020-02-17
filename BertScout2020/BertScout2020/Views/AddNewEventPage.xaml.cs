@@ -16,7 +16,7 @@ namespace BertScout2020.Views
         public AddNewEventPage()
         {
             InitializeComponent();
-            this.Title = "Add New Team";
+            this.Title = "Add New Event";
         }
 
         private bool _addNewEventBusy = false;
@@ -55,6 +55,8 @@ namespace BertScout2020.Views
             }
 
             //add new event - does it already exist?
+            //TODO: new events are not added to the database, so the program cannot compare event keys
+            //TODO: also doesn't work for events in the database
             FRCEvent oldEvent = null;
             try
             {
