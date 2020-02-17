@@ -79,6 +79,7 @@
                 <DatePicker 
                     x:Name="Start_DatePicker"
                     MinimumDate="1/1/2020"
+                    MaximumDate="12/31/2020"
                     FontSize="24"
                     VerticalOptions="Center"
                     />
