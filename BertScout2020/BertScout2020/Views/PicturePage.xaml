@@ -10,7 +10,7 @@
             <StackLayout>
                 <Image
                 x:Name="Image_Display"
-                Source=""
+                Source="C:\Users\shawn\BertScout2020\BertScout2020\BertScout2020.UWP\camera.png"
                 Aspect="AspectFit"
                 />
             </StackLayout>
