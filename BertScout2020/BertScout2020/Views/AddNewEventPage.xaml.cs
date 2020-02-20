@@ -32,7 +32,7 @@ namespace BertScout2020.Views
             _addNewEventBusy = false;
         }
 
-        async private void doAddNewEvent()
+        private void doAddNewEvent()
         {
             string eventName = Entry_EventName.Text;
             string eventKey = Entry_EventKey.Text;
@@ -60,7 +60,16 @@ namespace BertScout2020.Views
             FRCEvent oldEvent = null;
             try
             {
-                oldEvent = await App.database.GetEventAsync(eventKey);
+                List<FRCEvent> events = App.Database.GetEventsAsync().Result;
+                foreach (FRCEvent e in events)
+                {
+                    if (e.EventKey == eventKey)
+                    {
+                        oldEvent = e;
+                        break;
+                    }
+                }
+                //oldEvent = App.Database.GetEventAsync(eventKey).Result;
             }
             catch (Exception)
             {
@@ -80,7 +89,7 @@ namespace BertScout2020.Views
             newEvent.StartDate = startDate;
             newEvent.EndDate = endDate;
             newEvent.Changed = 1;
-            await App.database.SaveFRCEventAsync(newEvent);
+            App.Database.SaveFRCEventAsync(newEvent);
 
             Entry_EventName.Text = "";
             Entry_EventKey.Text = "";
