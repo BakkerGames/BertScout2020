@@ -30,7 +30,7 @@ namespace BertScout2020.Services
             {
                 item.Uuid = Guid.NewGuid().ToString();
             }
-            await App.database.SaveFRCEventAsync(item);
+            await App.Database.SaveFRCEventAsync(item);
             items = null;
             FillList();
             return await Task.FromResult(true);
@@ -40,7 +40,7 @@ namespace BertScout2020.Services
         {
             FillList();
             var oldItem = items.Where((FRCEvent arg) => arg.Id == id).FirstOrDefault();
-            await App.database.DeleteFRCEventAsync(oldItem.Id.Value);
+            await App.Database.DeleteFRCEventAsync(oldItem.Id.Value);
             items.Remove(oldItem);
             return await Task.FromResult(true);
         }
@@ -49,7 +49,7 @@ namespace BertScout2020.Services
         {
             FillList();
             var oldItem = items.Where((FRCEvent arg) => arg.Uuid == uuid).FirstOrDefault();
-            await App.database.DeleteFRCEventAsync(oldItem.Id.Value);
+            await App.Database.DeleteFRCEventAsync(oldItem.Id.Value);
             items.Remove(oldItem);
             return await Task.FromResult(true);
         }
@@ -85,7 +85,7 @@ namespace BertScout2020.Services
             var oldItem = items.Where((FRCEvent arg) => arg.Uuid == item.Uuid).FirstOrDefault();
             item.Id = oldItem.Id;
             items.Remove(oldItem);
-            await App.database.SaveFRCEventAsync(item);
+            await App.Database.SaveFRCEventAsync(item);
             items = null;
             FillList();
             return await Task.FromResult(true);

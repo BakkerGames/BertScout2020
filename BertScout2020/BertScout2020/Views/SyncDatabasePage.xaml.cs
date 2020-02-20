@@ -227,8 +227,8 @@ namespace BertScout2020.Views
                     query.Append(" WHERE [EventTeamMatch].[Uuid] = '");
                     query.Append(uuid);
                     query.Append("'");
-                    //m=await  App.database.GetAsync<EventTeamMatch>(query.ToString());
-                    m = await App.database.GetEventTeamMatchAsyncUuid(uuid);
+                    //m=await  App.Database.GetAsync<EventTeamMatch>(query.ToString());
+                    m = await App.Database.GetEventTeamMatchAsyncUuid(uuid);
                 }
                 if (m == null)
                 {
@@ -244,7 +244,7 @@ namespace BertScout2020.Views
                 m = EventTeamMatch.FromJson(jo);
 
                 // save to the database
-                await App.database.SaveEventTeamMatchAsync(m);
+                await App.Database.SaveEventTeamMatchAsync(m);
             }
 
             Label_Results.Text = $"Records found: {RecordCount}\r\nRecords added: {NewRecords}";
