@@ -227,8 +227,7 @@ namespace BertScout2020.Views
                     query.Append(" WHERE [EventTeamMatch].[Uuid] = '");
                     query.Append(uuid);
                     query.Append("'");
-                    //m=await  App.Database.GetAsync<EventTeamMatch>(query.ToString());
-                    m = await App.Database.GetEventTeamMatchAsyncUuid(uuid);
+                    m = App.Database.GetEventTeamMatchAsyncUuid(uuid);
                 }
                 if (m == null)
                 {
@@ -241,6 +240,31 @@ namespace BertScout2020.Views
                     jo.SetValue(kv.Key, kv.Value);
                 }
                 // Rebuild the EventTeamMatch from the JObject data
+                int x;
+                x = (int)(jo.GetValueOrNull("Changed") ?? 0);
+                x = (int)((long)(jo.GetValueOrNull("TeamNumber") ?? 0));
+                x = (int)(jo.GetValueOrNull("MatchNumber") ?? 0);
+                x = (int)(jo.GetValueOrNull("AutoStartPos") ?? 0);
+                x = (int)(jo.GetValueOrNull("AutoLeaveInitLine") ?? 0);
+                x = (int)(jo.GetValueOrNull("AutoBottomCell") ?? 0);
+                x = (int)(jo.GetValueOrNull("AutoOuterCell") ?? 0);
+                x = (int)(jo.GetValueOrNull("AutoInnerCell") ?? 0);
+                x = (int)(jo.GetValueOrNull("TeleBottomCell") ?? 0);
+                x = (int)(jo.GetValueOrNull("TeleOuterCell") ?? 0);
+                x = (int)(jo.GetValueOrNull("TeleInnerCell") ?? 0);
+                x = (int)(jo.GetValueOrNull("RotationControl") ?? 0);
+                x = (int)(jo.GetValueOrNull("PositionControl") ?? 0);
+                x = (int)(jo.GetValueOrNull("ClimbStatus") ?? 0);
+                x = (int)(jo.GetValueOrNull("LevelSwitch") ?? 0);
+                x = (int)(jo.GetValueOrNull("Fouls") ?? 0);
+                x = (int)(jo.GetValueOrNull("Broken") ?? 0);
+                x = (int)(jo.GetValueOrNull("AllianceResult") ?? 0);
+                x = (int)(jo.GetValueOrNull("StageRankingPoint") ?? 0);
+                x = (int)(jo.GetValueOrNull("ClimbRankingPoint") ?? 0);
+
+
+
+
                 m = EventTeamMatch.FromJson(jo);
 
                 // save to the database

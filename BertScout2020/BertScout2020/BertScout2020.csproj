@@ -72,14 +72,15 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Common.JSON\Common.JSON.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Reference Include="BertScout2020Data">
       <HintPath>..\..\EXE\BertScout2020Data.dll</HintPath>
     </Reference>
     <Reference Include="BertScout2020XmlData">
       <HintPath>..\..\EXE\BertScout2020XmlData.dll</HintPath>
-    </Reference>
-    <Reference Include="Common.JSON">
-      <HintPath>..\..\EXE\Common.JSON.dll</HintPath>
     </Reference>
   </ItemGroup>
 

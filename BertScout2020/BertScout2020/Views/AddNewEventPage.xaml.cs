@@ -57,19 +57,11 @@ namespace BertScout2020.Views
             //add new event - does it already exist?
             //TODO: new events are not added to the database, so the program cannot compare event keys
             //TODO: also doesn't work for events in the database
+
             FRCEvent oldEvent = null;
             try
             {
-                List<FRCEvent> events = App.Database.GetEventsAsync().Result;
-                foreach (FRCEvent e in events)
-                {
-                    if (e.EventKey == eventKey)
-                    {
-                        oldEvent = e;
-                        break;
-                    }
-                }
-                //oldEvent = App.Database.GetEventAsync(eventKey).Result;
+                oldEvent = App.Database.GetEventAsync(eventKey);
             }
             catch (Exception)
             {
