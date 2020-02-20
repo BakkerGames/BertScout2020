@@ -121,7 +121,7 @@ namespace BertScout2020.Views
             newMatch.TeamNumber = App.currTeamNumber;
             newMatch.MatchNumber = value;
             newMatch.Changed = 1; // odd = must upload
-            await App.database.SaveEventTeamMatchAsync(newMatch);
+            await App.Database.SaveEventTeamMatchAsync(newMatch);
             // add new match into list in proper order
             bool found = false;
             for (int i = 0; i < viewModel.Matches.Count; i++)

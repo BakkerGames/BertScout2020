@@ -27,6 +27,11 @@ namespace BertScout2020Data.Models
         public static EventTeam Parse(string value)
         {
             JObject item = JObject.Parse(value);
+            return FromJson(item);
+        }
+
+        public static EventTeam FromJson(JObject item)
+        {
             EventTeam result = new EventTeam()
             {
                 Id = (int)item.GetValue("Id"),

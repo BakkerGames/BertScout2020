@@ -200,34 +200,54 @@ namespace BertScout2020.Views
             if (!string.IsNullOrEmpty(errorMessage))
             {
                 Label_Results.Text = errorMessage;
+                return;
             }
-            else
+
+            int RecordCount = 0;
+            int NewRecords = 0;
+
+            foreach (AirtableRecord ar in records)
             {
-                foreach (AirtableRecord ar in records)
+                RecordCount++;
+                JObject jo = new JObject();
+                EventTeamMatch m = null;
+                string uuid = null;
+                foreach (KeyValuePair<string, object> kv in ar.Fields)
                 {
-                    bool addComma = false;
-                    Label_Results.Text += "{";
-                    foreach (KeyValuePair<string, object> kv in ar.Fields)
+                    if (kv.Key == "Uuid")
                     {
-                        if (addComma)
-                        {
-                            Label_Results.Text += ",";
-                        }
-                        addComma = true;
-                        Label_Results.Text += $"\"{kv.Key}\":";
-                        switch (Type.GetTypeCode(kv.Value.GetType()))
-                        {
-                            case TypeCode.String:
-                                Label_Results.Text += $"\"{kv.Value}\"";
-                                break;
-                            default:
-                                Label_Results.Text += $"{kv.Value}";
-                                break;
-                        }
+                        uuid = kv.Value.ToString();
+                        break;
                     }
-                    Label_Results.Text += "}\r\n";
                 }
+                if (!string.IsNullOrEmpty(uuid))
+                {
+                    StringBuilder query = new StringBuilder();
+                    query.Append("SELECT [EventTeamMatch].* FROM [EventTeamMatch]");
+                    query.Append(" WHERE [EventTeamMatch].[Uuid] = '");
+                    query.Append(uuid);
+                    query.Append("'");
+                    //m=await  App.Database.GetAsync<EventTeamMatch>(query.ToString());
+                    m = await App.Database.GetEventTeamMatchAsyncUuid(uuid);
+                }
+                if (m == null)
+                {
+                    m = new EventTeamMatch();
+                    NewRecords++;
+                }
+                jo = m.ToJson();
+                foreach (KeyValuePair<string, object> kv in ar.Fields)
+                {
+                    jo.SetValue(kv.Key, kv.Value);
+                }
+                // Rebuild the EventTeamMatch from the JObject data
+                m = EventTeamMatch.FromJson(jo);
+
+                // save to the database
+                await App.Database.SaveEventTeamMatchAsync(m);
             }
+
+            Label_Results.Text = $"Records found: {RecordCount}\r\nRecords added: {NewRecords}";
         }
     }
 }

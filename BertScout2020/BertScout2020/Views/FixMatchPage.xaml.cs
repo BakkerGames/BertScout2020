@@ -70,7 +70,7 @@ namespace BertScout2020.Views
             match.TeamNumber = dummyTeamNumber;
             match.MatchNumber = dummyMatchNumber;
             match.ScouterName = dummyScouterName;
-            App.database.SaveEventTeamMatchAsync(match);
+            App.Database.SaveEventTeamMatchAsync(match);
             Label_ErrorMessage.Text = "Save Complete - Please exit to team selection page";
         }
 
@@ -82,7 +82,7 @@ namespace BertScout2020.Views
             }
             _syncFlag = true;
             Button_DeleteMatch.BackgroundColor = App.SelectedButtonColor;
-            App.database.DeleteEventTeamMatchAsync(match.Id.Value);
+            App.Database.DeleteEventTeamMatchAsync(match.Id.Value);
             Label_ErrorMessage.Text = "Match record has been deleted. Please exit to team selection page.";
             _syncFlag = false;
         }

@@ -1,3 +1,3 @@
 @echo off
-%LOCALAPPDATA%\Android\sdk\platform-tools\adb.exe shell
+"C:\Program Files (x86)\Android\android-sdk\platform-tools\adb.exe" shell
 pause

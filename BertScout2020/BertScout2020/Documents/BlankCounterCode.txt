@@ -12,7 +12,7 @@
                 if (viewModel.item.ZZZ != value)
                 {
                     viewModel.item.ZZZ = value;
-                    App.database.SaveEventTeamMatchAsync(viewModel.item);
+                    App.Database.SaveEventTeamMatchAsync(viewModel.item);
                 }
             }
         }

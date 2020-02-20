@@ -48,6 +48,11 @@ namespace BertScout2020Data.Models
         public static EventTeamMatch Parse(string value)
         {
             JObject item = JObject.Parse(value);
+            return FromJson(item);
+        }
+
+        public static EventTeamMatch FromJson(JObject item)
+        {
             EventTeamMatch result = new EventTeamMatch()
             {
                 Id = (int?)(item.GetValueOrNull("Id")),

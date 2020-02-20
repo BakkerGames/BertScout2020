@@ -33,7 +33,7 @@ namespace BertScout2020
         static public string currScouterName { get; set; } = "";
 
         // app database
-        static public BertScout2020Database database;
+        private static BertScout2020Database database;
 
         // http client for syncing
         static public HttpClient client; // = new HttpClient();

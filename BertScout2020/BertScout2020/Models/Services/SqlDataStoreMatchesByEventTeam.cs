@@ -34,7 +34,7 @@ namespace BertScout2020.Services
             {
                 item.Uuid = Guid.NewGuid().ToString();
             }
-            await App.database.SaveEventTeamMatchAsync(item);
+            await App.Database.SaveEventTeamMatchAsync(item);
             items.Add(item);
             return await Task.FromResult(true);
         }

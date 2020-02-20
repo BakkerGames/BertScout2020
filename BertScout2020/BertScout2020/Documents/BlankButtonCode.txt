@@ -33,7 +33,7 @@
                 if (viewModel.item.ZZZ != newValue)
                 {
                     viewModel.item.ZZZ = newValue;
-                    App.database.SaveEventTeamMatchAsync(viewModel.item);
+                    App.Database.SaveEventTeamMatchAsync(viewModel.item);
                 }
             }
         }

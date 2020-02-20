@@ -47,7 +47,7 @@ namespace BertScout2020.Views
                 ErrorMessage.Text = "Deleting the match record...";
                 if (viewModel.item.Id.HasValue)
                 {
-                    App.database.DeleteEventTeamMatchAsync(viewModel.item.Id.Value);
+                    App.Database.DeleteEventTeamMatchAsync(viewModel.item.Id.Value);
                     ErrorMessage.Text = "Match record has been deleted";
                 }
                 else
@@ -75,7 +75,7 @@ namespace BertScout2020.Views
                 if (viewModel.item.Comments != Editor_MatchComment.Text)
                 {
                     viewModel.item.Comments = Editor_MatchComment.Text?.Trim();
-                    App.database.SaveEventTeamMatchAsync(viewModel.item);
+                    App.Database.SaveEventTeamMatchAsync(viewModel.item);
                 }
                 ErrorMessage.Text = "";
             }
