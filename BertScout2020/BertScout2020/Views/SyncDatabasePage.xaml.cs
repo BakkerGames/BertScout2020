@@ -241,7 +241,7 @@ namespace BertScout2020.Views
                     jo.SetValue(kv.Key, kv.Value);
                 }
                 // Rebuild the EventTeamMatch from the JObject data
-                m = EventTeamMatch.FromJson(jo);
+                //m = EventTeamMatch.FromJson(jo);
 
                 // save to the database
                 await App.Database.SaveEventTeamMatchAsync(m);

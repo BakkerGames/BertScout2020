@@ -17,13 +17,18 @@ namespace BertScout2020.Views
             InitializeComponent();
         }
 
-        private void Button_TakePicture_Clicked(object sender, EventArgs e)
+        private async void Button_TakePicture_Clicked(object sender, EventArgs e)
         {
             Button_TakePicture.BackgroundColor = App.SelectedButtonColor;
             //https://docs.microsoft.com/en-us/xamarin/android/app-fundamentals/permissions?tabs=windows
-            //async access camera
-            //rename + store picture in app
-            //Image_Display.Source = "";
+            //https://xamarinhelp.com/use-camera-take-photo-xamarin-forms/
+            //https://github.com/adamped/CameraXF/blob/master/CameraSample/CameraSample/MainPage.xaml.cs
+            var photo = await Plugin.Media.CrossMedia.Current.TakePhotoAsync(new Plugin.Media.Abstractions.StoreCameraMediaOptions() { });
+
+            if (photo != null)
+            {
+                Image_Display.Source = ImageSource.FromStream(() => { return photo.GetStream(); });
+            }
         }
     }
 }
