@@ -43,6 +43,7 @@ namespace BertScout2020.Views
             if (Start_DatePicker.Date > End_DatePicker.Date)
             {
                 Label_ErrorMessage.Text = "Invalid end or start date";
+                Label_ErrorMessage2.Text = "";
                 return;
             }
 
@@ -51,6 +52,7 @@ namespace BertScout2020.Views
                 string.IsNullOrEmpty(eventLocation))
             {
                 Label_ErrorMessage.Text = "Please fill out all fields.";
+                Label_ErrorMessage2.Text = "";
                 return;
             }
 
@@ -70,6 +72,7 @@ namespace BertScout2020.Views
             if (oldEvent != null && oldEvent.Id != null)
             {
                 Label_ErrorMessage.Text = $"Event {eventName} already exists.";
+                Label_ErrorMessage2.Text = "";
                 return;
             }
 
