@@ -298,6 +298,19 @@ namespace BertScout2020Data.Data
             return _database.QueryAsync<EventTeamMatch>(query.ToString());
         }
 
+        public Task<List<EventTeamMatch>> GetEventTeamMatchesAsync(string eventKey, string deviceName)
+        {
+            StringBuilder query = new StringBuilder();
+            query.Append("SELECT [EventTeamMatch].* FROM [EventTeamMatch]");
+            query.Append(" WHERE [EventTeamMatch].[EventKey] = '");
+            query.Append(FixSqlValue(eventKey));
+            query.Append("'");
+            query.Append(" AND [EventTeamMatch].[DeviceName] = '");
+            query.Append(FixSqlValue(deviceName));
+            query.Append("'");
+            return _database.QueryAsync<EventTeamMatch>(query.ToString());
+        }
+
         public EventTeamMatch GetEventTeamMatchAsync(string eventKey, int teamNumber, int matchNumber)
         {
             StringBuilder query = new StringBuilder();
