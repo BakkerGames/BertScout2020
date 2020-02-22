@@ -12,7 +12,7 @@ namespace BertScout2020Data.Data
         private static SQLiteAsyncConnection _database;
 
         public const string dbFilename = "bertscout2020.db3";
-        public const decimal dbVersion = 2.2M; // update when db structure changes
+        public const decimal dbVersion = 2.3M; // update when db structure changes
 
         public BertScout2020Database(string dbPath)
         {
