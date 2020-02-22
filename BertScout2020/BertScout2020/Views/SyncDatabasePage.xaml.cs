@@ -153,9 +153,11 @@ namespace BertScout2020.Views
         {
             int RecordCount = 0;
             int NewRecords = 0;
+            int UpdatedRecords = 0;
             using (AirtableBase airtableBase = new AirtableBase(App.AirtableKey, App.AirtableBase))
             {
-                List<Fields> fieldList = new List<Fields>();
+                List<Fields> newRecordList = new List<Fields>();
+                List<IdFields> updatedRecordList = new List<IdFields>();
                 foreach (EventTeamMatch match in await App.Database.GetEventTeamMatchesAsync())
                 {
                     // only send matches from this event
@@ -173,41 +175,80 @@ namespace BertScout2020.Views
                         continue;
                     }
                     RecordCount++;
-                    Fields fields = new Fields();
-                    JObject jo = match.ToJson();
-                    foreach (KeyValuePair<string, object> kv in jo.ToList())
+                    if (match.Changed == 1 || string.IsNullOrEmpty(match.AirtableId))
                     {
-                        if (kv.Key == "Id")
+                        Fields fields = new Fields();
+                        JObject jo = match.ToJson();
+                        NewRecords++;
+                        foreach (KeyValuePair<string, object> kv in jo.ToList())
                         {
-                            continue;
+                            if (kv.Key == "Id" || kv.Key == "AirtableId")
+                            {
+                                continue;
+                            }
+                            fields.AddField(kv.Key, kv.Value);
                         }
-                        fields.AddField(kv.Key, kv.Value);
+                        newRecordList.Add(fields);
                     }
-                    fieldList.Add(fields);
+                    else
+                    {
+                        IdFields fields = new IdFields(match.AirtableId.ToString());
+                        JObject jo = match.ToJson();
+                        UpdatedRecords++;
+                        foreach (KeyValuePair<string, object> kv in jo.ToList())
+                        {
+                            if (kv.Key == "Id" || kv.Key == "AirtableId")
+                            {
+                                continue;
+                            }
+                            fields.AddField(kv.Key, kv.Value);
+                        }
+                        updatedRecordList.Add(fields);
+                    }
                 }
                 if (RecordCount == 0)
                 {
-                    Label_Results.Text = "No changed records found";
+                    Label_Results.Text = "No records found";
                     return;
                 }
-                AirtableCreateUpdateReplaceMultipleRecordsResponse result;
-                result = await airtableBase.CreateMultipleRecords("Match",
-                                                                  fieldList.ToArray());
-                if (result.Success)
+                if (NewRecords > 0)
                 {
+                    AirtableCreateUpdateReplaceMultipleRecordsResponse result;
+                    result = await airtableBase.CreateMultipleRecords("Match",
+                                                                      newRecordList.ToArray());
+                    if (!result.Success)
+                    {
+                        Label_Results.Text = $"Error uploading: {result.AirtableApiError.ErrorMessage}";
+                        return;
+                    }
                     foreach (AirtableRecord rec in result.Records)
                     {
-                        NewRecords++;
+                        EventTeamMatch match = App.Database.GetEventTeamMatchAsyncUuid(rec.GetField("Uuid").ToString());
+                        match.Changed++;
+                        match.AirtableId = rec.Id;
+                        await App.Database.SaveEventTeamMatchAsync(match);
+                    }
+                }
+                if (UpdatedRecords > 0)
+                {
+                    AirtableCreateUpdateReplaceMultipleRecordsResponse result;
+                    result = await airtableBase.UpdateMultipleRecords("Match",
+                                                                      updatedRecordList.ToArray());
+                    if (!result.Success)
+                    {
+                        Label_Results.Text = $"Error uploading: {result.AirtableApiError.ErrorMessage}";
+                        return;
+                    }
+                    foreach (AirtableRecord rec in result.Records)
+                    {
                         EventTeamMatch match = App.Database.GetEventTeamMatchAsyncUuid(rec.GetField("Uuid").ToString());
                         match.Changed++;
                         await App.Database.SaveEventTeamMatchAsync(match);
                     }
-                    Label_Results.Text = $"Records found: {RecordCount}\r\nRecords uploaded: {NewRecords}";
                 }
-                else
-                {
-                    Label_Results.Text = $"Error uploading: {result.AirtableApiError.ErrorMessage}";
-                }
+                Label_Results.Text += $"Records found: {RecordCount}\r\n";
+                Label_Results.Text += $"New records: {NewRecords}\r\n";
+                Label_Results.Text += $"Updated records: {UpdatedRecords}\r\n";
             }
         }
 
@@ -224,7 +265,7 @@ namespace BertScout2020.Views
                     if (offset != null)
                     {
                         // Sleep for half a second so we don't make requests too fast.
-                        // The free Airtable only allows 5 requests per second.
+                        // The free Airtable plan only allows 5 requests per second.
                         // Each download is 100 records (pagesize).
                         System.Threading.Thread.Sleep(500);
                     }
@@ -273,15 +314,8 @@ namespace BertScout2020.Views
                 RecordCount++;
                 JObject jo = new JObject();
                 EventTeamMatch m = null;
-                string uuid = null;
-                foreach (KeyValuePair<string, object> kv in ar.Fields)
-                {
-                    if (kv.Key == "Uuid")
-                    {
-                        uuid = kv.Value.ToString();
-                        break;
-                    }
-                }
+                string uuid = ar.Fields["Uuid"].ToString();
+                string airtableId = ar.Id;
                 if (!string.IsNullOrEmpty(uuid))
                 {
                     StringBuilder query = new StringBuilder();
@@ -294,11 +328,17 @@ namespace BertScout2020.Views
                 if (m == null)
                 {
                     m = new EventTeamMatch();
+                    m.AirtableId = ar.Id;
                     NewRecords++;
                 }
+                // convert to JObject and back so individual match fields are not needed here
                 jo = m.ToJson();
                 foreach (KeyValuePair<string, object> kv in ar.Fields)
                 {
+                    if (kv.Key == "Id" || kv.Key == "AirtableId")
+                    {
+                        continue;
+                    }
                     // airtable sends all numbers as Long, must convert back to Int
                     int intValue;
                     if (int.TryParse(kv.Value.ToString(), out intValue))
