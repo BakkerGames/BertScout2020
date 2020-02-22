@@ -56,8 +56,7 @@ namespace BertScout2020.Views
                 item.Id = null; // don't preserve id
                 item.Changed = 0; // changed = 0 so downloaded data is not uploaded
                 exportData.Append(item.ToString()
-                                      .Replace("\"Id\":null,", "")
-                                      .Replace("\"Changed\":0,", ""));
+                                      .Replace("\"Id\":null,", ""));
                 exportCount++;
             }
             if (exportCount > 0)
@@ -141,7 +140,26 @@ namespace BertScout2020.Views
 
         private void Button_Airtable_Upload_Clicked(object sender, EventArgs e)
         {
-            AirtableSendRecords();
+            int RecordCount = 0;
+            while (true)
+            {
+                int tempCount = AirtableSendRecords().Result;
+                if (tempCount < 0)
+                {
+                    // error message displayed already
+                    return;
+                }
+                if (tempCount == 0)
+                {
+                    break;
+                }
+                // can only send 10 at a time, so keep trying
+                RecordCount += tempCount;
+                // only send one or two requests per second (max is 5, don't go that high)
+                System.Threading.Thread.Sleep(500);
+            }
+            Label_Results.Text = "";
+            Label_Results.Text += $"Records found: {RecordCount}\r\n";
         }
 
         private void Button_Airtable_Download_Clicked(object sender, EventArgs e)
@@ -149,16 +167,16 @@ namespace BertScout2020.Views
             AirtableFetchRecords();
         }
 
-        async private void AirtableSendRecords()
+        async private Task<int> AirtableSendRecords()
         {
             int RecordCount = 0;
-            int NewRecords = 0;
-            int UpdatedRecords = 0;
+            int NewCount = 0;
+            int UpdatedCount = 0;
             using (AirtableBase airtableBase = new AirtableBase(App.AirtableKey, App.AirtableBase))
             {
                 List<Fields> newRecordList = new List<Fields>();
                 List<IdFields> updatedRecordList = new List<IdFields>();
-                foreach (EventTeamMatch match in await App.Database.GetEventTeamMatchesAsync())
+                foreach (EventTeamMatch match in App.Database.GetEventTeamMatchesAsync().Result)
                 {
                     // only send matches from this event
                     if (match.EventKey != App.currFRCEventKey)
@@ -170,16 +188,17 @@ namespace BertScout2020.Views
                     {
                         continue;
                     }
-                    if (match.Changed % 2 == 0) // even, don't upload
+                    // only allowed 10 creates per batch
+                    if (RecordCount >= 5)
                     {
                         continue;
                     }
                     RecordCount++;
-                    if (match.Changed == 1 || string.IsNullOrEmpty(match.AirtableId))
+                    if (string.IsNullOrEmpty(match.AirtableId))
                     {
                         Fields fields = new Fields();
                         JObject jo = match.ToJson();
-                        NewRecords++;
+                        NewCount++;
                         foreach (KeyValuePair<string, object> kv in jo.ToList())
                         {
                             if (kv.Key == "Id" || kv.Key == "AirtableId")
@@ -192,9 +211,14 @@ namespace BertScout2020.Views
                     }
                     else
                     {
+                        if (match.Changed % 2 == 0) // even, don't upload
+                        {
+                            continue;
+                        }
+                        match.Changed++; // make even
                         IdFields fields = new IdFields(match.AirtableId.ToString());
                         JObject jo = match.ToJson();
-                        UpdatedRecords++;
+                        UpdatedCount++;
                         foreach (KeyValuePair<string, object> kv in jo.ToList())
                         {
                             if (kv.Key == "Id" || kv.Key == "AirtableId")
@@ -206,38 +230,38 @@ namespace BertScout2020.Views
                         updatedRecordList.Add(fields);
                     }
                 }
-                if (RecordCount == 0)
-                {
-                    Label_Results.Text = "No records found";
-                    return;
-                }
-                if (NewRecords > 0)
+                if (NewCount > 0)
                 {
                     AirtableCreateUpdateReplaceMultipleRecordsResponse result;
                     result = await airtableBase.CreateMultipleRecords("Match",
-                                                                      newRecordList.ToArray());
+                                                                newRecordList.ToArray());
                     if (!result.Success)
                     {
-                        Label_Results.Text = $"Error uploading: {result.AirtableApiError.ErrorMessage}";
-                        return;
+                        Label_Results.Text = "Error uploading:\r\n";
+                        Label_Results.Text += $"{result.AirtableApiError.ErrorMessage}\r\n";
+                        return -1;
                     }
                     foreach (AirtableRecord rec in result.Records)
                     {
                         EventTeamMatch match = App.Database.GetEventTeamMatchAsyncUuid(rec.GetField("Uuid").ToString());
-                        match.Changed++;
+                        if (match.Changed % 2 == 1)
+                        {
+                            match.Changed++; // make even so it doesn't send again
+                        }
                         match.AirtableId = rec.Id;
                         await App.Database.SaveEventTeamMatchAsync(match);
                     }
                 }
-                if (UpdatedRecords > 0)
+                if (UpdatedCount > 0)
                 {
                     AirtableCreateUpdateReplaceMultipleRecordsResponse result;
-                    result = await airtableBase.UpdateMultipleRecords("Match",
-                                                                      updatedRecordList.ToArray());
+                    result = airtableBase.UpdateMultipleRecords("Match",
+                                                                updatedRecordList.ToArray()).Result;
                     if (!result.Success)
                     {
-                        Label_Results.Text = $"Error uploading: {result.AirtableApiError.ErrorMessage}";
-                        return;
+                        Label_Results.Text = "Error uploading:\r\n";
+                        Label_Results.Text += $"{result.AirtableApiError.ErrorMessage}\r\n";
+                        return -1;
                     }
                     foreach (AirtableRecord rec in result.Records)
                     {
@@ -246,9 +270,7 @@ namespace BertScout2020.Views
                         await App.Database.SaveEventTeamMatchAsync(match);
                     }
                 }
-                Label_Results.Text += $"Records found: {RecordCount}\r\n";
-                Label_Results.Text += $"New records: {NewRecords}\r\n";
-                Label_Results.Text += $"Updated records: {UpdatedRecords}\r\n";
+                return RecordCount;
             }
         }
 
@@ -307,7 +329,9 @@ namespace BertScout2020.Views
             }
 
             int RecordCount = 0;
-            int NewRecords = 0;
+            int NewCount = 0;
+            int UpdateCount = 0;
+            int IgnoreCount = 0;
 
             foreach (AirtableRecord ar in records)
             {
@@ -324,12 +348,22 @@ namespace BertScout2020.Views
                     query.Append(uuid);
                     query.Append("'");
                     m = App.Database.GetEventTeamMatchAsyncUuid(uuid);
+                    if (m.Changed >= (long)ar.Fields["Changed"])
+                    {
+                        // this record is newer, ignore airtable
+                        IgnoreCount++;
+                        continue;
+                    }
                 }
                 if (m == null)
                 {
                     m = new EventTeamMatch();
                     m.AirtableId = ar.Id;
-                    NewRecords++;
+                    NewCount++;
+                }
+                else
+                {
+                    UpdateCount++;
                 }
                 // convert to JObject and back so individual match fields are not needed here
                 jo = m.ToJson();
@@ -339,11 +373,21 @@ namespace BertScout2020.Views
                     {
                         continue;
                     }
-                    // airtable sends all numbers as Long, must convert back to Int
                     int intValue;
                     if (int.TryParse(kv.Value.ToString(), out intValue))
                     {
-                        jo.SetValue(kv.Key, intValue);
+                        if (kv.Key == "Changed")
+                        {
+                            // only update if lower
+                            if (m.Changed < intValue)
+                            {
+                                m.Changed = intValue;
+                            }
+                        }
+                        else
+                        {
+                            jo.SetValue(kv.Key, intValue);
+                        }
                     }
                     else
                     {
@@ -352,11 +396,19 @@ namespace BertScout2020.Views
                 }
                 // Rebuild the EventTeamMatch from the JObject data
                 m = EventTeamMatch.FromJson(jo);
+                if (m.Changed % 2 == 1)
+                {
+                    m.Changed++;
+                }
                 // save to the database
                 await App.Database.SaveEventTeamMatchAsync(m);
             }
 
-            Label_Results.Text = $"Records found: {RecordCount}\r\nRecords added: {NewRecords}";
+            Label_Results.Text = "";
+            Label_Results.Text += $"Records found: {RecordCount}\r\n";
+            Label_Results.Text += $"Records added: {NewCount}\r\n";
+            Label_Results.Text += $"Records updated: {UpdateCount}\r\n";
+            Label_Results.Text += $"Records ignored: {IgnoreCount}";
         }
     }
 }

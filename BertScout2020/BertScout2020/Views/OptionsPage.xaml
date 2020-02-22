@@ -28,7 +28,7 @@
             </StackLayout>
             <Button
                 x:Name="Button_SyncDatabase"
-                Text="Sync Database"
+                Text="Synchronize Data"
                 Clicked="Button_SyncDatabase_Clicked"
                 BackgroundColor="#B19CD9"
                 HorizontalOptions="Center"
