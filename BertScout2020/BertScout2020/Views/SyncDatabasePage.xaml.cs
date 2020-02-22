@@ -141,12 +141,74 @@ namespace BertScout2020.Views
 
         private void Button_Airtable_Upload_Clicked(object sender, EventArgs e)
         {
-            Label_Results.Text = "Airtable Upload";
+            AirtableSendRecords();
         }
 
         private void Button_Airtable_Download_Clicked(object sender, EventArgs e)
         {
             AirtableFetchRecords();
+        }
+
+        async private void AirtableSendRecords()
+        {
+            int RecordCount = 0;
+            int NewRecords = 0;
+            using (AirtableBase airtableBase = new AirtableBase(App.AirtableKey, App.AirtableBase))
+            {
+                List<Fields> fieldList = new List<Fields>();
+                foreach (EventTeamMatch match in await App.Database.GetEventTeamMatchesAsync())
+                {
+                    // only send matches from this event
+                    if (match.EventKey != App.currFRCEventKey)
+                    {
+                        continue;
+                    }
+                    // only send matches from this device
+                    if (match.DeviceName != App.KindleName)
+                    {
+                        continue;
+                    }
+                    if (match.Changed % 2 == 0) // even, don't upload
+                    {
+                        continue;
+                    }
+                    RecordCount++;
+                    Fields fields = new Fields();
+                    JObject jo = match.ToJson();
+                    foreach (KeyValuePair<string, object> kv in jo.ToList())
+                    {
+                        if (kv.Key == "Id")
+                        {
+                            continue;
+                        }
+                        fields.AddField(kv.Key, kv.Value);
+                    }
+                    fieldList.Add(fields);
+                }
+                if (RecordCount == 0)
+                {
+                    Label_Results.Text = "No changed records found";
+                    return;
+                }
+                AirtableCreateUpdateReplaceMultipleRecordsResponse result;
+                result = await airtableBase.CreateMultipleRecords("Match",
+                                                                  fieldList.ToArray());
+                if (result.Success)
+                {
+                    foreach (AirtableRecord rec in result.Records)
+                    {
+                        NewRecords++;
+                        EventTeamMatch match = App.Database.GetEventTeamMatchAsyncUuid(rec.GetField("Uuid").ToString());
+                        match.Changed++;
+                        await App.Database.SaveEventTeamMatchAsync(match);
+                    }
+                    Label_Results.Text = $"Records found: {RecordCount}\r\nRecords uploaded: {NewRecords}";
+                }
+                else
+                {
+                    Label_Results.Text = $"Error uploading: {result.AirtableApiError.ErrorMessage}";
+                }
+            }
         }
 
         async private void AirtableFetchRecords()
@@ -237,6 +299,7 @@ namespace BertScout2020.Views
                 jo = m.ToJson();
                 foreach (KeyValuePair<string, object> kv in ar.Fields)
                 {
+                    // airtable sends all numbers as Long, must convert back to Int
                     int intValue;
                     if (int.TryParse(kv.Value.ToString(), out intValue))
                     {
