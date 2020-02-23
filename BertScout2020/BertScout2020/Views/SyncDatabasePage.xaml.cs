@@ -241,7 +241,7 @@ namespace BertScout2020.Views
                 {
                     sendList.Add(newRecordList[0]);
                     newRecordList.RemoveAt(0);
-                } while (newRecordList.Count > 0 || sendList.Count < 10);
+                } while (newRecordList.Count > 0 && sendList.Count < 10);
                 result = await airtableBase.CreateMultipleRecords("Match", sendList.ToArray());
                 if (!result.Success)
                 {
@@ -282,7 +282,7 @@ namespace BertScout2020.Views
                 {
                     sendList.Add(updatedRecordList[0]);
                     updatedRecordList.RemoveAt(0);
-                } while (updatedRecordList.Count > 0 || sendList.Count < 10);
+                } while (updatedRecordList.Count > 0 && sendList.Count < 10);
                 result = await airtableBase.UpdateMultipleRecords("Match", sendList.ToArray());
                 if (!result.Success)
                 {
