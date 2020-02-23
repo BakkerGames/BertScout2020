@@ -115,7 +115,6 @@ namespace BertScout2020.Views
 
                     if (oldItem == null)
                     {
-                        item.Changed = 0; // downloaded records are excluded from uploading
                         SqlDataEventTeamMatches.AddItemAsync(item);
                         addedCount++;
                     }
@@ -252,6 +251,7 @@ namespace BertScout2020.Views
                 foreach (AirtableRecord rec in result.Records)
                 {
                     EventTeamMatch match = App.Database.GetEventTeamMatchAsyncUuid(rec.GetField("Uuid").ToString());
+                    match.Changed++; // mark as uploaded
                     if (match.Changed % 2 == 1)
                     {
                         match.Changed++; // make even so it doesn't send again
@@ -287,12 +287,13 @@ namespace BertScout2020.Views
                 if (!result.Success)
                 {
                     Label_Results.Text = "Error uploading:\r\n";
-                    Label_Results.Text += $"{result.AirtableApiError.ErrorMessage}\r\n";
+                    Label_Results.Text += $"{result.AirtableApiError.ErrorMessage}\r\n{result.AirtableApiError}";
                     return -1;
                 }
                 foreach (AirtableRecord rec in result.Records)
                 {
                     EventTeamMatch match = App.Database.GetEventTeamMatchAsyncUuid(rec.GetField("Uuid").ToString());
+                    match.Changed++; // mark as uploaded
                     if (match.Changed % 2 == 1)
                     {
                         match.Changed++; // make even so it doesn't send again
