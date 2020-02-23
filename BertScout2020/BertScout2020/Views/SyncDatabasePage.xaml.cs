@@ -144,7 +144,7 @@ namespace BertScout2020.Views
 
         private void Button_Airtable_Download_Clicked(object sender, EventArgs e)
         {
-            AirtableFetchRecords();
+           AirtableFetchRecords();
         }
 
         async private void AirtableSendRecords()
@@ -328,7 +328,8 @@ namespace BertScout2020.Views
                         System.Threading.Thread.Sleep(500);
                     }
 
-                    Task<AirtableListRecordsResponse> task = airtableBase.ListRecords(
+                    AirtableListRecordsResponse response;
+                    response = await airtableBase.ListRecords(
                            "Match",
                            offset,
                            null /*fieldsArray*/,
@@ -337,8 +338,6 @@ namespace BertScout2020.Views
                            100 /*pageSize*/,
                            null /*sort*/,
                            null /*view*/);
-
-                    AirtableListRecordsResponse response = await task;
 
                     if (response.Success)
                     {
@@ -384,7 +383,7 @@ namespace BertScout2020.Views
                     query.Append(uuid);
                     query.Append("'");
                     m = App.Database.GetEventTeamMatchAsyncUuid(uuid);
-                    if (m.Changed >= (long)ar.Fields["Changed"])
+                    if (m != null && m.Changed >= (long)ar.Fields["Changed"])
                     {
                         // this record is newer, ignore airtable
                         IgnoreCount++;
