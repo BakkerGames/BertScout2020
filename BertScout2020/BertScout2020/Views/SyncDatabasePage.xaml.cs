@@ -140,26 +140,7 @@ namespace BertScout2020.Views
 
         private void Button_Airtable_Upload_Clicked(object sender, EventArgs e)
         {
-            int RecordCount = 0;
-            while (true)
-            {
-                int tempCount = AirtableSendRecords().Result;
-                if (tempCount < 0)
-                {
-                    // error message displayed already
-                    return;
-                }
-                if (tempCount == 0)
-                {
-                    break;
-                }
-                // can only send 10 at a time, so keep trying
-                RecordCount += tempCount;
-                // only send one or two requests per second (max is 5, don't go that high)
-                System.Threading.Thread.Sleep(500);
-            }
-            Label_Results.Text = "";
-            Label_Results.Text += $"Records found: {RecordCount}\r\n";
+            AirtableSendRecords();
         }
 
         private void Button_Airtable_Download_Clicked(object sender, EventArgs e)
@@ -167,7 +148,7 @@ namespace BertScout2020.Views
             AirtableFetchRecords();
         }
 
-        async private Task<int> AirtableSendRecords()
+        async private void AirtableSendRecords()
         {
             int RecordCount = 0;
             int NewCount = 0;
@@ -188,17 +169,11 @@ namespace BertScout2020.Views
                     {
                         continue;
                     }
-                    // only allowed 10 creates per batch
-                    if (RecordCount >= 5)
-                    {
-                        continue;
-                    }
                     RecordCount++;
                     if (string.IsNullOrEmpty(match.AirtableId))
                     {
                         Fields fields = new Fields();
                         JObject jo = match.ToJson();
-                        NewCount++;
                         foreach (KeyValuePair<string, object> kv in jo.ToList())
                         {
                             if (kv.Key == "Id" || kv.Key == "AirtableId")
@@ -218,7 +193,6 @@ namespace BertScout2020.Views
                         match.Changed++; // make even
                         IdFields fields = new IdFields(match.AirtableId.ToString());
                         JObject jo = match.ToJson();
-                        UpdatedCount++;
                         foreach (KeyValuePair<string, object> kv in jo.ToList())
                         {
                             if (kv.Key == "Id" || kv.Key == "AirtableId")
@@ -230,48 +204,109 @@ namespace BertScout2020.Views
                         updatedRecordList.Add(fields);
                     }
                 }
-                if (NewCount > 0)
+                if (newRecordList.Count > 0)
                 {
-                    AirtableCreateUpdateReplaceMultipleRecordsResponse result;
-                    result = await airtableBase.CreateMultipleRecords("Match",
-                                                                newRecordList.ToArray());
-                    if (!result.Success)
+                    int tempCount = await AirtableSendNewRecords(airtableBase, newRecordList);
+                    if (tempCount < 0)
                     {
-                        Label_Results.Text = "Error uploading:\r\n";
-                        Label_Results.Text += $"{result.AirtableApiError.ErrorMessage}\r\n";
-                        return -1;
+                        return; // error, exit out
                     }
-                    foreach (AirtableRecord rec in result.Records)
-                    {
-                        EventTeamMatch match = App.Database.GetEventTeamMatchAsyncUuid(rec.GetField("Uuid").ToString());
-                        if (match.Changed % 2 == 1)
-                        {
-                            match.Changed++; // make even so it doesn't send again
-                        }
-                        match.AirtableId = rec.Id;
-                        await App.Database.SaveEventTeamMatchAsync(match);
-                    }
+                    NewCount += tempCount;
                 }
-                if (UpdatedCount > 0)
+                if (updatedRecordList.Count > 0)
                 {
-                    AirtableCreateUpdateReplaceMultipleRecordsResponse result;
-                    result = airtableBase.UpdateMultipleRecords("Match",
-                                                                updatedRecordList.ToArray()).Result;
-                    if (!result.Success)
+                    int tempCount = await AirtableSendUpdatedRecords(airtableBase, updatedRecordList);
+                    if (tempCount < 0)
                     {
-                        Label_Results.Text = "Error uploading:\r\n";
-                        Label_Results.Text += $"{result.AirtableApiError.ErrorMessage}\r\n";
-                        return -1;
+                        return; // error, exit out
                     }
-                    foreach (AirtableRecord rec in result.Records)
-                    {
-                        EventTeamMatch match = App.Database.GetEventTeamMatchAsyncUuid(rec.GetField("Uuid").ToString());
-                        match.Changed++;
-                        await App.Database.SaveEventTeamMatchAsync(match);
-                    }
+                    UpdatedCount += tempCount;
                 }
-                return RecordCount;
             }
+            Label_Results.Text = $"Records found: {RecordCount}\r\n";
+            Label_Results.Text += $"New records: {NewCount}\r\n";
+            Label_Results.Text += $"Updated records: {UpdatedCount}";
+        }
+
+        async private Task<int> AirtableSendNewRecords(AirtableBase airtableBase,
+                                                       List<Fields> newRecordList)
+        {
+            AirtableCreateUpdateReplaceMultipleRecordsResponse result;
+            List<Fields> sendList = new List<Fields>();
+            int finalCount = 0;
+            while (newRecordList.Count > 0)
+            {
+                sendList.Clear();
+                do
+                {
+                    sendList.Add(newRecordList[0]);
+                    newRecordList.RemoveAt(0);
+                } while (newRecordList.Count > 0 || sendList.Count < 10);
+                result = await airtableBase.CreateMultipleRecords("Match", sendList.ToArray());
+                if (!result.Success)
+                {
+                    Label_Results.Text = "Error uploading:\r\n";
+                    Label_Results.Text += $"{result.AirtableApiError.ErrorMessage}\r\n";
+                    return -1;
+                }
+                foreach (AirtableRecord rec in result.Records)
+                {
+                    EventTeamMatch match = App.Database.GetEventTeamMatchAsyncUuid(rec.GetField("Uuid").ToString());
+                    if (match.Changed % 2 == 1)
+                    {
+                        match.Changed++; // make even so it doesn't send again
+                    }
+                    match.AirtableId = rec.Id;
+                    await App.Database.SaveEventTeamMatchAsync(match);
+                    finalCount++;
+                }
+                if (newRecordList.Count > 0)
+                {
+                    // can only send 5 batches per second, make sure that doesn't happen
+                    System.Threading.Thread.Sleep(500);
+                }
+            }
+            return finalCount;
+        }
+
+        async private Task<int> AirtableSendUpdatedRecords(AirtableBase airtableBase,
+                                                           List<IdFields> updatedRecordList)
+        {
+            AirtableCreateUpdateReplaceMultipleRecordsResponse result;
+            List<IdFields> sendList = new List<IdFields>();
+            int finalCount = 0;
+            while (updatedRecordList.Count > 0)
+            {
+                sendList.Clear();
+                do
+                {
+                    sendList.Add(updatedRecordList[0]);
+                    updatedRecordList.RemoveAt(0);
+                } while (updatedRecordList.Count > 0 || sendList.Count < 10);
+                result = await airtableBase.UpdateMultipleRecords("Match", sendList.ToArray());
+                if (!result.Success)
+                {
+                    Label_Results.Text = "Error uploading:\r\n";
+                    Label_Results.Text += $"{result.AirtableApiError.ErrorMessage}\r\n";
+                    return -1;
+                }
+                foreach (AirtableRecord rec in result.Records)
+                {
+                    EventTeamMatch match = App.Database.GetEventTeamMatchAsyncUuid(rec.GetField("Uuid").ToString());
+                    if (match.Changed % 2 == 1)
+                    {
+                        match.Changed++; // make even so it doesn't send again
+                    }
+                    await App.Database.SaveEventTeamMatchAsync(match);
+                    finalCount++;
+                }
+                if (updatedRecordList.Count > 0)
+                {
+                    // can only send 5 batches per second, make sure that doesn't happen
+                    System.Threading.Thread.Sleep(500);
+                }
+            }
+            return finalCount;
         }
 
         async private void AirtableFetchRecords()
