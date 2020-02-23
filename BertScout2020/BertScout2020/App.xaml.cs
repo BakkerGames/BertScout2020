@@ -17,7 +17,7 @@ namespace BertScout2020
         static public Color UnselectedButtonColor = Color.LightGray;
         static public string OptionPassword = "letmein";
         static public string DeleteMatchPassword = "thismatchisfake";
-        static public string AppVersionDate = "2020.02.08.1920";
+        static public string AppVersionDate = "2020.02.23.1329";
         static public string AppYear = "2020";
         static public readonly decimal dbVersion = BertScout2020Database.dbVersion;
 
