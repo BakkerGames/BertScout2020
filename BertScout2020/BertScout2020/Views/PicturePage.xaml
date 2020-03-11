@@ -10,8 +10,11 @@
             <StackLayout>
                 <Image
                 x:Name="Image_Display"
-                Source="C:\Users\shawn\BertScout2020\BertScout2020\BertScout2020.UWP\camera.png"
+                    Source=""
                 Aspect="AspectFit"
+                    WidthRequest="100"
+                    HeightRequest="500"
+                    BackgroundColor="LightGray"
                 />
             </StackLayout>
             <StackLayout>
@@ -24,6 +27,13 @@
                 BackgroundColor="LightGray"
                 Clicked="Button_TakePicture_Clicked"
                 />
+            </StackLayout>
+            <StackLayout>
+                <Label
+                    x:Name="Error_Message"
+                    Text="Hi"
+                    FontSize="24"
+                    />
             </StackLayout>
         </StackLayout>
     </ContentPage.Content>

@@ -10,11 +10,12 @@ namespace BertScout2020.Views
     public partial class TeamDetailsPage : ContentPage
     {
         TeamDetailViewModel viewModel;
+        Team currTeam;
 
         public TeamDetailsPage(string eventKey, Team item)
         {
             InitializeComponent();
-
+            currTeam = item;
             BindingContext = viewModel = new TeamDetailViewModel(eventKey, item);
         }
 
@@ -42,7 +43,7 @@ namespace BertScout2020.Views
 
         private void ToolbarItem_Picture_Clicked(object sender, System.EventArgs e)
         {
-            Navigation.PushAsync(new PicturePage());
+            Navigation.PushAsync(new PicturePage(currTeam));
         }
     }
 }
