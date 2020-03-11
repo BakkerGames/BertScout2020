@@ -9,9 +9,9 @@
         <StackLayout>
             <StackLayout>
                 <Image
-                x:Name="Image_Display"
+                    x:Name="Image_Display"
                     Source=""
-                Aspect="AspectFit"
+	                  Aspect="AspectFit"
                     WidthRequest="100"
                     HeightRequest="500"
                     BackgroundColor="LightGray"
@@ -19,13 +19,13 @@
             </StackLayout>
             <StackLayout>
                 <Button 
-                x:Name="Button_TakePicture"
-                Text="Take Picture"
-                FontSize="24"
-                WidthRequest="150"
-                HorizontalOptions="Center"
-                BackgroundColor="LightGray"
-                Clicked="Button_TakePicture_Clicked"
+                    x:Name="Button_TakePicture"
+                    Text="Take Picture"
+                    FontSize="24"
+                    WidthRequest="150"
+                    HorizontalOptions="Center"
+                    BackgroundColor="LightGray"
+                    Clicked="Button_TakePicture_Clicked"
                 />
             </StackLayout>
             <StackLayout>
