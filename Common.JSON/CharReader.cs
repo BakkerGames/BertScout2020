@@ -14,7 +14,7 @@ namespace Common.JSON
         private readonly TextReader _inputStream = null;
         private readonly int _typeValue = -1;
         private int _charPos = 0;
-        private Stack<char> _charStack = new Stack<char>();
+        private readonly Stack<char> _charStack = new Stack<char>();
 
         public CharReader(string value)
         {

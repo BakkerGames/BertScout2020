@@ -11,7 +11,7 @@ namespace Common.JSON
 {
     sealed public partial class JArray : JBase, IEnumerable<object>
     {
-        private List<object> _data = new List<object>();
+        private readonly List<object> _data = new List<object>();
 
         public IEnumerator<object> GetEnumerator()
         {
@@ -236,58 +236,58 @@ namespace Common.JSON
             return sb.ToString();
         }
 
-        private static void _SaveValue(ref JArray obj, string value, bool inStringValue)
-        {
-            if (!inStringValue)
-            {
-                value = value.TrimEnd(); // helps with parsing
-            }
-            if (inStringValue)
-            {
-                // see if the string is a datetime format
-                if (DateTime.TryParse(value, CultureInfo.InvariantCulture,
-                                      DateTimeStyles.RoundtripKind, out DateTime datetimeValue))
-                {
-                    obj.Add(datetimeValue);
-                }
-                else
-                {
-                    obj.Add(value);
-                }
-            }
-            else if (value == "null")
-            {
-                obj.Add(null);
-            }
-            else if (value == "true")
-            {
-                obj.Add(true);
-            }
-            else if (value == "false")
-            {
-                obj.Add(false);
-            }
-            else if (int.TryParse(value, out int intValue))
-            {
-                obj.Add(intValue); // default to int for anything smaller
-            }
-            else if (long.TryParse(value, out long longValue))
-            {
-                obj.Add(longValue);
-            }
-            else if (decimal.TryParse(value, out decimal decimalValue))
-            {
-                obj.Add(decimalValue);
-            }
-            else if (double.TryParse(value, out double doubleValue))
-            {
-                obj.Add(doubleValue);
-            }
-            else // unknown or non-numeric value
-            {
-                throw new SystemException($"Invalid value = '{value}'");
-            }
-        }
+        //private static void _SaveValue(ref JArray obj, string value, bool inStringValue)
+        //{
+        //    if (!inStringValue)
+        //    {
+        //        value = value.TrimEnd(); // helps with parsing
+        //    }
+        //    if (inStringValue)
+        //    {
+        //        // see if the string is a datetime format
+        //        if (DateTime.TryParse(value, CultureInfo.InvariantCulture,
+        //                              DateTimeStyles.RoundtripKind, out DateTime datetimeValue))
+        //        {
+        //            obj.Add(datetimeValue);
+        //        }
+        //        else
+        //        {
+        //            obj.Add(value);
+        //        }
+        //    }
+        //    else if (value == "null")
+        //    {
+        //        obj.Add(null);
+        //    }
+        //    else if (value == "true")
+        //    {
+        //        obj.Add(true);
+        //    }
+        //    else if (value == "false")
+        //    {
+        //        obj.Add(false);
+        //    }
+        //    else if (int.TryParse(value, out int intValue))
+        //    {
+        //        obj.Add(intValue); // default to int for anything smaller
+        //    }
+        //    else if (long.TryParse(value, out long longValue))
+        //    {
+        //        obj.Add(longValue);
+        //    }
+        //    else if (decimal.TryParse(value, out decimal decimalValue))
+        //    {
+        //        obj.Add(decimalValue);
+        //    }
+        //    else if (double.TryParse(value, out double doubleValue))
+        //    {
+        //        obj.Add(doubleValue);
+        //    }
+        //    else // unknown or non-numeric value
+        //    {
+        //        throw new SystemException($"Invalid value = '{value}'");
+        //    }
+        //}
 
         public new static JArray Parse(string value)
         {
